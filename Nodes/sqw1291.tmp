@@ -1,0 +1,105 @@
+[gd_scene load_steps=9 format=3 uid="uid://1kt6juxlrc4h"]
+
+[ext_resource type="PackedScene" uid="uid://bt2cs3l4w0elj" path="res://Assets/Sqwamtch/sqwamtch_character.tscn" id="1_2huep"]
+[ext_resource type="Script" path="res://Scripts/sqwamtch_enemy_script.gd" id="1_ym2oi"]
+[ext_resource type="PackedScene" uid="uid://d0qp3ykes8wgl" path="res://Misc/DebugRay.tscn" id="2_84sex"]
+[ext_resource type="Shader" path="res://Misc/PSXVertex.gdshader" id="3_7mavb"]
+[ext_resource type="Script" path="res://Scripts/StateMachine.gd" id="3_tjbod"]
+[ext_resource type="Texture2D" uid="uid://crf0h8oybfmno" path="res://Assets/Sqwamtch/Sqwamtch_bfooot.png" id="4_ydh7n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_55qf7"]
+render_priority = 0
+shader = ExtResource("3_7mavb")
+shader_parameter/uv_scrolling_velocity = Vector2(0, 0)
+shader_parameter/vertex_snapping_offset = 0.69
+shader_parameter/jitter_z_coordinate = false
+shader_parameter/jitter_depth_independent = false
+shader_parameter/affine_texture_mapping = false
+shader_parameter/alpha_scissor = 1.0
+shader_parameter/image_texture = ExtResource("4_ydh7n")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_di7cr"]
+radius = 0.768693
+height = 2.58568
+
+[node name="SqwamtchEnemy" type="CharacterBody3D"]
+script = ExtResource("1_ym2oi")
+DebugRay = ExtResource("2_84sex")
+
+[node name="Sqwamtch" parent="." instance=ExtResource("1_2huep")]
+
+[node name="Armature" parent="Sqwamtch" index="0"]
+transform = Transform3D(0.731597, 0.0573358, -0.67932, 0.000944656, 0.996372, 0.0851124, 0.681735, -0.0629099, 0.728888, -0.972573, -0.75306, 1.08824)
+
+[node name="Skeleton3D" parent="Sqwamtch/Armature" index="0"]
+bones/2/rotation = Quaternion(0.151014, 0.0653279, -0.020097, 0.986166)
+bones/3/rotation = Quaternion(0.0471824, 0.130712, -0.0376608, 0.989581)
+bones/4/rotation = Quaternion(0.0508745, -0.00356803, 0.000612826, 0.998699)
+bones/5/rotation = Quaternion(-0.0998597, -0.00358908, 0.000474612, 0.994995)
+bones/7/rotation = Quaternion(-0.110906, 0.129405, -0.614789, 0.770058)
+bones/8/rotation = Quaternion(0.152076, -0.00508174, -0.661365, 0.734468)
+bones/9/rotation = Quaternion(0.419337, 0.0659935, 0.00561015, 0.905412)
+bones/10/rotation = Quaternion(-0.083034, 0.789985, 0.0216761, 0.607091)
+bones/11/rotation = Quaternion(0.224735, 0.207996, 0.238197, 0.92168)
+bones/12/rotation = Quaternion(-0.00633593, 0.000687326, -0.0023488, 0.999977)
+bones/14/rotation = Quaternion(0.240412, -0.00857389, -0.0667885, 0.968333)
+bones/15/rotation = Quaternion(0.288681, 0.0017555, 0.02495, 0.957099)
+bones/16/rotation = Quaternion(-1.07465e-07, 1.55543e-07, 8.84756e-08, 1)
+bones/18/rotation = Quaternion(0.26716, -0.0107092, -0.101256, 0.958258)
+bones/19/rotation = Quaternion(0.349152, 0.0117776, 0.0493549, 0.935691)
+bones/20/rotation = Quaternion(3.07671e-07, -1.22614e-06, -1.2992e-06, 1)
+bones/22/rotation = Quaternion(0.00801626, 0.00269305, 0.111909, 0.993683)
+bones/23/rotation = Quaternion(0.155442, -0.00101537, -0.00463484, 0.987834)
+bones/24/rotation = Quaternion(-1.03927e-07, -2.26959e-06, -2.38419e-06, 1)
+bones/26/rotation = Quaternion(0.0988813, 0.00943673, -0.0201136, 0.994851)
+bones/27/rotation = Quaternion(0.214463, -0.00149393, 0.0173339, 0.976577)
+bones/28/rotation = Quaternion(-1.27317e-08, -1.81285e-06, -1.01887e-06, 1)
+bones/30/rotation = Quaternion(-0.0620516, -0.0761768, 0.634276, 0.766838)
+bones/31/rotation = Quaternion(-0.0692777, -0.0551925, 0.631456, 0.770336)
+bones/32/rotation = Quaternion(0.365238, -0.00198867, 0.0640242, 0.928708)
+bones/33/rotation = Quaternion(0.132387, -0.736117, 0.0763707, 0.659373)
+bones/34/rotation = Quaternion(0.145885, -0.0685858, -0.286523, 0.944414)
+bones/35/rotation = Quaternion(0.0315778, 0.00106453, 0.181207, 0.982937)
+bones/37/rotation = Quaternion(0.166982, -0.0161893, 0.0172697, 0.985676)
+bones/38/rotation = Quaternion(0.338421, -0.00248698, -0.0353964, 0.940325)
+bones/39/rotation = Quaternion(3.3512e-07, -2.09824e-06, -1.99955e-06, 1)
+bones/41/rotation = Quaternion(0.168343, -0.018888, 0.0440029, 0.984565)
+bones/42/rotation = Quaternion(0.367242, -0.013015, -0.0694476, 0.927438)
+bones/43/rotation = Quaternion(7.53301e-07, 2.44598e-07, 1.42492e-07, 1)
+bones/45/rotation = Quaternion(-0.00130215, 0.0039831, -0.0398428, 0.999197)
+bones/46/rotation = Quaternion(0.147205, 0.000238043, 0.00908379, 0.989064)
+bones/47/rotation = Quaternion(2.50733e-07, -1.29074e-06, -1.29826e-06, 1)
+bones/49/rotation = Quaternion(0.0735962, 0.00145328, -0.0255903, 0.996959)
+bones/50/rotation = Quaternion(0.299871, 0.00163288, -0.0207023, 0.953754)
+bones/51/rotation = Quaternion(2.01408e-07, 2.78986e-06, 1.92039e-06, 1)
+bones/53/rotation = Quaternion(0.0796378, 0.288406, 0.943639, -0.141513)
+bones/54/rotation = Quaternion(-0.3684, 0.121051, -0.0956988, 0.916772)
+bones/55/rotation = Quaternion(0.722376, -0.0574306, -0.0289648, 0.688502)
+bones/57/rotation = Quaternion(-0.120973, 0.0423916, 0.977331, 0.1685)
+bones/58/rotation = Quaternion(-0.348635, 0.0629234, 0.0228373, 0.934865)
+bones/59/rotation = Quaternion(0.81775, 0.127463, 0.107947, 0.550805)
+
+[node name="bigfoot1" parent="Sqwamtch/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_55qf7")
+
+[node name="Eyes" type="Node3D" parent="Sqwamtch"]
+transform = Transform3D(6.66667, 0, 0, 0, 6.66667, 0, 0, 0, 6.66667, 0, 15.1467, 0.544701)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32338, 0)
+shape = SubResource("CapsuleShape3D_di7cr")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.25
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_tjbod")
+
+[node name="RayTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_navigation_finished"]
+[connection signal="StateUpdated" from="StateMachine" to="." method="_on_state_machine_state_updated"]
+[connection signal="timeout" from="RayTimer" to="." method="_on_ray_timer_timeout"]
+
+[editable path="Sqwamtch"]

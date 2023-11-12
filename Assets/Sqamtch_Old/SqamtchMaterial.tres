@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dkrsoy257nn82"]
+
+[ext_resource type="Texture2D" uid="uid://dam4e6qlnk46c" path="res://Assets/Sqamtch_Old/SqamtchFullglb_bfooot.png" id="1_2j4yh"]
+[ext_resource type="Texture2D" uid="uid://qf02441wrres" path="res://Assets/Sqamtch_Old/SqamtchFullglb_bfootemit.png" id="2_osqo1"]
+
+[resource]
+albedo_texture = ExtResource("1_2j4yh")
+emission_enabled = true
+emission = Color(0.772549, 0.780392, 0.6, 1)
+emission_operator = 1
+emission_texture = ExtResource("2_osqo1")

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp6gwtrl86rw7"]
+
+[ext_resource type="Script" path="res://Scripts/NavGenerator.gd" id="1_1dkqe"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7nmhp"]
+_surfaces = [{
+"aabb": AABB(-1, -1, 0, 2, 2, 1e-05),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 3,
+"vertex_data": PackedByteArray(0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 255, 127, 255, 127, 255, 255, 255, 63, 255, 127, 255, 127, 255, 255, 255, 63, 255, 127, 255, 127, 255, 255, 255, 63)
+}]
+
+[node name="NavGenerator" type="Node3D"]
+script = ExtResource("1_1dkqe")
+width = 40.0
+height = 40.0
+
+[node name="GeneratedMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_7nmhp")

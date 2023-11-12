@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgcodbx81fv4p"]
+
+[ext_resource type="PackedScene" uid="uid://cbtatuxkkf15l" path="res://Nodes/Pickups/Pickup.tscn" id="1_htbyh"]
+[ext_resource type="PackedScene" uid="uid://bs7w5m81hkblx" path="res://Assets/Soda/Soda.glb" id="2_d2dts"]
+
+[node name="Pickup" instance=ExtResource("1_htbyh")]
+
+[node name="Mesh" parent="." index="0" instance=ExtResource("2_d2dts")]
+transform = Transform3D(0.188159, 0.0689199, 0, -0.0689199, 0.188159, 0, 0, 0, 0.200384, 0, 0, 0)

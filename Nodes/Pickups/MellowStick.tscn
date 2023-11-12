@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://bxlwe60i5jprt"]
+
+[ext_resource type="PackedScene" uid="uid://cbtatuxkkf15l" path="res://Nodes/Pickups/Pickup.tscn" id="1_unyg2"]
+[ext_resource type="PackedScene" uid="uid://ib4wexnuer67" path="res://Assets/MellowStick/MellowStick.glb" id="2_ro1pb"]
+[ext_resource type="Shader" path="res://Misc/PSX.gdshader" id="3_xkh7g"]
+[ext_resource type="Shader" path="res://Misc/PSXVertex.gdshader" id="4_stv1q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vkpiw"]
+render_priority = 0
+shader = ExtResource("3_xkh7g")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/uv_scrolling_velocity = Vector2(0, 0)
+shader_parameter/vertex_snapping_offset = 0.69
+shader_parameter/affine_textures = false
+
+[sub_resource type="Gradient" id="Gradient_3noyp"]
+offsets = PackedFloat32Array(0.00813008)
+colors = PackedColorArray(0.47, 0.313333, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vsc0u"]
+gradient = SubResource("Gradient_3noyp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vjl53"]
+render_priority = 0
+shader = ExtResource("4_stv1q")
+shader_parameter/uv_scrolling_velocity = Vector2(0, 0)
+shader_parameter/vertex_snapping_offset = 0.69
+shader_parameter/jitter_z_coordinate = true
+shader_parameter/jitter_depth_independent = true
+shader_parameter/affine_texture_mapping = true
+shader_parameter/alpha_scissor = 1.0
+shader_parameter/image_texture = SubResource("GradientTexture1D_vsc0u")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8768d"]
+radius = 0.164474
+height = 0.941867
+
+[node name="Pickup" instance=ExtResource("1_unyg2")]
+
+[node name="Mesh" parent="." index="0" instance=ExtResource("2_ro1pb")]
+transform = Transform3D(0.44528, -0.0405814, -0.0108737, 0.0405813, 0.445412, -0.000494402, 0.0108737, -0.000494402, 0.447125, 0.0428245, -0.467854, 0)
+
+[node name="Mellow" parent="Mesh" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_vkpiw")
+
+[node name="Stick" parent="Mesh" index="1"]
+transform = Transform3D(0.03, 8.98353e-10, 0, 5.42286e-11, 0.0463165, -1.45519e-11, 2.32831e-10, -2.91038e-11, 0.0463165, 0.00107196, -0.00134635, -0.00044924)
+surface_material_override/0 = SubResource("ShaderMaterial_vjl53")
+
+[node name="CollisionShape3D" parent="Area3D" index="0"]
+shape = SubResource("CapsuleShape3D_8768d")
+
+[editable path="Mesh"]

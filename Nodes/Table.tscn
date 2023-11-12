@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://chc2kxtf4m8lk"]
+
+[ext_resource type="PackedScene" uid="uid://bju2m3fpfl4ha" path="res://Assets/Table/Table.glb" id="1_1k7ln"]
+[ext_resource type="Shader" path="res://Misc/PSX.gdshader" id="2_g0xut"]
+[ext_resource type="Texture2D" uid="uid://cc7au0judcu16" path="res://Assets/Table/Table_TableTexture.png" id="3_m46lc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_koqxr"]
+size = Vector3(2.02556, 0.94745, 2.30404)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ap7a1"]
+render_priority = 0
+shader = ExtResource("2_g0xut")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/uv_scrolling_velocity = Vector2(0, 0)
+shader_parameter/vertex_snapping_offset = 0.69
+shader_parameter/affine_textures = false
+shader_parameter/image_texture = ExtResource("3_m46lc")
+
+[node name="Table" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.42462, 0)
+shape = SubResource("BoxShape3D_koqxr")
+
+[node name="Table" parent="." instance=ExtResource("1_1k7ln")]
+
+[node name="Table2" parent="Table" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_ap7a1")
+
+[node name="Legs" parent="Table" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_ap7a1")
+
+[node name="Support" parent="Table" index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_ap7a1")
+
+[node name="Seat" parent="Table" index="3"]
+surface_material_override/0 = SubResource("ShaderMaterial_ap7a1")
+
+[editable path="Table"]

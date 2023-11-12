@@ -1,0 +1,147 @@
+extends CharacterBody3D
+
+#movement
+@export var walkSpeed := 2.0
+@export var runSpeed := 6.0
+@onready var movementSpeed := walkSpeed
+@export var acceleration := 4.0
+
+#vision
+@export var searchRadius:float = 20.0
+@export var sightDistance:float = 20.0
+@export var sightAngle:float = deg_to_rad(75.0)
+@onready var eyes:Node3D = $Sqwamtch/Eyes
+
+#options
+@export var DrawDebugRays:bool = false
+
+#references
+@onready var navAgent := $NavigationAgent3D
+@onready var mesh := $Sqwamtch
+@onready var animTree = $Sqwamtch/AnimationTree
+@onready var behaviorStateMachine : BehaviorStateMachine = $StateMachine
+@onready var debugRayHelper = get_node("/root/DebugRayHelper")
+@onready var VisionPoller:Poller = $RayTimer
+@onready var Idletimer:Timer = $IdleTimer
+@export var Player : Player
+
+var readyToNav := false
+var lookingForPlayer:bool = false
+var lastSeenPos:Vector3
+var isAttacking := false
+
+func _ready():
+	navAgent.path_desired_distance = 0.5
+	navAgent.target_desired_distance = 0.5
+	call_deferred("_actor_setup")
+	
+func _actor_setup() -> void:
+	await get_tree().physics_frame
+	readyToNav = true
+	_set_nav_target_from_state(behaviorStateMachine.get_state())
+
+func _physics_process(delta):
+	if !readyToNav:
+		return
+
+	var dir = Vector3()
+	dir = navAgent.get_next_path_position() - self.global_position
+	dir = dir.normalized()
+	
+	velocity = velocity.lerp(dir * movementSpeed, acceleration * delta)
+	if (movementSpeed > 0):
+		_face_player(velocity)
+	_process_animations()
+	move_and_slide()
+	var dist = global_position.distance_squared_to(Player.global_position)
+	VisionPoller.update_rate(dist)
+	if dist < 10 and !isAttacking:
+		_try_attack()
+	print(dist)
+
+func _try_attack() ->void:
+	isAttacking = true
+	animTree.set("parameters/AttackShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	await get_tree().create_timer(2.0).timeout
+	isAttacking = false
+	
+func _face_player(targetVel:Vector3):
+	mesh.look_at(transform.origin - targetVel, Vector3.UP)
+	
+func _check_can_see_player() -> bool:
+	var spaceState = get_world_3d().direct_space_state
+	var dir = Player.global_position - eyes.global_position
+	var hitEnd = dir.normalized() * sightDistance
+	var query = PhysicsRayQueryParameters3D.create(eyes.global_position, eyes.global_position + hitEnd)
+	var result = spaceState.intersect_ray(query)
+	var forward = eyes.get_global_transform().basis.z
+	forward
+	var canSeePlayer:bool = !result.is_empty() && result.collider.is_in_group("Player") && forward.angle_to(dir) < sightAngle
+	if DrawDebugRays:
+		debugRayHelper.draw_ray(eyes.global_position, eyes.global_position + (forward.rotated(Vector3.UP, sightAngle) * sightDistance), Color(1,1,1))
+		debugRayHelper.draw_ray(eyes.global_position, eyes.global_position + (forward.rotated(Vector3.UP, -sightAngle) * sightDistance), Color(1,1,1))
+		debugRayHelper.draw_ray(eyes.global_position, eyes.global_position + hitEnd, Color(0,1,0) if canSeePlayer else Color(1,0,0))
+
+	return canSeePlayer
+	
+func _process_animations() -> void:
+	var animSpeed = 0.0
+	match(behaviorStateMachine.currentState):
+		behaviorStateMachine.BehaviorState.SEARCH:
+			animSpeed = 0.2
+		behaviorStateMachine.BehaviorState.CHASE, behaviorStateMachine.BehaviorState.INVESTIGATE:
+			animSpeed = 1
+		behaviorStateMachine.BehaviorState.IDLE:
+			animSpeed = 0
+					
+	animTree.set("parameters/Movement/blend_position", animSpeed)
+
+func _get_random_position_near_player() -> Vector3:
+	var currentPlayerPos = Player.global_position
+	var targetPos = currentPlayerPos + (Vector3.FORWARD * randf_range(-searchRadius, searchRadius)) + (Vector3.LEFT * randf_range(-searchRadius, searchRadius))
+	return targetPos
+
+func _set_nav_target_from_state(state : BehaviorStateMachine.BehaviorState) -> void:
+	match (behaviorStateMachine.get_state()):
+		BehaviorStateMachine.BehaviorState.SEARCH:
+			navAgent.target_position = _get_random_position_near_player()
+		BehaviorStateMachine.BehaviorState.CHASE:
+			navAgent.target_position = Player.global_position
+		BehaviorStateMachine.BehaviorState.INVESTIGATE:
+			navAgent.target_position = lastSeenPos if lookingForPlayer else _get_random_position_near_player()
+
+# called when finished getting to last known position or random position
+func _on_navigation_agent_3d_navigation_finished():
+	# finished looking at last known location, stay for a while, then move on
+	if behaviorStateMachine.currentState == BehaviorStateMachine.BehaviorState.INVESTIGATE:
+		lookingForPlayer = false
+		behaviorStateMachine.currentState = BehaviorStateMachine.BehaviorState.IDLE
+		Idletimer.start()
+	else:
+		# nav target is set as a result of state being set. Not ideal
+		behaviorStateMachine.currentState = BehaviorStateMachine.BehaviorState.SEARCH
+
+func _on_ray_timer_timeout():
+	if _check_can_see_player():
+		behaviorStateMachine.currentState = BehaviorStateMachine.BehaviorState.CHASE
+		lastSeenPos = Player.global_position
+		lookingForPlayer = true
+	elif lookingForPlayer:
+		behaviorStateMachine.currentState = BehaviorStateMachine.BehaviorState.INVESTIGATE
+
+func _on_state_machine_state_updated(newState):
+	_set_nav_target_from_state(newState)
+	_set_walk_speed_from_state(newState)
+	
+func _set_walk_speed_from_state(state:BehaviorStateMachine.BehaviorState) -> void:
+	match(state):
+		BehaviorStateMachine.BehaviorState.SEARCH:
+			movementSpeed = walkSpeed
+		BehaviorStateMachine.BehaviorState.INVESTIGATE, BehaviorStateMachine.BehaviorState.CHASE:
+			movementSpeed = runSpeed
+		BehaviorStateMachine.BehaviorState.IDLE:
+			movementSpeed = 0.0
+
+
+func _on_idle_timer_timeout():
+	behaviorStateMachine.currentState = BehaviorStateMachine.BehaviorState.SEARCH

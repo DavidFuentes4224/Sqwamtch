@@ -1,0 +1,129 @@
+[gd_scene load_steps=13 format=3 uid="uid://djh6p5vpl0qh6"]
+
+[ext_resource type="Script" path="res://Scripts/FPSController.gd" id="1_autb6"]
+[ext_resource type="PackedScene" uid="uid://dowap4odm1r6i" path="res://Assets/Vape/vape Kangertech.fbx" id="2_xtpyj"]
+[ext_resource type="Script" path="res://Scripts/VapeComponent.gd" id="3_5xwvt"]
+[ext_resource type="Script" path="res://Scripts/UI.gd" id="3_sjn7o"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0mgwr"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_405hn"]
+direction = Vector3(0, 0, -1)
+spread = 20.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -1.0
+damping_min = 0.1
+damping_max = 0.5
+scale_max = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b67p8"]
+transparency = 1
+albedo_color = Color(0.8, 0.8, 0.8, 0.403922)
+billboard_mode = 1
+billboard_keep_scale = true
+grow_amount = -2.259
+proximity_fade_distance = 0.0
+distance_fade_max_distance = 5.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_m8acc"]
+material = SubResource("StandardMaterial3D_b67p8")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qf6e8"]
+bg_color = Color(0, 0, 0, 0.509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uovh2"]
+bg_color = Color(0.864333, 1, 0.78, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icdd8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3ixw"]
+bg_color = Color(1, 1, 1, 0.537255)
+
+[node name="FPSController" type="CharacterBody3D" groups=["Player"]]
+script = ExtResource("1_autb6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_0mgwr")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63274, 0)
+
+[node name="VapePen" parent="Camera3D" node_paths=PackedStringArray("vapeCloud") instance=ExtResource("2_xtpyj")]
+transform = Transform3D(0.0432072, 0, 0, 0, 0.0432072, 0, 0, 0, 0.0432072, 0.527411, -0.809914, -0.953199)
+script = ExtResource("3_5xwvt")
+vapeEndPos = Vector3(0, -0.3, -0.38)
+vapeEndRot = Vector3(0.8, 0, 0)
+vapeCloud = NodePath("../CloudParticles")
+
+[node name="VapeLight" type="SpotLight3D" parent="Camera3D/VapePen" groups=["Player"]]
+transform = Transform3D(23.1443, 0, 0, 0, 4.39355, 22.7234, 0, -22.7234, 4.39355, 0, 0, 0)
+light_color = Color(0.631373, 1, 0.905882, 1)
+shadow_enabled = true
+spot_range = 8.61848
+spot_angle = 32.4768
+
+[node name="Label3D" type="Label3D" parent="Camera3D/VapePen/VapeLight"]
+transform = Transform3D(-0.013652, 0.0125969, -0.999828, 0.198983, 0.979956, 0.00962957, 0.979908, -0.198817, -0.0158851, -0.0327222, 0.0563962, 0.170984)
+text = "100"
+font_size = 10
+outline_size = 2
+
+[node name="CloudParticles" type="GPUParticles3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.274622, -0.274581)
+emitting = false
+amount = 50
+lifetime = 5.0
+one_shot = true
+explosiveness = 0.8
+randomness = 1.0
+visibility_aabb = AABB(-4, -4, -4.15975, 8, 8, 8.3195)
+process_material = SubResource("ParticleProcessMaterial_405hn")
+draw_pass_1 = SubResource("QuadMesh_m8acc")
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("3_sjn7o")
+
+[node name="LabelStamina" type="Label" parent="UI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = -56.0
+offset_right = 87.0
+offset_bottom = -30.0
+grow_vertical = 0
+text = "Stamina"
+
+[node name="ProgressBarStamina" type="ProgressBar" parent="UI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 98.0
+offset_top = -52.0
+offset_right = 289.0
+offset_bottom = -34.0
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_qf6e8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_uovh2")
+max_value = 15.0
+value = 7.0
+show_percentage = false
+
+[node name="ProgressBarStaminaRefill" type="ProgressBar" parent="UI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 98.0
+offset_top = -52.0
+offset_right = 289.0
+offset_bottom = -34.0
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_icdd8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_g3ixw")
+max_value = 15.0
+value = 11.04
+show_percentage = false

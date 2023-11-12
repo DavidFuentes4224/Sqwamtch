@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bydcyk4frp6b7"]
+
+[ext_resource type="Script" path="res://Scripts/Block.gd" id="1_nfeiy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_quwko"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rk5s6"]
+
+[node name="Block" type="Node3D"]
+script = ExtResource("1_nfeiy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_quwko")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_rk5s6")
