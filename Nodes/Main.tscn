@@ -1,0 +1,114 @@
+[gd_scene load_steps=9 format=3 uid="uid://gfi0ywqljkr6"]
+
+[ext_resource type="PackedScene" uid="uid://djh6p5vpl0qh6" path="res://Nodes/FPSController.tscn" id="1_o805t"]
+[ext_resource type="PackedScene" uid="uid://d2jevrqbx7kww" path="res://Assets/Sqamtch/SqamtchCharacter.tscn" id="2_y6gla"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tdpkg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0a1vb"]
+size = Vector3(11.0778, 0.150422, 21.8474)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_260si"]
+
+[sub_resource type="Sky" id="Sky_s6mni"]
+sky_material = SubResource("PanoramaSkyMaterial_260si")
+
+[sub_resource type="Environment" id="Environment_tpi0y"]
+background_mode = 2
+sky = SubResource("Sky_s6mni")
+ambient_light_source = 3
+ambient_light_color = Color(0, 0.184314, 0.290196, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 0.79
+tonemap_exposure = 0.08
+tonemap_white = 16.0
+ssr_enabled = true
+ssao_enabled = true
+fog_density = 0.0521
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_78a0c"]
+
+[node name="Main" type="Node3D"]
+
+[node name="FPSController" parent="." instance=ExtResource("1_o805t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0491396, 2.36224, -0.066035)
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/StaticBody3D"]
+transform = Transform3D(11.0428, 0, 0, 0, 0.160047, 0, 0, 0, 21.8406, 0, 0, 0)
+mesh = SubResource("BoxMesh_tdpkg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/StaticBody3D"]
+shape = SubResource("BoxShape3D_0a1vb")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Environment"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -4.93247, 2.10595, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/StaticBody3D3"]
+transform = Transform3D(11.0428, 0, 0, 0, 0.160047, 0, 0, 0, 21.8406, 0, 0, 0)
+mesh = SubResource("BoxMesh_tdpkg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/StaticBody3D3"]
+shape = SubResource("BoxShape3D_0a1vb")
+
+[node name="StaticBody3D6" type="StaticBody3D" parent="Environment"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 4.97837, 2.10595, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/StaticBody3D6"]
+transform = Transform3D(11.0428, 0, 0, 0, 0.160047, 0, 0, 0, 21.8406, 0, 0, 0)
+mesh = SubResource("BoxMesh_tdpkg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/StaticBody3D6"]
+shape = SubResource("BoxShape3D_0a1vb")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="Environment"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0.395796, 2.10595, -7.58346)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/StaticBody3D4"]
+transform = Transform3D(11.0428, 0, 0, 0, 0.160047, 0, 1.69407e-21, 0, 21.8406, 0, 0, 0)
+mesh = SubResource("BoxMesh_tdpkg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/StaticBody3D4"]
+shape = SubResource("BoxShape3D_0a1vb")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="Environment"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 1.58365, 2.10595, 8.62757)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/StaticBody3D5"]
+transform = Transform3D(11.0428, 0, 0, 0, 0.160047, 0, 0, 0, 21.8406, 0, 0, 0)
+mesh = SubResource("BoxMesh_tdpkg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/StaticBody3D5"]
+shape = SubResource("BoxShape3D_0a1vb")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_tpi0y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.943648, 1.0446, -2.68917)
+mesh = SubResource("CylinderMesh_78a0c")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.570168, 1.0446, -3.4186)
+mesh = SubResource("CylinderMesh_78a0c")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.603202, 1.0446, -4.50597)
+mesh = SubResource("CylinderMesh_78a0c")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2959, 1.0446, -5.22699)
+mesh = SubResource("CylinderMesh_78a0c")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22691, 2.53626, -1.32057)
+light_energy = 2.981
+light_indirect_energy = 3.59
+shadow_enabled = true
+omni_attenuation = 0.482968
+
+[node name="SqamtchFullglb" parent="." instance=ExtResource("2_y6gla")]
+transform = Transform3D(0.123652, 0, 0.0849135, 0, 0.15, 0, -0.0849135, 0, 0.123652, -2.5582, 0.242698, -4.66757)
