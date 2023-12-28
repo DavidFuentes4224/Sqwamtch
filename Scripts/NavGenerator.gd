@@ -4,7 +4,7 @@ extends Node3D
 @onready var generatedMesh:MeshInstance3D = $GeneratedMesh 
 #Size of unit sampled in meters
 @export_category("MeshSettings")
-@export var cellSpacing:int = 2
+@export var cellSpacing:int = 20
 @export var zSize = 20
 @export var xSize = 20
 @export var meshScale:float = 1.0
@@ -14,7 +14,8 @@ var st:SurfaceTool
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_generate_mesh()
+	if Engine.is_editor_hint():
+		_generate_mesh()
 	pass # Replace with function body.
 	
 func _process(delta):
@@ -28,6 +29,8 @@ func _generate_mesh():
 	heightMap.load("res://Terrain/Height.exr")
 	heightMap.convert(Image.FORMAT_RF)
 	
+	clear_spheres()
+	
 	st = SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
 	
@@ -36,24 +39,25 @@ func _generate_mesh():
 	# interate through vertex points
 	for z in range(zSize):
 		for x in range(xSize):
-			var localPos = position
-			var terrainPos = position - Vector3(1024,0,1024)
 			create_quad(x,z)
 			
 	$GeneratedMesh.mesh = st.commit()
 			
 func create_quad(x,z):
-	var bottomLeft = Vector3(x * cellSpacing,0, z * cellSpacing)
-	bottomLeft.y = get_height_from_world_pos(bottomLeft)
+	var startingOffset = Vector3(x * cellSpacing, 0 , z * cellSpacing)
 	
-	var bottomRight = Vector3(bottomLeft.x + cellSpacing, 0 ,bottomLeft.z)
-	bottomRight.y = get_height_from_world_pos(bottomRight)
+	var bottomLeft = startingOffset
+	bottomLeft.y = get_height_from_vertex_coord(x, z)
 	
-	var topRight = Vector3(bottomLeft.x + cellSpacing, 0,bottomLeft.z + cellSpacing)
-	topRight.y = get_height_from_world_pos(topRight)
+	# move spacing 1 unit to the right
+	var bottomRight = startingOffset + (Vector3.RIGHT * cellSpacing)
+	bottomRight.y = get_height_from_vertex_coord(x+1, z)
 	
-	var topLeft = Vector3(bottomLeft.x, 0 , bottomLeft.z + cellSpacing)
-	topLeft.y = get_height_from_world_pos(topLeft)
+	var topRight = startingOffset + (Vector3.RIGHT * cellSpacing) + (Vector3.BACK * cellSpacing)
+	topRight.y = get_height_from_vertex_coord(x+1, z+1)
+	
+	var topLeft = startingOffset + (Vector3.BACK * cellSpacing)
+	topLeft.y = get_height_from_vertex_coord(x, z+1)
 	
 	#triangle 1
 	st.add_vertex(bottomLeft)
@@ -64,25 +68,25 @@ func create_quad(x,z):
 	st.add_vertex(topLeft)
 	st.add_vertex(bottomLeft)
 	
-func get_height_from_world_pos(pos:Vector3) -> float:
-	#convert from local to terrain space
-	#terrain is 2048x2048, with origin at center
-	var x = clamp(pos.x-1024,0,2048)
-	var z = clamp(pos.z-1024,0,2048)
-	var terrainPos = Vector3(x, 0, z)
-	#convert to pixel coordinates
-	#1px is 2m
-	var u = floor(x/2)
-	var v = floor(z/2)
-	var height = heightMap.get_pixel(x,z).r * 4000
-	print("height at %d,%d is %f" % [u,v,height])
-	return height
+func get_height_from_vertex_coord(x,z) -> float:
+	var localPos = position + Vector3(x * cellSpacing, 0, z * cellSpacing)
+	var terrainPos = localPos + Vector3(1024, 0, 1024)
+	var imagePos = Vector2(floor(terrainPos.x / 2), floor(terrainPos.z / 2))
+	return heightMap.get_pixel(imagePos.x, imagePos.y).r * 4000
 	
 func draw_sphere(pos:Vector3):
 	var ins = MeshInstance3D.new()
+	ins.add_to_group("Debug")
 	add_child(ins)
 	ins.position = pos
 	var sphere = SphereMesh.new()
 	sphere.radius = 0.1
 	sphere.height = 0.2
 	ins.mesh = sphere
+	
+func clear_spheres():
+	var spheres = get_children()
+	for sphere in spheres:
+		if sphere.is_in_group("Debug"):
+			remove_child(sphere)
+			sphere.queue_free()
