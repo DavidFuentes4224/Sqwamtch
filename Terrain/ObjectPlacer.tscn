@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjpo5u2hokwjh"]
+
+[ext_resource type="Script" path="res://Scripts/ObjectPlacer.gd" id="1_lqfog"]
+[ext_resource type="PackedScene" uid="uid://bfn7y4wk8errb" path="res://Assets/Tree/Tree.tscn" id="2_vxmio"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rb3lx"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wrows"]
+noise = SubResource("FastNoiseLite_rb3lx")
+
+[node name="ObjectPlacer" type="Node3D"]
+script = ExtResource("1_lqfog")
+ItemToPlace = ExtResource("2_vxmio")
+spawnNoise = SubResource("NoiseTexture2D_wrows")
+MinHeight = 20
+MaxHeight = 100
+
+[node name="Objects" type="Node3D" parent="."]

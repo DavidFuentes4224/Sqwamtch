@@ -1,18 +1,21 @@
 @tool
 extends Node3D
 @onready var heightMap:Image
-@export var width:float
-@export var height:float
 @onready var generatedMesh:MeshInstance3D = $GeneratedMesh 
 #Size of unit sampled in meters
-@export var meshRes:int = 2
+@export_category("MeshSettings")
+@export var cellSpacing:int = 20
+@export var zSize = 20
+@export var xSize = 20
+@export var meshScale:float = 1.0
 @export var ShouldGenerate = false
 var heightData = {}
-var st = SurfaceTool.new()
+var st:SurfaceTool
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_generate_mesh()
+	if Engine.is_editor_hint():
+		_generate_mesh()
 	pass # Replace with function body.
 	
 func _process(delta):
@@ -21,55 +24,69 @@ func _process(delta):
 		_generate_mesh()
 
 func _generate_mesh():
+	# image is 1024x1024
 	heightMap = Image.new()
 	heightMap.load("res://Terrain/Height.exr")
 	heightMap.convert(Image.FORMAT_RF)
 	
-	#get world space offset
-	#texture starts at 0,0; but transform basis is at 1000,1000
-	var startingX:float = clamp(global_position.x + 1000, 0, 2000)
-	var startingY:float = clamp(global_position.y + 1000, 0, 2000)
+	clear_spheres()
 	
-	# 1px of data cover 2m of space
-	var meshToImageRatio = 2
-	var generatingX = true
-	var generatingY = true
-	
-	for y in range(startingY, clamp(startingY + height,0, heightMap.get_height())):
-		if y % meshRes == 0:
-			for x in range(startingX, clamp(startingX + width, 0, heightMap.get_width())):
-				if x % meshRes == 0:
-					#sample texture
-					heightData[Vector2(x,y)] = heightMap.get_pixel(x,y).r * 4000
-			
-	#for y in range(startingY, clamp(startingY + height,0, heightMap.get_height())):
-		#for x in range(startingX, clamp(startingX + width, 0, heightMap.get_width())):
-			#_createQuad(x,y)
-	
+	st = SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
-	st.set_uv(Vector2(0, 0))
-	# Call last for each vertex, adds the above attributes.
-	st.add_vertex(Vector3(-1, -1, 0))
-
-	st.set_uv(Vector2(0, 1))
-	st.add_vertex(Vector3(-1, 1, 0))
-
-	st.set_uv(Vector2(1, 1))
-	st.add_vertex(Vector3(1, 1, 0))
 	
-	st.generate_normals()
-	st.generate_tangents()
-	var mesh = st.commit()
-	generatedMesh.mesh = mesh
+	var offset = Vector2(position.x - 1024, position.z - 1024)
+	
+	# interate through vertex points
+	for z in range(zSize):
+		for x in range(xSize):
+			create_quad(x,z)
 			
-func _createQuad(x,y):
-	var vert1
-	var vert2
-	var vert3
-	var side1
-	var side2
-	var normal
-	vert1 = Vector3(x, heightData[Vector2(x,y)],-y)
-	vert2 = Vector3(x, heightData[Vector2(x,y+meshRes)],-y-meshRes)
-	vert3 = Vector3(x, heightData[Vector2(x+meshRes,y)],-y-meshRes)
+	$GeneratedMesh.mesh = st.commit()
+			
+func create_quad(x,z):
+	var startingOffset = Vector3(x * cellSpacing, 0 , z * cellSpacing)
 	
+	var bottomLeft = startingOffset
+	bottomLeft.y = get_height_from_vertex_coord(x, z)
+	
+	# move spacing 1 unit to the right
+	var bottomRight = startingOffset + (Vector3.RIGHT * cellSpacing)
+	bottomRight.y = get_height_from_vertex_coord(x+1, z)
+	
+	var topRight = startingOffset + (Vector3.RIGHT * cellSpacing) + (Vector3.BACK * cellSpacing)
+	topRight.y = get_height_from_vertex_coord(x+1, z+1)
+	
+	var topLeft = startingOffset + (Vector3.BACK * cellSpacing)
+	topLeft.y = get_height_from_vertex_coord(x, z+1)
+	
+	#triangle 1
+	st.add_vertex(bottomLeft)
+	st.add_vertex(bottomRight)
+	st.add_vertex(topRight)
+	#triangle 2
+	st.add_vertex(topRight)
+	st.add_vertex(topLeft)
+	st.add_vertex(bottomLeft)
+	
+func get_height_from_vertex_coord(x,z) -> float:
+	var localPos = position + Vector3(x * cellSpacing, 0, z * cellSpacing)
+	var terrainPos = localPos + Vector3(1024, 0, 1024)
+	var imagePos = Vector2(floor(terrainPos.x / 2), floor(terrainPos.z / 2))
+	return heightMap.get_pixel(imagePos.x, imagePos.y).r * 4000
+	
+func draw_sphere(pos:Vector3):
+	var ins = MeshInstance3D.new()
+	ins.add_to_group("Debug")
+	add_child(ins)
+	ins.position = pos
+	var sphere = SphereMesh.new()
+	sphere.radius = 0.1
+	sphere.height = 0.2
+	ins.mesh = sphere
+	
+func clear_spheres():
+	var spheres = get_children()
+	for sphere in spheres:
+		if sphere.is_in_group("Debug"):
+			remove_child(sphere)
+			sphere.queue_free()
