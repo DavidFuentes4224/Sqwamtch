@@ -134,6 +134,8 @@ func _rotate_player(rot:Vector2) -> void:
 
 func _start_capture(pos:Node3D):
 	isCaptured = true
+	player_captured.emit()
+	items = 0
 	holdPos = pos
 	var tween = get_tree().create_tween()
 	tween.tween_property(sack, "position:y", 0.0, 0.2).set_trans(Tween.TRANS_SINE)
