@@ -8,6 +8,7 @@ extends Node3D
 @export var spawnNoise:Texture2D
 
 @export_category("Spawn Settings")
+@export var useHeightMap:bool=true
 @export var SizeX:=100
 @export var SizeZ:=100
 @export_range(0, 1000) var Amount:= 50
@@ -80,6 +81,13 @@ func _place_object(index):
 func _get_spawn_location() -> Vector3:
 	var valid = false
 	var spawn = Vector3.ZERO
+	if !useHeightMap:
+		var x = randf_range(0, SizeX)
+		var z = randf_range(0, SizeZ)
+		var y = 0
+		spawn = Vector3(x,y,z)
+		return spawn
+		
 	while(!valid):
 		var x = randf_range(0, SizeX)
 		var z = randf_range(0, SizeZ)
