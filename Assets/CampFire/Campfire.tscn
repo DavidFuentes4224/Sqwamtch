@@ -1,0 +1,145 @@
+[gd_scene load_steps=23 format=3 uid="uid://cwku2bs42bo05"]
+
+[ext_resource type="PackedScene" uid="uid://kejf2egod10g" path="res://Assets/CampFire/Campfire.glb" id="1_otvyn"]
+[ext_resource type="Shader" path="res://Misc/Fire.gdshader" id="2_2850b"]
+[ext_resource type="Texture2D" uid="uid://ctvlr7yfqvo30" path="res://Assets/Kenney/flame_05.png" id="3_ta37t"]
+[ext_resource type="Texture2D" uid="uid://dq1gg5nqxi5oo" path="res://Assets/Kenney/smoke_04.png" id="4_y5v5b"]
+[ext_resource type="Texture2D" uid="uid://b28l56m5pl0mr" path="res://Assets/Kenney/flame_04.png" id="5_3lalx"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_snpmm"]
+noise_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dmqb1"]
+noise = SubResource("FastNoiseLite_snpmm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5dguu"]
+render_priority = 0
+shader = ExtResource("2_2850b")
+shader_parameter/dissolveAmount = 0.75
+shader_parameter/dissolveSpeed = 0.25
+shader_parameter/dissolveScale = 1.125
+shader_parameter/Dissolve = SubResource("NoiseTexture2D_dmqb1")
+shader_parameter/particles_anim_h_frames = 1
+shader_parameter/particles_anim_v_frames = 1
+shader_parameter/particles_anim_loop = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0.135, 0)
+shader_parameter/MainText = ExtResource("3_ta37t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_icpmg"]
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+color = Color(1, 0.8575, 0.05, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_f65rf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wm8go"]
+render_priority = 0
+shader = ExtResource("2_2850b")
+shader_parameter/dissolveAmount = 0.5
+shader_parameter/dissolveSpeed = 1.0
+shader_parameter/dissolveScale = 2.0
+shader_parameter/particles_anim_h_frames = 1
+shader_parameter/particles_anim_v_frames = 1
+shader_parameter/particles_anim_loop = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = null
+shader_parameter/MainText = ExtResource("5_3lalx")
+
+[sub_resource type="Curve" id="Curve_o44du"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.249035, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.503214), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_jovnf"]
+curve = SubResource("Curve_o44du")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ceh2m"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+angle_min = -300.0
+angle_max = 300.0
+gravity = Vector3(0, 2, 0)
+scale_min = 0.75
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_jovnf")
+color = Color(1, 0.858824, 0.0509804, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_m87wm"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_45rek"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_n5n21"]
+noise = SubResource("FastNoiseLite_45rek")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4v1gf"]
+render_priority = 0
+shader = ExtResource("2_2850b")
+shader_parameter/dissolveAmount = 1.0
+shader_parameter/dissolveSpeed = 0.1
+shader_parameter/dissolveScale = 2.0
+shader_parameter/Dissolve = SubResource("NoiseTexture2D_n5n21")
+shader_parameter/particles_anim_h_frames = 1
+shader_parameter/particles_anim_v_frames = 1
+shader_parameter/particles_anim_loop = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = null
+shader_parameter/MainText = ExtResource("4_y5v5b")
+
+[sub_resource type="Curve" id="Curve_4cmhx"]
+_data = [Vector2(0, 0.484643), 0.0, 0.0, 0, 0, Vector2(0.0984556, 1), 0.0, 0.0, 0, 0, Vector2(0.903475, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_hj3a6"]
+curve = SubResource("Curve_4cmhx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t7se4"]
+emission_shape = 1
+emission_sphere_radius = 0.1
+angle_min = -300.0
+angle_max = 300.0
+gravity = Vector3(0, 1, 0)
+scale_min = 0.75
+scale_curve = SubResource("CurveTexture_hj3a6")
+scale_over_velocity_max = 150.18
+
+[sub_resource type="QuadMesh" id="QuadMesh_hojsr"]
+
+[node name="Campfire" type="Node3D"]
+
+[node name="CampfireModel" parent="." instance=ExtResource("1_otvyn")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Static" type="GPUParticles3D" parent="Node3D"]
+material_override = SubResource("ShaderMaterial_5dguu")
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_icpmg")
+draw_pass_1 = SubResource("QuadMesh_f65rf")
+
+[node name="Flames" type="GPUParticles3D" parent="Node3D"]
+sorting_offset = 1.0
+material_override = SubResource("ShaderMaterial_wm8go")
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_ceh2m")
+draw_pass_1 = SubResource("QuadMesh_m87wm")
+
+[node name="Smoke" type="GPUParticles3D" parent="Node3D"]
+sorting_offset = -1.0
+material_override = SubResource("ShaderMaterial_4v1gf")
+amount = 30
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_t7se4")
+draw_pass_1 = SubResource("QuadMesh_hojsr")
+
+[node name="FireLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0393237, 0.365471, 0.000640273)
+light_color = Color(1, 0.783333, 0, 1)
+omni_range = 7.62184
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.61697, 0)
+light_color = Color(1, 0.783333, 0, 1)
+light_energy = 1.5
+spot_range = 4.81523
+spot_angle = 25.2841
