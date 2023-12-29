@@ -2,7 +2,7 @@ extends Node
 
 class_name BehaviorStateMachine
 
-enum BehaviorState {IDLE, SEARCH, CHASE, INVESTIGATE}
+enum BehaviorState {IDLE, SEARCH, CHASE, INVESTIGATE, RETURN}
 
 signal StateUpdated(newState:BehaviorState)
 
@@ -26,3 +26,5 @@ func print_state() -> void:
 			print("CHASE")
 		BehaviorState.INVESTIGATE:
 			print("INVESTIGATE")
+		BehaviorState.RETURN:
+			print("RETURN")

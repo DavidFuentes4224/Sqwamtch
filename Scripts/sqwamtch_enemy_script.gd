@@ -29,6 +29,8 @@ var readyToNav := false
 var lookingForPlayer:bool = false
 var lastSeenPos:Vector3
 var isAttacking := false
+var isReturningPlayer := false
+var playerSpawn:Vector3
 
 func _ready():
 	navAgent.path_desired_distance = 0.5
@@ -37,6 +39,8 @@ func _ready():
 	
 func _actor_setup() -> void:
 	await get_tree().physics_frame
+	playerSpawn = get_tree().get_first_node_in_group("Spawn").position
+	
 	readyToNav = true
 	_set_nav_target_from_state(behaviorStateMachine.get_state())
 
@@ -55,9 +59,9 @@ func _physics_process(delta):
 	move_and_slide()
 	var dist = global_position.distance_squared_to(Player.global_position)
 	VisionPoller.update_rate(dist)
-	if dist < 10 and !isAttacking:
+	if dist < 10 and !isAttacking and !isReturningPlayer:
 		_try_attack()
-	print(dist)
+
 
 func _try_attack() ->void:
 	isAttacking = true
@@ -69,6 +73,8 @@ func _face_player(targetVel:Vector3):
 	mesh.look_at(transform.origin - targetVel, Vector3.UP)
 	
 func _check_can_see_player() -> bool:
+	if isReturningPlayer:
+		return false
 	var spaceState = get_world_3d().direct_space_state
 	var dir = Player.global_position - eyes.global_position
 	var hitEnd = dir.normalized() * sightDistance
@@ -89,7 +95,7 @@ func _process_animations() -> void:
 	match(behaviorStateMachine.currentState):
 		behaviorStateMachine.BehaviorState.SEARCH:
 			animSpeed = 0.2
-		behaviorStateMachine.BehaviorState.CHASE, behaviorStateMachine.BehaviorState.INVESTIGATE:
+		behaviorStateMachine.BehaviorState.CHASE, behaviorStateMachine.BehaviorState.INVESTIGATE, behaviorStateMachine.BehaviorState.RETURN:
 			animSpeed = 1
 		behaviorStateMachine.BehaviorState.IDLE:
 			animSpeed = 0
@@ -102,6 +108,7 @@ func _get_random_position_near_player() -> Vector3:
 	return targetPos
 
 func _set_nav_target_from_state(state : BehaviorStateMachine.BehaviorState) -> void:
+	navAgent.path_desired_distance = 0.5
 	match (behaviorStateMachine.get_state()):
 		BehaviorStateMachine.BehaviorState.SEARCH:
 			navAgent.target_position = _get_random_position_near_player()
@@ -109,6 +116,9 @@ func _set_nav_target_from_state(state : BehaviorStateMachine.BehaviorState) -> v
 			navAgent.target_position = Player.global_position
 		BehaviorStateMachine.BehaviorState.INVESTIGATE:
 			navAgent.target_position = lastSeenPos if lookingForPlayer else _get_random_position_near_player()
+		BehaviorStateMachine.BehaviorState.RETURN:
+			navAgent.target_position = playerSpawn
+			navAgent.path_desired_distance = 20.0
 
 # called when finished getting to last known position or random position
 func _on_navigation_agent_3d_navigation_finished():
@@ -117,6 +127,11 @@ func _on_navigation_agent_3d_navigation_finished():
 		lookingForPlayer = false
 		behaviorStateMachine.currentState = BehaviorStateMachine.BehaviorState.IDLE
 		Idletimer.start()
+	elif behaviorStateMachine.currentState == BehaviorStateMachine.BehaviorState.RETURN:
+		behaviorStateMachine.currentState = BehaviorStateMachine.BehaviorState.IDLE
+		Idletimer.start()
+		Player.get_thrown(position, playerSpawn)
+		isReturningPlayer = false
 	else:
 		# nav target is set as a result of state being set. Not ideal
 		behaviorStateMachine.currentState = BehaviorStateMachine.BehaviorState.SEARCH
@@ -126,10 +141,13 @@ func _on_ray_timer_timeout():
 		behaviorStateMachine.currentState = BehaviorStateMachine.BehaviorState.CHASE
 		lastSeenPos = Player.global_position
 		lookingForPlayer = true
+	elif isReturningPlayer:
+		pass
 	elif lookingForPlayer:
 		behaviorStateMachine.currentState = BehaviorStateMachine.BehaviorState.INVESTIGATE
 
 func _on_state_machine_state_updated(newState):
+	behaviorStateMachine.print_state()
 	_set_nav_target_from_state(newState)
 	_set_walk_speed_from_state(newState)
 	
@@ -137,11 +155,19 @@ func _set_walk_speed_from_state(state:BehaviorStateMachine.BehaviorState) -> voi
 	match(state):
 		BehaviorStateMachine.BehaviorState.SEARCH:
 			movementSpeed = walkSpeed
-		BehaviorStateMachine.BehaviorState.INVESTIGATE, BehaviorStateMachine.BehaviorState.CHASE:
+		BehaviorStateMachine.BehaviorState.INVESTIGATE, BehaviorStateMachine.BehaviorState.CHASE, BehaviorStateMachine.BehaviorState.RETURN:
 			movementSpeed = runSpeed
 		BehaviorStateMachine.BehaviorState.IDLE:
 			movementSpeed = 0.0
 
 
 func _on_idle_timer_timeout():
-	behaviorStateMachine.currentState = BehaviorStateMachine.BehaviorState.SEARCH
+	if !isReturningPlayer:
+		behaviorStateMachine.currentState = BehaviorStateMachine.BehaviorState.SEARCH
+
+func _on_capture_area_body_entered(body):
+	if body.is_in_group("Player"):
+		var player = body as Player
+		player._start_capture($Sqwamtch/HoldPosition)
+		isReturningPlayer = true
+		behaviorStateMachine.currentState = BehaviorStateMachine.BehaviorState.RETURN
