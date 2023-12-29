@@ -1,8 +1,9 @@
 extends CanvasLayer
 
-var mainScene = preload("res://Nodes/Main.tscn")
+var mainScene = load("res://Nodes/Main.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	pass # Replace with function body.
 
 

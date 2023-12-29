@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdabr4hwc78w3"]
+
+[ext_resource type="Script" path="res://Scripts/SpawnPoint.gd" id="1_ltp5i"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hd6f4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_skcr5"]
+
+[node name="SpawnPoint" type="Node3D" groups=["Spawn"]]
+script = ExtResource("1_ltp5i")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+gizmo_extents = 3.11
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_hd6f4")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_skcr5")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
