@@ -1,12 +1,14 @@
 shader_type spatial;
 render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
 
+group_uniforms Textures;
 uniform sampler2D NOISE_PATTERN;
 uniform sampler2D NOISE_PATTERN_NORMAL:hint_normal;
 uniform sampler2D TERRAIN_TOP:source_color;
 uniform sampler2D TERRAIN_SECONDARY:source_color;
 uniform sampler2D TERRAIN_SIDE:source_color;
 
+group_uniforms Scale;
 uniform float TextureScale : hint_range(1,20);
 uniform float UVx;
 uniform float UVy;
