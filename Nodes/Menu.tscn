@@ -81,6 +81,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_f7la7")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 2.1617e-08, 8.4708e-08, 0, 0.968947, -0.24727, -8.74227e-08, -0.24727, -0.968947, 0, 3.25754, -26.7503)
+current = true
 
 [node name="Sqwamtch" parent="." instance=ExtResource("2_g3aej")]
 transform = Transform3D(-0.129329, 0, -0.0759863, 0, 0.15, 0, 0.0759863, 0, -0.129329, 3.97311, 4.98128, -12.2446)
