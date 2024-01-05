@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jgda0lls2qii"
-path="res://.godot/imported/Height.exr-45a32704043611f02a7b89b9ab5dac1d.ctex"
+uid="uid://bueju7pjjvhi3"
+path="res://.godot/imported/HeightPacked.exr-af15d00172c6a6b01b2c156663c49622.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Terrain/Height.exr"
-dest_files=["res://.godot/imported/Height.exr-45a32704043611f02a7b89b9ab5dac1d.ctex"]
+source_file="res://Terrain/HeightPacked.exr"
+dest_files=["res://.godot/imported/HeightPacked.exr-af15d00172c6a6b01b2c156663c49622.ctex"]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false
 mipmaps/limit=-1
