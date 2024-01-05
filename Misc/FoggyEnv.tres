@@ -16,3 +16,6 @@ ambient_light_color = Color(0.0784314, 0.192157, 0.211765, 1)
 ambient_light_sky_contribution = 0.51
 ambient_light_energy = 2.14
 volumetric_fog_enabled = true
+volumetric_fog_density = 0.1
+volumetric_fog_albedo = Color(0.529412, 0.694118, 0.8, 1)
+volumetric_fog_ambient_inject = 0.5

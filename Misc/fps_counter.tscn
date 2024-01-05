@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://h3pykl87gex0"]
+
+[ext_resource type="Script" path="res://Scripts/FPSTracker.gd" id="1_380dc"]
+
+[node name="FPSCounter" type="CanvasLayer"]
+script = ExtResource("1_380dc")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 98.0
+offset_bottom = 26.0
+
+[node name="FPSLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 45.0
+offset_bottom = 23.0
+text = "FPS: 0"

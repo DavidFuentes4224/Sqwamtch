@@ -1,18 +1,163 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjpo5u2hokwjh"]
+[gd_scene load_steps=3 format=3 uid="uid://cjpo5u2hokwjh"]
 
 [ext_resource type="Script" path="res://Scripts/ObjectPlacer.gd" id="1_lqfog"]
 [ext_resource type="PackedScene" uid="uid://bfn7y4wk8errb" path="res://Assets/Tree/Tree.tscn" id="2_vxmio"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_rb3lx"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wrows"]
-noise = SubResource("FastNoiseLite_rb3lx")
-
 [node name="ObjectPlacer" type="Node3D"]
 script = ExtResource("1_lqfog")
+ItemsPlaced = true
 ItemToPlace = ExtResource("2_vxmio")
-spawnNoise = SubResource("NoiseTexture2D_wrows")
 MinHeight = 20
 MaxHeight = 100
 
 [node name="Objects" type="Node3D" parent="."]
+
+[node name="SpawnedObject 0" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.79963, 0, 0, 0, 1.25, 0, 0, 0, 0.945344, 94.2161, 59.7166, 24.9275)
+
+[node name="SpawnedObject 1" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(0.469503, 0, 0, 0, 1.24618, 0, 0, 0, 1.95359, 75.7539, 53.1918, 24.2512)
+
+[node name="SpawnedObject 2" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.81705, 0, 0, 0, 0.919982, 0, 0, 0, 0.733353, 36.4081, 47.1726, 28.8904)
+
+[node name="SpawnedObject 3" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.46998, 0, 0, 0, 0.75, 0, 0, 0, 0.892682, 46.2484, 42.8274, 84.4496)
+
+[node name="SpawnedObject 4" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.03373, 0, 0, 0, 1.25, 0, 0, 0, 0.354963, 58.208, 50.6611, 33.9598)
+
+[node name="SpawnedObject 5" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.93111, 0, 0, 0, 0.75, 0, 0, 0, 0.247575, 77.7457, 52.5833, 33.8531)
+
+[node name="SpawnedObject 6" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(0.00274535, 0, 0, 0, 0.75, 0, 0, 0, 1.95451, 96.7367, 60.2394, 43.5769)
+
+[node name="SpawnedObject 7" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(0.032554, 0, 0, 0, 1.25, 0, 0, 0, 1.23566, 58.733, 51.0513, 12.4223)
+
+[node name="SpawnedObject 8" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(0.588845, 0, 0, 0, 1.25, 0, 0, 0, 1.56261, 68.6002, 53.1212, 8.63405)
+
+[node name="SpawnedObject 9" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(0.964385, 0, 0, 0, 0.75, 0, 0, 0, 1.71572, 97.6028, 54.8782, 88.2584)
+
+[node name="SpawnedObject 10" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(0.428721, 0, 0, 0, 1.25, 0, 0, 0, 0.0346241, 84.2542, 56.001, 25.5868)
+
+[node name="SpawnedObject 11" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.44136, 0, 0, 0, 1.25, 0, 0, 0, 1.3417, 41.3009, 40.6872, 91.5606)
+
+[node name="SpawnedObject 12" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.78023, 0, 0, 0, 1.25, 0, 0, 0, 1.49664, 47.7962, 47.2141, 35.5755)
+
+[node name="SpawnedObject 13" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.50265, 0, 0, 0, 0.75, 0, 0, 0, 0.86102, 43.2421, 47.735, 33.2191)
+
+[node name="SpawnedObject 14" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(0.863239, 0, 0, 0, 0.75, 0, 0, 0, 1.49531, 46.2925, 43.5733, 75.2988)
+
+[node name="SpawnedObject 15" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.24428, 0, 0, 0, 1.22305, 0, 0, 0, 1.96849, 91.8212, 57.0978, 4.45331)
+
+[node name="SpawnedObject 16" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.20028, 0, 0, 0, 0.75, 0, 0, 0, 0.78498, 58.3808, 43.8986, 91.7423)
+
+[node name="SpawnedObject 17" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.9894, 0, 0, 0, 0.75, 0, 0, 0, 0.160562, 32.4335, 43.7826, 31.0744)
+
+[node name="SpawnedObject 18" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.61848, 0, 0, 0, 1.20751, 0, 0, 0, 1.62035, 65.8634, 45.0685, 99.1164)
+
+[node name="SpawnedObject 19" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.74143, 0, 0, 0, 0.75, 0, 0, 0, 1.87774, 18.886, 44.0776, 22.6353)
+
+[node name="SpawnedObject 20" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(0.163097, 0, 0, 0, 1.25, 0, 0, 0, 1.62801, 52.5064, 48.9239, 38.4683)
+
+[node name="SpawnedObject 21" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(0.98473, 0, 0, 0, 1.25, 0, 0, 0, 1.31228, 71.0927, 50.4368, 40.9643)
+
+[node name="SpawnedObject 22" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(0.50208, 0, 0, 0, 1.25, 0, 0, 0, 1.00178, 26.3135, 42.0857, 65.577)
+
+[node name="SpawnedObject 23" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.34437, 0, 0, 0, 0.75, 0, 0, 0, 1.9384, 73.7919, 48.1521, 84.3327)
+
+[node name="SpawnedObject 24" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(0.243763, 0, 0, 0, 1.25, 0, 0, 0, 0.250441, 95.4147, 57.6319, 26.7621)
+
+[node name="SpawnedObject 25" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(0.880759, 0, 0, 0, 0.75, 0, 0, 0, 0.88394, 47.8942, 45.5143, 41.7529)
+
+[node name="SpawnedObject 26" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(0.980012, 0, 0, 0, 1.18974, 0, 0, 0, 1.81888, 43.9994, 45.7444, 43.6927)
+
+[node name="SpawnedObject 27" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.59011, 0, 0, 0, 1.24642, 0, 0, 0, 1.96271, 44.8544, 48.4252, 2.35619)
+
+[node name="SpawnedObject 28" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(0.269716, 0, 0, 0, 0.75, 0, 0, 0, 0.494374, 3.31195, 38.5839, 44.6223)
+
+[node name="SpawnedObject 29" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.89625, 0, 0, 0, 0.75, 0, 0, 0, 1.87996, 61.6094, 50.8269, 24.8593)
+
+[node name="SpawnedObject 30" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(0.831622, 0, 0, 0, 1.22737, 0, 0, 0, 1.92421, 46.5839, 44.1815, 69.1263)
+
+[node name="SpawnedObject 31" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.23101, 0, 0, 0, 0.890797, 0, 0, 0, 1.92783, 62.8986, 47.4115, 53.0603)
+
+[node name="SpawnedObject 32" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.10286, 0, 0, 0, 1.1172, 0, 0, 0, 0.0887414, 25.2816, 44.9694, 35.12)
+
+[node name="SpawnedObject 33" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.04118, 0, 0, 0, 0.75, 0, 0, 0, 0.642837, 8.77253, 39.6454, 42.7322)
+
+[node name="SpawnedObject 34" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(0.00843035, 0, 0, 0, 0.75, 0, 0, 0, 0.347647, 61.1362, 50.4985, 45.0705)
+
+[node name="SpawnedObject 35" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(0.329348, 0, 0, 0, 0.75, 0, 0, 0, 0.544584, 47.5994, 44.8145, 45.3507)
+
+[node name="SpawnedObject 36" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.22572, 0, 0, 0, 0.75, 0, 0, 0, 1.31828, 16.1499, 39.8101, 48.2642)
+
+[node name="SpawnedObject 37" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.36887, 0, 0, 0, 1.25, 0, 0, 0, 1.642, 24.7778, 42.2017, 38.2091)
+
+[node name="SpawnedObject 38" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.80437, 0, 0, 0, 1.25, 0, 0, 0, 0.560336, 64.1968, 44.9732, 83.3535)
+
+[node name="SpawnedObject 39" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(0.2474, 0, 0, 0, 0.75, 0, 0, 0, 1.9375, 25.1336, 43.9932, 11.7045)
+
+[node name="SpawnedObject 40" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(0.611621, 0, 0, 0, 1.25, 0, 0, 0, 0.193472, 18.9965, 42.4754, 41.9312)
+
+[node name="SpawnedObject 41" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.33439, 0, 0, 0, 0.75, 0, 0, 0, 0.801493, 16.1554, 44.2306, 12.3485)
+
+[node name="SpawnedObject 42" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(0.677567, 0, 0, 0, 1.25, 0, 0, 0, 0.579946, 69.5507, 53.7722, 2.87638)
+
+[node name="SpawnedObject 43" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(0.566744, 0, 0, 0, 0.75, 0, 0, 0, 0.742493, 78.2889, 53.1462, 9.96093)
+
+[node name="SpawnedObject 44" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.86972, 0, 0, 0, 0.75, 0, 0, 0, 1.37561, 75.5579, 49.2207, 74.4686)
+
+[node name="SpawnedObject 45" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.20137, 0, 0, 0, 0.75, 0, 0, 0, 1.67111, 8.8274, 42.6685, 24.9264)
+
+[node name="SpawnedObject 46" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.57579, 0, 0, 0, 0.75, 0, 0, 0, 0.689712, 54.9844, 44.4459, 94.962)
+
+[node name="SpawnedObject 47" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.79025, 0, 0, 0, 1.25, 0, 0, 0, 0.77599, 21.3894, 39.9581, 67.3339)
+
+[node name="SpawnedObject 48" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.79456, 0, 0, 0, 0.75, 0, 0, 0, 0.61486, 74.739, 53.9056, 45.076)
+
+[node name="SpawnedObject 49" type="Node3D" parent="Objects" instance=ExtResource("2_vxmio")]
+transform = Transform3D(1.55529, 0, 0, 0, 1.25, 0, 0, 0, 0.447298, 94.3747, 57.8975, 4.12174)
