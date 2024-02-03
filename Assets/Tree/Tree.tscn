@@ -19,3 +19,5 @@ physics_material_override = SubResource("PhysicsMaterial_w4iwg")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00601196, 2.67966, 0.0222168)
 shape = SubResource("BoxShape3D_vfe4u")
+
+[editable path="Tree1"]

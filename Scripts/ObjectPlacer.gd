@@ -4,8 +4,18 @@ extends Node3D
 
 @export var ItemsPlaced:bool
 @export var PlaceItems:bool
+# look into making this an array of objects to place
+@export_category("Item Settings")
 @export var ItemToPlace:PackedScene
-@export var spawnNoise:Texture2D
+@export var ItemNameTemplate:String = "SpawnedObject"
+
+@export_category("Masks")
+enum MaskChannel {R, G, B}
+@export var objectPlacementMask:Texture2D
+@export_range(0,1) var spawnThreshold:float = 0.0
+@export var maskChannel:MaskChannel = MaskChannel.R
+@export var useAvoidMask:bool = true
+@export var avoidMaskChannel:MaskChannel = MaskChannel.G
 
 @export_category("Spawn Settings")
 @export var useHeightMap:bool=true
@@ -65,7 +75,7 @@ func _spawn_objects():
 func _place_object(index):
 	var item = ItemToPlace.instantiate()
 	ObjectContainer.add_child(item)
-	item.name = "Tree %d" % index
+	item.name = "%s %d" % [ItemNameTemplate, index]
 	
 	# Vary scale
 	var scaleX = 1 + (randf_range(-1,1) * scaleVariance)
@@ -88,9 +98,24 @@ func _get_spawn_location() -> Vector3:
 		spawn = Vector3(x,y,z)
 		return spawn
 		
+	var spawnMask:Image = null
+	if objectPlacementMask != null:
+		spawnMask = objectPlacementMask.get_image()
+		
 	while(!valid):
 		var x = randf_range(0, SizeX)
 		var z = randf_range(0, SizeZ)
+		if spawnMask != null:
+			var imagePos = _convert_to_image_coord(x,z)
+			var maskColor:Color = spawnMask.get_pixel(imagePos.x,imagePos.y)
+			var spawnValue = _get_value_for_channel(maskColor, maskChannel)
+			if spawnValue <= spawnThreshold:
+				continue;
+			if useAvoidMask:
+				var avoidValue = _get_value_for_channel(maskColor, avoidMaskChannel)
+				if avoidValue > 0.0:
+					continue;
+
 		var y = _get_height_at_coord(x,z)
 		y -= randf_range(0,depthOffset)
 		if y < MaxHeight and y > MinHeight:
@@ -98,8 +123,26 @@ func _get_spawn_location() -> Vector3:
 			spawn = Vector3(x,y,z)
 	return spawn
 	
-func _get_height_at_coord(x:float,z:float) -> float:
+func _get_value_for_channel(color:Color, mask:MaskChannel) -> float:
+	var result:float
+	match(mask):
+		MaskChannel.R:
+			result = color.r
+		MaskChannel.G:
+			result = color.g
+		MaskChannel.B:
+			result = color.b
+		_:
+			result = 0.0
+	return result
+	
+func _convert_to_image_coord(x:float, z:float) -> Vector2:
+	# origin is at -1024,-1024
 	var localPos = position + Vector3(x, 0, z)
 	var terrainPos = localPos + Vector3(1024, 0, 1024)
 	var imagePos = Vector2(floor(terrainPos.x / 2), floor(terrainPos.z / 2))
+	return imagePos
+	
+func _get_height_at_coord(x:float,z:float) -> float:
+	var imagePos = _convert_to_image_coord(x,z)
 	return heightMap.get_pixel(imagePos.x, imagePos.y).r * 4000
