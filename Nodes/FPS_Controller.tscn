@@ -1,10 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://djh6p5vpl0qh6"]
+[gd_scene load_steps=16 format=3 uid="uid://djh6p5vpl0qh6"]
 
 [ext_resource type="Script" path="res://Scripts/FPSController.gd" id="1_autb6"]
 [ext_resource type="PackedScene" uid="uid://dowap4odm1r6i" path="res://Assets/Vape/vape Kangertech.fbx" id="2_xtpyj"]
 [ext_resource type="Script" path="res://Scripts/VapeComponent.gd" id="3_5xwvt"]
 [ext_resource type="Texture2D" uid="uid://bp07jcxy40tte" path="res://Assets/Textures/TCom_FabricPlain0083_1_seamless_S.png" id="4_0otw1"]
 [ext_resource type="PackedScene" uid="uid://8x6uwy2ygtl1" path="res://Nodes/UI/PlayerUI.tscn" id="4_lf404"]
+[ext_resource type="AudioStream" uid="uid://g2gyudsrm5a7" path="res://Sound/Inhale.mp3" id="4_t3wtb"]
+[ext_resource type="AudioStream" uid="uid://c4jhbnpmj7yn" path="res://Sound/Cough.mp3" id="5_3kqvy"]
+[ext_resource type="AudioStream" uid="uid://sl6c6xey2lb3" path="res://Sound/Exhale.mp3" id="5_d6b85"]
+[ext_resource type="Script" path="res://Scripts/VapeAudioController.gd" id="7_cjwev"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0mgwr"]
 
@@ -43,6 +47,14 @@ albedo_texture_force_srgb = true
 [node name="FPSController" type="CharacterBody3D" groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_autb6")
+
+[node name="VapeAudioController" type="Node" parent="."]
+script = ExtResource("7_cjwev")
+vapeInhale = ExtResource("4_t3wtb")
+vapeExhale = ExtResource("5_d6b85")
+cough = ExtResource("5_3kqvy")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="VapeAudioController"]
 
 [node name="PlayerCollision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_0mgwr")
@@ -88,3 +100,5 @@ material_override = SubResource("StandardMaterial3D_5af31")
 mesh = SubResource("QuadMesh_yyllo")
 
 [node name="UI" parent="." instance=ExtResource("4_lf404")]
+
+[connection signal="vapingStateChanged" from="Camera3D/VapePen" to="VapeAudioController" method="_on_vape_pen_vaping_state_changed"]
