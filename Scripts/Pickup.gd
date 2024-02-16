@@ -8,6 +8,8 @@ extends Node3D
 @export var rotationSpeed : float = 2.0
 @export var height : float = 1.0
 @onready var startY : float = position.y
+@onready var audioPlayer:AudioStreamPlayer3D = $AudioPlayer
+
 var t : float = 0
 
 func _ready():
@@ -24,9 +26,10 @@ func _on_area_3d_body_entered(body):
 	if body.is_in_group("Player"):
 		var player = body as Player
 		player.pick_up_item(self)
-		disable_item()
+		call_deferred("disable_item")
+		audioPlayer.play()		
 		
-func disable_item():
+func disable_item():	
 	mesh.visible = false
 	pickupArea.monitoring = false
 	

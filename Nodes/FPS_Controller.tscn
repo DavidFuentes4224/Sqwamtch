@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://djh6p5vpl0qh6"]
+[gd_scene load_steps=17 format=3 uid="uid://djh6p5vpl0qh6"]
 
 [ext_resource type="Script" path="res://Scripts/FPSController.gd" id="1_autb6"]
 [ext_resource type="PackedScene" uid="uid://dowap4odm1r6i" path="res://Assets/Vape/vape Kangertech.fbx" id="2_xtpyj"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://c4jhbnpmj7yn" path="res://Sound/Cough.mp3" id="5_3kqvy"]
 [ext_resource type="AudioStream" uid="uid://sl6c6xey2lb3" path="res://Sound/Exhale.mp3" id="5_d6b85"]
 [ext_resource type="Script" path="res://Scripts/VapeAudioController.gd" id="7_cjwev"]
+[ext_resource type="Script" path="res://AutoFootStepsPlugin/AutoFootSteps.gd" id="10_eoj3k"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0mgwr"]
 
@@ -100,5 +101,11 @@ material_override = SubResource("StandardMaterial3D_5af31")
 mesh = SubResource("QuadMesh_yyllo")
 
 [node name="UI" parent="." instance=ExtResource("4_lf404")]
+
+[node name="AutoFootSteps" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.701316, 0)
+script = ExtResource("10_eoj3k")
+volume_db = -9.0
+footstep_distance = 1.2
 
 [connection signal="vapingStateChanged" from="Camera3D/VapePen" to="VapeAudioController" method="_on_vape_pen_vaping_state_changed"]

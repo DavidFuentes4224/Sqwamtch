@@ -46,8 +46,8 @@ func _get_valid_pos() -> Vector3:
 	var pos = Vector3.ZERO
 	var isValid = false
 	while (!isValid):
-		var x = randf_range(0, sizeX)
-		var z = randf_range(0, sizeZ)
+		var x:float = randf_range(0, sizeX)
+		var z:float = randf_range(0, sizeZ)
 		var imagePos = _convert_to_image_coord(x,z)
 		var maskColor:Color = spawnMaskImage.get_pixel(imagePos.x, imagePos.y)
 		var spawnValue = _get_value_for_channel(maskColor, maskChannel)
