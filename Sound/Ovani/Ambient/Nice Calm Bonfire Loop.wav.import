@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dnf2gq5ckx0pm"
+path="res://.godot/imported/Nice Calm Bonfire Loop.wav-9662b86c24a2b9b9c645789674051628.sample"
+
+[deps]
+
+source_file="res://Sound/Ovani/Ambient/Nice Calm Bonfire Loop.wav"
+dest_files=["res://.godot/imported/Nice Calm Bonfire Loop.wav-9662b86c24a2b9b9c645789674051628.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
