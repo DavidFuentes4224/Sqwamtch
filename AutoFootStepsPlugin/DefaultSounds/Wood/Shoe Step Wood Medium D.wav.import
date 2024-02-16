@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dfpsjj7ucvtdc"
+path="res://.godot/imported/Shoe Step Wood Medium D.wav-0b8a3c29b46035fcf10becf7ca679747.sample"
+
+[deps]
+
+source_file="res://AutoFootStepsPlugin/DefaultSounds/Wood/Shoe Step Wood Medium D.wav"
+dest_files=["res://.godot/imported/Shoe Step Wood Medium D.wav-0b8a3c29b46035fcf10becf7ca679747.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

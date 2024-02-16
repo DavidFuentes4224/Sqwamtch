@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://s3didryoqba2"
+path="res://.godot/imported/Bare Step Rug Medium C.wav-cc38d08d0fc59c60742ecaa3972c2b4c.sample"
+
+[deps]
+
+source_file="res://AutoFootStepsPlugin/DefaultSounds/Rug/Bare Step Rug Medium C.wav"
+dest_files=["res://.godot/imported/Bare Step Rug Medium C.wav-cc38d08d0fc59c60742ecaa3972c2b4c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

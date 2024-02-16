@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dsbad4ew6gub8"
+path="res://.godot/imported/Bare Step Metal Soft C.wav-c886c943c0d3aee6e29e3dc4ab3c44fd.sample"
+
+[deps]
+
+source_file="res://AutoFootStepsPlugin/DefaultSounds/Metal/Bare Step Metal Soft C.wav"
+dest_files=["res://.godot/imported/Bare Step Metal Soft C.wav-c886c943c0d3aee6e29e3dc4ab3c44fd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

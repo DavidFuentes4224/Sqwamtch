@@ -1,0 +1,315 @@
+[gd_resource type="Resource" script_class="FootProfile" load_steps=200 format=3 uid="uid://o55dy6ahuokg"]
+
+[ext_resource type="AudioStream" uid="uid://b4ijayf3u7wkj" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Bare Step Grass Hard A.wav" id="1_jhq2h"]
+[ext_resource type="Script" path="res://AutoFootStepsPlugin/FootProfileMaterialSpecification.gd" id="1_q44ip"]
+[ext_resource type="AudioStream" uid="uid://chjwb18p6qnet" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Bare Step Grass Hard B.wav" id="2_vheeq"]
+[ext_resource type="Script" path="res://AutoFootStepsPlugin/FootProfile.gd" id="2_w8al2"]
+[ext_resource type="AudioStream" uid="uid://bqng5umy4n4ro" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Bare Step Grass Hard C.wav" id="3_ri0ig"]
+[ext_resource type="AudioStream" uid="uid://blwjstsyh26pw" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Bare Step Grass Hard D.wav" id="4_y1c1m"]
+[ext_resource type="AudioStream" uid="uid://cjgkw8alc7gyc" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Bare Step Grass Hard E.wav" id="5_g0n1k"]
+[ext_resource type="AudioStream" uid="uid://7vg70ir1ayop" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Jump Step Grass A.wav" id="6_1jaco"]
+[ext_resource type="AudioStream" uid="uid://2cppoancqmkj" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Jump Step Grass B.wav" id="7_x8acq"]
+[ext_resource type="AudioStream" uid="uid://b32aofu62y17v" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Land Step Grass B.wav" id="8_ib7ah"]
+[ext_resource type="AudioStream" uid="uid://c7l27sknyjmse" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Land Step Grass A.wav" id="9_ub3nq"]
+[ext_resource type="AudioStream" uid="uid://bfsx0tbvtn6e" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Bare Step Grass Medium A.wav" id="10_2n7hq"]
+[ext_resource type="AudioStream" uid="uid://dlu3oqrcnn3hw" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Bare Step Grass Medium B.wav" id="11_xcmo3"]
+[ext_resource type="AudioStream" uid="uid://dwjbxvcal7dlx" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Bare Step Grass Medium C.wav" id="12_3rc8g"]
+[ext_resource type="AudioStream" uid="uid://c53pxthxqymef" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Bare Step Grass Medium E.wav" id="13_0m857"]
+[ext_resource type="AudioStream" uid="uid://bjfed0q0ca5wt" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Bare Step Grass Medium D.wav" id="14_h3762"]
+[ext_resource type="AudioStream" uid="uid://b54ji4f73lev3" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Scuff Step Grass A.wav" id="16_yy3m1"]
+[ext_resource type="AudioStream" uid="uid://brj514rmxmenm" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Scuff Step Grass B.wav" id="17_vd1vp"]
+[ext_resource type="AudioStream" uid="uid://b2rcvtweg5sf" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Bare Step Grass Soft A.wav" id="18_6lnf3"]
+[ext_resource type="AudioStream" uid="uid://bu436y7dfp6am" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Bare Step Grass Soft B.wav" id="19_32r5i"]
+[ext_resource type="AudioStream" uid="uid://cpl23qntvo1xu" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Bare Step Grass Soft C.wav" id="20_cfvcg"]
+[ext_resource type="AudioStream" uid="uid://ldh2b8vnn3oh" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Bare Step Grass Soft D.wav" id="21_lsnkn"]
+[ext_resource type="AudioStream" uid="uid://dyxiktbmm0mnu" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Bare Step Grass Soft E.wav" id="22_qr353"]
+[ext_resource type="AudioStream" uid="uid://cuh3umsvjdxkb" path="res://AutoFootStepsPlugin/DefaultSounds/Stone/Bare Step Stone Hard A.wav" id="23_3xcj7"]
+[ext_resource type="AudioStream" uid="uid://c2qpncbc0rqyw" path="res://AutoFootStepsPlugin/DefaultSounds/Stone/Bare Step Stone Hard B.wav" id="24_2dy1c"]
+[ext_resource type="AudioStream" uid="uid://d20rudj2xk2uf" path="res://AutoFootStepsPlugin/DefaultSounds/Stone/Bare Step Stone Hard C.wav" id="25_r1363"]
+[ext_resource type="AudioStream" uid="uid://bipwvqr2npkfr" path="res://AutoFootStepsPlugin/DefaultSounds/Stone/Bare Step Stone Hard D.wav" id="26_q1jh2"]
+[ext_resource type="AudioStream" uid="uid://bbonlg2bradbe" path="res://AutoFootStepsPlugin/DefaultSounds/Stone/Bare Step Stone Hard E.wav" id="27_d2655"]
+[ext_resource type="AudioStream" uid="uid://d1bkgvm1s1l0y" path="res://AutoFootStepsPlugin/DefaultSounds/Stone/Jump Step Stone A.wav" id="28_oiprj"]
+[ext_resource type="AudioStream" uid="uid://csofwsjkg3esx" path="res://AutoFootStepsPlugin/DefaultSounds/Stone/Jump Step Stone B.wav" id="29_31kis"]
+[ext_resource type="AudioStream" uid="uid://by8ynwd32j4fo" path="res://AutoFootStepsPlugin/DefaultSounds/Stone/Land Step Stone A.wav" id="30_sqqvk"]
+[ext_resource type="AudioStream" uid="uid://mr11qn22ivew" path="res://AutoFootStepsPlugin/DefaultSounds/Stone/Land Step Stone B.wav" id="31_3o3i8"]
+[ext_resource type="AudioStream" uid="uid://bc41pe1ogrsy7" path="res://AutoFootStepsPlugin/DefaultSounds/Stone/Bare Step Stone Medium A.wav" id="32_ou3af"]
+[ext_resource type="AudioStream" uid="uid://dj0agxlfg0pep" path="res://AutoFootStepsPlugin/DefaultSounds/Stone/Bare Step Stone Medium B.wav" id="33_gf2yf"]
+[ext_resource type="AudioStream" uid="uid://bio8di50vbu8j" path="res://AutoFootStepsPlugin/DefaultSounds/Stone/Bare Step Stone Medium C.wav" id="34_tcfgr"]
+[ext_resource type="AudioStream" uid="uid://dmc4ptb2fkqwx" path="res://AutoFootStepsPlugin/DefaultSounds/Stone/Bare Step Stone Medium D.wav" id="35_n8dxu"]
+[ext_resource type="AudioStream" uid="uid://dwualp1cgie3r" path="res://AutoFootStepsPlugin/DefaultSounds/Stone/Bare Step Stone Medium E.wav" id="36_8hxaq"]
+[ext_resource type="AudioStream" uid="uid://dvmp5wu6y0xku" path="res://AutoFootStepsPlugin/DefaultSounds/Stone/Scuff Step Stone A.wav" id="37_6tsns"]
+[ext_resource type="AudioStream" uid="uid://d3wo8aub2ip76" path="res://AutoFootStepsPlugin/DefaultSounds/Stone/Scuff Step Stone B.wav" id="38_u2lgp"]
+[ext_resource type="AudioStream" uid="uid://dt8rg67yd8tj1" path="res://AutoFootStepsPlugin/DefaultSounds/Stone/Bare Step Stone Soft A.wav" id="39_jekoj"]
+[ext_resource type="AudioStream" uid="uid://clb8mvnljawck" path="res://AutoFootStepsPlugin/DefaultSounds/Stone/Bare Step Stone Soft B.wav" id="40_ipw1o"]
+[ext_resource type="AudioStream" uid="uid://buut127bsk45y" path="res://AutoFootStepsPlugin/DefaultSounds/Stone/Bare Step Stone Soft C.wav" id="41_p0t8n"]
+[ext_resource type="AudioStream" uid="uid://bi7gmvtnvgdqk" path="res://AutoFootStepsPlugin/DefaultSounds/Stone/Bare Step Stone Soft D.wav" id="42_jc8bo"]
+[ext_resource type="AudioStream" uid="uid://vpnr6wtk4mhh" path="res://AutoFootStepsPlugin/DefaultSounds/Stone/Bare Step Stone Soft E.wav" id="43_6hd2l"]
+[ext_resource type="AudioStream" uid="uid://dq8fbafb47wtb" path="res://AutoFootStepsPlugin/DefaultSounds/Wood/Bare Step Wood Hard A.wav" id="44_27f3r"]
+[ext_resource type="AudioStream" uid="uid://dvry10lc80agu" path="res://AutoFootStepsPlugin/DefaultSounds/Wood/Bare Step Wood Hard B.wav" id="45_rps62"]
+[ext_resource type="AudioStream" uid="uid://bw2c48i7h3tjq" path="res://AutoFootStepsPlugin/DefaultSounds/Wood/Bare Step Wood Hard C.wav" id="46_aqq4j"]
+[ext_resource type="AudioStream" uid="uid://df7evdeyv5stt" path="res://AutoFootStepsPlugin/DefaultSounds/Wood/Bare Step Wood Hard D.wav" id="47_ak7sr"]
+[ext_resource type="AudioStream" uid="uid://loe2itqydalx" path="res://AutoFootStepsPlugin/DefaultSounds/Wood/Bare Step Wood Hard E.wav" id="48_2f55n"]
+[ext_resource type="AudioStream" uid="uid://ck3wsftpnpi1m" path="res://AutoFootStepsPlugin/DefaultSounds/Wood/Jump Step Wood A.wav" id="49_1843x"]
+[ext_resource type="AudioStream" uid="uid://3l5k5e5nxdo0" path="res://AutoFootStepsPlugin/DefaultSounds/Wood/Jump Step Wood B.wav" id="50_gs1c7"]
+[ext_resource type="AudioStream" uid="uid://bb5bhor2s1ns" path="res://AutoFootStepsPlugin/DefaultSounds/Wood/Land Step Wood A.wav" id="51_gmf5f"]
+[ext_resource type="AudioStream" uid="uid://cjlailmqmqvse" path="res://AutoFootStepsPlugin/DefaultSounds/Wood/Land Step Wood B.wav" id="52_h0uif"]
+[ext_resource type="AudioStream" uid="uid://6ppoogv3ef0v" path="res://AutoFootStepsPlugin/DefaultSounds/Wood/Bare Step Wood Medium A.wav" id="53_sswpv"]
+[ext_resource type="AudioStream" uid="uid://e10uwhgvr1qw" path="res://AutoFootStepsPlugin/DefaultSounds/Wood/Bare Step Wood Medium B.wav" id="54_4n60t"]
+[ext_resource type="AudioStream" uid="uid://d78qepsfyksm" path="res://AutoFootStepsPlugin/DefaultSounds/Wood/Bare Step Wood Medium D.wav" id="55_ugri6"]
+[ext_resource type="AudioStream" uid="uid://6851xabr6qov" path="res://AutoFootStepsPlugin/DefaultSounds/Wood/Bare Step Wood Medium C.wav" id="56_4c8jo"]
+[ext_resource type="AudioStream" uid="uid://duhhi0oohud0c" path="res://AutoFootStepsPlugin/DefaultSounds/Wood/Bare Step Wood Medium E.wav" id="57_030nb"]
+[ext_resource type="AudioStream" uid="uid://ne3wgf4ijqo0" path="res://AutoFootStepsPlugin/DefaultSounds/Wood/Scuff Step Wood A.wav" id="58_vfgt2"]
+[ext_resource type="AudioStream" uid="uid://p3cb6nk6vldo" path="res://AutoFootStepsPlugin/DefaultSounds/Wood/Scuff Step Wood B.wav" id="59_pq3ew"]
+[ext_resource type="AudioStream" uid="uid://c1j7am37dsooq" path="res://AutoFootStepsPlugin/DefaultSounds/Wood/Bare Step Wood Soft A.wav" id="60_045sr"]
+[ext_resource type="AudioStream" uid="uid://c66a40ymoj0jn" path="res://AutoFootStepsPlugin/DefaultSounds/Wood/Bare Step Wood Soft B.wav" id="61_0xsn7"]
+[ext_resource type="AudioStream" uid="uid://cv4qrrfu3utuv" path="res://AutoFootStepsPlugin/DefaultSounds/Wood/Bare Step Wood Soft C.wav" id="62_shrcm"]
+[ext_resource type="AudioStream" uid="uid://b4lcs8tpv3te3" path="res://AutoFootStepsPlugin/DefaultSounds/Wood/Bare Step Wood Soft D.wav" id="63_dbuqc"]
+[ext_resource type="AudioStream" uid="uid://c2o5xqgxfs3jh" path="res://AutoFootStepsPlugin/DefaultSounds/Wood/Bare Step Wood Soft E.wav" id="64_nd02j"]
+[ext_resource type="AudioStream" uid="uid://c6j5j1p2qwp4w" path="res://AutoFootStepsPlugin/DefaultSounds/Sand/Bare Step Sand Hard A.wav" id="65_crp8y"]
+[ext_resource type="AudioStream" uid="uid://bewy683t0lmxi" path="res://AutoFootStepsPlugin/DefaultSounds/Sand/Bare Step Sand Hard B.wav" id="66_2ycwe"]
+[ext_resource type="AudioStream" uid="uid://c1qjxil70lur8" path="res://AutoFootStepsPlugin/DefaultSounds/Sand/Bare Step Sand Hard C.wav" id="67_esk5j"]
+[ext_resource type="AudioStream" uid="uid://om8ddpbxcafi" path="res://AutoFootStepsPlugin/DefaultSounds/Sand/Bare Step Sand Hard D.wav" id="68_rvnlb"]
+[ext_resource type="AudioStream" uid="uid://b4gq3vp5o6x4d" path="res://AutoFootStepsPlugin/DefaultSounds/Sand/Bare Step Sand Hard E.wav" id="69_gobmw"]
+[ext_resource type="AudioStream" uid="uid://cimaj8ycviwos" path="res://AutoFootStepsPlugin/DefaultSounds/Sand/Jump Step Sand A.wav" id="70_cgg6r"]
+[ext_resource type="AudioStream" uid="uid://ddayptmi2uvhl" path="res://AutoFootStepsPlugin/DefaultSounds/Sand/Jump Step Sand B.wav" id="71_gsxj8"]
+[ext_resource type="AudioStream" uid="uid://82ox6vonqqt5" path="res://AutoFootStepsPlugin/DefaultSounds/Sand/Land Step Sand A.wav" id="72_ymw53"]
+[ext_resource type="AudioStream" uid="uid://dco6leislkns1" path="res://AutoFootStepsPlugin/DefaultSounds/Sand/Land Step Sand B.wav" id="73_tclki"]
+[ext_resource type="AudioStream" uid="uid://ckvkhagodj6l6" path="res://AutoFootStepsPlugin/DefaultSounds/Sand/Bare Step Sand Medium A.wav" id="74_i0hbp"]
+[ext_resource type="AudioStream" uid="uid://c4llyu2342dv2" path="res://AutoFootStepsPlugin/DefaultSounds/Sand/Bare Step Sand Medium B.wav" id="75_ug0qs"]
+[ext_resource type="AudioStream" uid="uid://clakxo4a5wbik" path="res://AutoFootStepsPlugin/DefaultSounds/Sand/Bare Step Sand Medium C.wav" id="76_tclmp"]
+[ext_resource type="AudioStream" uid="uid://co57wd78jpsrs" path="res://AutoFootStepsPlugin/DefaultSounds/Sand/Bare Step Sand Medium D.wav" id="77_abf01"]
+[ext_resource type="AudioStream" uid="uid://dgdva8166dhjy" path="res://AutoFootStepsPlugin/DefaultSounds/Sand/Bare Step Sand Medium E.wav" id="78_0mc5n"]
+[ext_resource type="AudioStream" uid="uid://bvcqy28bemoyg" path="res://AutoFootStepsPlugin/DefaultSounds/Sand/Scuff Step Sand A.wav" id="79_objj0"]
+[ext_resource type="AudioStream" uid="uid://bsfvmomkuccpy" path="res://AutoFootStepsPlugin/DefaultSounds/Sand/Scuff Step Sand B.wav" id="80_6b620"]
+[ext_resource type="AudioStream" uid="uid://cie8ai61t5sce" path="res://AutoFootStepsPlugin/DefaultSounds/Sand/Bare Step Sand Soft A.wav" id="81_5lqcr"]
+[ext_resource type="AudioStream" uid="uid://c8pqy4ltkol27" path="res://AutoFootStepsPlugin/DefaultSounds/Sand/Bare Step Sand Soft B.wav" id="82_rllds"]
+[ext_resource type="AudioStream" uid="uid://4vlte7om31hn" path="res://AutoFootStepsPlugin/DefaultSounds/Sand/Bare Step Sand Soft C.wav" id="83_6ygqf"]
+[ext_resource type="AudioStream" uid="uid://cai4lk1jy7mgl" path="res://AutoFootStepsPlugin/DefaultSounds/Sand/Bare Step Sand Soft D.wav" id="84_ht5yl"]
+[ext_resource type="AudioStream" uid="uid://dxtjstfjsfopn" path="res://AutoFootStepsPlugin/DefaultSounds/Sand/Bare Step Sand Soft E.wav" id="85_vrp2n"]
+[ext_resource type="AudioStream" uid="uid://dj01edc2mppk2" path="res://AutoFootStepsPlugin/DefaultSounds/Gravel/Bare Step Gravel Hard A.wav" id="86_5eowc"]
+[ext_resource type="AudioStream" uid="uid://dkal3h2mclitn" path="res://AutoFootStepsPlugin/DefaultSounds/Gravel/Bare Step Gravel Hard B.wav" id="87_rhq2p"]
+[ext_resource type="AudioStream" uid="uid://bjsbhjamsqras" path="res://AutoFootStepsPlugin/DefaultSounds/Gravel/Bare Step Gravel Hard C.wav" id="88_3rqmm"]
+[ext_resource type="AudioStream" uid="uid://c0tfi1kpwik3r" path="res://AutoFootStepsPlugin/DefaultSounds/Gravel/Bare Step Gravel Hard D.wav" id="89_5hs12"]
+[ext_resource type="AudioStream" uid="uid://duojqk8g7hgqy" path="res://AutoFootStepsPlugin/DefaultSounds/Gravel/Bare Step Gravel Hard E.wav" id="90_fcyvb"]
+[ext_resource type="AudioStream" uid="uid://cm44lh84j01p6" path="res://AutoFootStepsPlugin/DefaultSounds/Gravel/Jump Step Gravel A.wav" id="91_bk04r"]
+[ext_resource type="AudioStream" uid="uid://cpbmks0fuj6hq" path="res://AutoFootStepsPlugin/DefaultSounds/Gravel/Jump Step Gravel B.wav" id="92_gdoha"]
+[ext_resource type="AudioStream" uid="uid://bolr0tsijsbfq" path="res://AutoFootStepsPlugin/DefaultSounds/Gravel/Land Step Gravel A.wav" id="93_q4ucv"]
+[ext_resource type="AudioStream" uid="uid://d3ufg721767d8" path="res://AutoFootStepsPlugin/DefaultSounds/Gravel/Land Step Gravel B.wav" id="94_jriei"]
+[ext_resource type="AudioStream" uid="uid://cvyetlc51663o" path="res://AutoFootStepsPlugin/DefaultSounds/Gravel/Bare Step Gravel Medium A.wav" id="95_grw42"]
+[ext_resource type="AudioStream" uid="uid://0esvcdoflolv" path="res://AutoFootStepsPlugin/DefaultSounds/Gravel/Bare Step Gravel Medium B.wav" id="96_eet68"]
+[ext_resource type="AudioStream" uid="uid://dt0ipkwnn1rbr" path="res://AutoFootStepsPlugin/DefaultSounds/Gravel/Bare Step Gravel Medium C.wav" id="97_dsb3a"]
+[ext_resource type="AudioStream" uid="uid://cyt3ljpvg5ndx" path="res://AutoFootStepsPlugin/DefaultSounds/Gravel/Bare Step Gravel Medium D.wav" id="98_058gk"]
+[ext_resource type="AudioStream" uid="uid://nk2hpmjmipj7" path="res://AutoFootStepsPlugin/DefaultSounds/Gravel/Bare Step Gravel Medium E.wav" id="99_q7hcl"]
+[ext_resource type="AudioStream" uid="uid://b4vcorvhxc5a7" path="res://AutoFootStepsPlugin/DefaultSounds/Gravel/Scuff Step Gravel A.wav" id="100_l84ff"]
+[ext_resource type="AudioStream" uid="uid://ctv38djur0s7l" path="res://AutoFootStepsPlugin/DefaultSounds/Gravel/Scuff Step Gravel B.wav" id="101_3gr0r"]
+[ext_resource type="AudioStream" uid="uid://qei8bgvow82x" path="res://AutoFootStepsPlugin/DefaultSounds/Gravel/Bare Step Gravel Soft A.wav" id="102_lb1by"]
+[ext_resource type="AudioStream" uid="uid://bkfukxor221o8" path="res://AutoFootStepsPlugin/DefaultSounds/Gravel/Bare Step Gravel Soft B.wav" id="103_ojwwj"]
+[ext_resource type="AudioStream" uid="uid://coqu4at0bpym8" path="res://AutoFootStepsPlugin/DefaultSounds/Gravel/Bare Step Gravel Soft C.wav" id="104_ynuvk"]
+[ext_resource type="AudioStream" uid="uid://df7yfgu4qyf46" path="res://AutoFootStepsPlugin/DefaultSounds/Gravel/Bare Step Gravel Soft D.wav" id="105_eandm"]
+[ext_resource type="AudioStream" uid="uid://clcdcgjj6qnei" path="res://AutoFootStepsPlugin/DefaultSounds/Snow/Bare Step Snow Hard A.wav" id="106_dew8o"]
+[ext_resource type="AudioStream" uid="uid://ckgyrhy5ppj6c" path="res://AutoFootStepsPlugin/DefaultSounds/Snow/Bare Step Snow Hard B.wav" id="107_whmj1"]
+[ext_resource type="AudioStream" uid="uid://cflot5jbot2e6" path="res://AutoFootStepsPlugin/DefaultSounds/Snow/Bare Step Snow Hard C.wav" id="108_lau8k"]
+[ext_resource type="AudioStream" uid="uid://bb465y6ffnbew" path="res://AutoFootStepsPlugin/DefaultSounds/Snow/Bare Step Snow Hard D.wav" id="109_buko7"]
+[ext_resource type="AudioStream" uid="uid://djgw720mvlknb" path="res://AutoFootStepsPlugin/DefaultSounds/Snow/Bare Step Snow Hard E.wav" id="110_nw5va"]
+[ext_resource type="AudioStream" uid="uid://dgvykbyjl00lt" path="res://AutoFootStepsPlugin/DefaultSounds/Snow/Jump Step Snow A.wav" id="111_wnrel"]
+[ext_resource type="AudioStream" uid="uid://bsd0kf62ky2g3" path="res://AutoFootStepsPlugin/DefaultSounds/Snow/Jump Step Snow B.wav" id="112_32yos"]
+[ext_resource type="AudioStream" uid="uid://dw5h6aqsakw3a" path="res://AutoFootStepsPlugin/DefaultSounds/Snow/Land Step Snow A.wav" id="113_tmadn"]
+[ext_resource type="AudioStream" uid="uid://b434x7hav73pl" path="res://AutoFootStepsPlugin/DefaultSounds/Snow/Land Step Snow B.wav" id="114_in7b5"]
+[ext_resource type="AudioStream" uid="uid://briyqw4wmipda" path="res://AutoFootStepsPlugin/DefaultSounds/Snow/Bare Step Snow Medium A.wav" id="115_6yi75"]
+[ext_resource type="AudioStream" uid="uid://6fn8cya3thxv" path="res://AutoFootStepsPlugin/DefaultSounds/Snow/Bare Step Snow Medium B.wav" id="116_hsosy"]
+[ext_resource type="AudioStream" uid="uid://dh34tufc63w57" path="res://AutoFootStepsPlugin/DefaultSounds/Snow/Bare Step Snow Medium C.wav" id="117_vrdg0"]
+[ext_resource type="AudioStream" uid="uid://bek4fu53oa251" path="res://AutoFootStepsPlugin/DefaultSounds/Snow/Bare Step Snow Medium D.wav" id="118_xta42"]
+[ext_resource type="AudioStream" uid="uid://es4edi1whfa0" path="res://AutoFootStepsPlugin/DefaultSounds/Snow/Bare Step Snow Medium E.wav" id="119_bijcj"]
+[ext_resource type="AudioStream" uid="uid://dp1ou26yukm3m" path="res://AutoFootStepsPlugin/DefaultSounds/Snow/Scuff Step Snow A.wav" id="120_6r5ql"]
+[ext_resource type="AudioStream" uid="uid://cjrpsq2n35tip" path="res://AutoFootStepsPlugin/DefaultSounds/Snow/Scuff Step Snow B.wav" id="121_1jrx5"]
+[ext_resource type="AudioStream" uid="uid://chmpfpt632ywv" path="res://AutoFootStepsPlugin/DefaultSounds/Snow/Bare Step Snow Soft A.wav" id="122_l0qj2"]
+[ext_resource type="AudioStream" uid="uid://c8h4ka676muew" path="res://AutoFootStepsPlugin/DefaultSounds/Snow/Bare Step Snow Soft B.wav" id="123_qnudo"]
+[ext_resource type="AudioStream" uid="uid://c3m6ffiusx4t7" path="res://AutoFootStepsPlugin/DefaultSounds/Snow/Bare Step Snow Soft C.wav" id="124_wkb5m"]
+[ext_resource type="AudioStream" uid="uid://nkfkpe60immy" path="res://AutoFootStepsPlugin/DefaultSounds/Snow/Bare Step Snow Soft D.wav" id="125_egw3y"]
+[ext_resource type="AudioStream" uid="uid://d3vbfte230qqi" path="res://AutoFootStepsPlugin/DefaultSounds/Snow/Bare Step Snow Soft E.wav" id="126_krh7a"]
+[ext_resource type="AudioStream" uid="uid://blp8bt1f4aw7b" path="res://AutoFootStepsPlugin/DefaultSounds/Metal/Bare Step Metal Hard A.wav" id="127_qbg0y"]
+[ext_resource type="AudioStream" uid="uid://pfi21fcaaynr" path="res://AutoFootStepsPlugin/DefaultSounds/Metal/Bare Step Metal Hard B.wav" id="128_o78d0"]
+[ext_resource type="AudioStream" uid="uid://bjt1tahexhwwx" path="res://AutoFootStepsPlugin/DefaultSounds/Metal/Bare Step Metal Hard C.wav" id="129_weycf"]
+[ext_resource type="AudioStream" uid="uid://daxv4bohkbm2m" path="res://AutoFootStepsPlugin/DefaultSounds/Metal/Bare Step Metal Hard D.wav" id="130_w7qyr"]
+[ext_resource type="AudioStream" uid="uid://31appbfotghh" path="res://AutoFootStepsPlugin/DefaultSounds/Metal/Bare Step Metal Hard E.wav" id="131_jf5ye"]
+[ext_resource type="AudioStream" uid="uid://dxd0q7mugor3i" path="res://AutoFootStepsPlugin/DefaultSounds/Metal/Jump Step Metal A.wav" id="132_j0l7o"]
+[ext_resource type="AudioStream" uid="uid://bv1t221ki5l7i" path="res://AutoFootStepsPlugin/DefaultSounds/Metal/Jump Step Metal B.wav" id="133_qq0iv"]
+[ext_resource type="AudioStream" uid="uid://cdqomuioqx83b" path="res://AutoFootStepsPlugin/DefaultSounds/Metal/Land Step Metal A.wav" id="134_1hbfd"]
+[ext_resource type="AudioStream" uid="uid://cuyr1phucqlog" path="res://AutoFootStepsPlugin/DefaultSounds/Metal/Land Step Metal B.wav" id="135_uefsf"]
+[ext_resource type="AudioStream" uid="uid://dtcvqak5p5q0l" path="res://AutoFootStepsPlugin/DefaultSounds/Metal/Bare Step Metal Medium A.wav" id="136_yteiv"]
+[ext_resource type="AudioStream" uid="uid://dyjbsjdpqqsoj" path="res://AutoFootStepsPlugin/DefaultSounds/Metal/Bare Step Metal Medium B.wav" id="137_3reij"]
+[ext_resource type="AudioStream" uid="uid://dvwxvwiibukih" path="res://AutoFootStepsPlugin/DefaultSounds/Metal/Bare Step Metal Medium C.wav" id="138_sfx3a"]
+[ext_resource type="AudioStream" uid="uid://bwx0k4t44xq6k" path="res://AutoFootStepsPlugin/DefaultSounds/Metal/Bare Step Metal Medium D.wav" id="139_ne0t1"]
+[ext_resource type="AudioStream" uid="uid://biu07tnxarcwm" path="res://AutoFootStepsPlugin/DefaultSounds/Metal/Bare Step Metal Medium E.wav" id="140_ivato"]
+[ext_resource type="AudioStream" uid="uid://d35psfjnoovep" path="res://AutoFootStepsPlugin/DefaultSounds/Metal/Scuff Step Metal A.wav" id="141_kw6r6"]
+[ext_resource type="AudioStream" uid="uid://d2hicroi46k75" path="res://AutoFootStepsPlugin/DefaultSounds/Metal/Scuff Step Metal B.wav" id="142_7qnru"]
+[ext_resource type="AudioStream" uid="uid://bc5gocdw5cdnw" path="res://AutoFootStepsPlugin/DefaultSounds/Metal/Bare Step Metal Soft A.wav" id="143_bt8sd"]
+[ext_resource type="AudioStream" uid="uid://ckjf221d48goq" path="res://AutoFootStepsPlugin/DefaultSounds/Metal/Bare Step Metal Soft B.wav" id="144_ql0mi"]
+[ext_resource type="AudioStream" uid="uid://dsbad4ew6gub8" path="res://AutoFootStepsPlugin/DefaultSounds/Metal/Bare Step Metal Soft C.wav" id="145_y86su"]
+[ext_resource type="AudioStream" uid="uid://c0dluuxyawyir" path="res://AutoFootStepsPlugin/DefaultSounds/Metal/Bare Step Metal Soft D.wav" id="146_bq2f6"]
+[ext_resource type="AudioStream" uid="uid://dxpt21jlhwojp" path="res://AutoFootStepsPlugin/DefaultSounds/Metal/Bare Step Metal Soft E.wav" id="147_xtgwt"]
+[ext_resource type="AudioStream" uid="uid://d3nhn7d2w5lxb" path="res://AutoFootStepsPlugin/DefaultSounds/Water or Mud/Bare Step Water Hard A.wav" id="148_0cuch"]
+[ext_resource type="AudioStream" uid="uid://n05j813wt88f" path="res://AutoFootStepsPlugin/DefaultSounds/Water or Mud/Bare Step Water Hard B.wav" id="149_ifb0q"]
+[ext_resource type="AudioStream" uid="uid://tketv2ohn0rh" path="res://AutoFootStepsPlugin/DefaultSounds/Water or Mud/Bare Step Water Hard C.wav" id="150_pdlh7"]
+[ext_resource type="AudioStream" uid="uid://bjh2bq285256l" path="res://AutoFootStepsPlugin/DefaultSounds/Water or Mud/Bare Step Water Hard D.wav" id="151_5jpjy"]
+[ext_resource type="AudioStream" uid="uid://btfoukc6oymtw" path="res://AutoFootStepsPlugin/DefaultSounds/Water or Mud/Bare Step Water Hard E.wav" id="152_beyru"]
+[ext_resource type="AudioStream" uid="uid://80h3wn2mva7w" path="res://AutoFootStepsPlugin/DefaultSounds/Water or Mud/Jump Step Water A.wav" id="153_8c4vy"]
+[ext_resource type="AudioStream" uid="uid://ekbvx25qfqdf" path="res://AutoFootStepsPlugin/DefaultSounds/Water or Mud/Jump Step Water B.wav" id="154_xcq1n"]
+[ext_resource type="AudioStream" uid="uid://c8fvatch2hw2d" path="res://AutoFootStepsPlugin/DefaultSounds/Water or Mud/Land Step Water A.wav" id="155_3g5fu"]
+[ext_resource type="AudioStream" uid="uid://b5pq7si5u4rve" path="res://AutoFootStepsPlugin/DefaultSounds/Water or Mud/Land Step Water B.wav" id="156_ntndw"]
+[ext_resource type="AudioStream" uid="uid://dadqes068s05h" path="res://AutoFootStepsPlugin/DefaultSounds/Water or Mud/Bare Step Water Medium A.wav" id="157_xrhnc"]
+[ext_resource type="AudioStream" uid="uid://cy3bltvipfko4" path="res://AutoFootStepsPlugin/DefaultSounds/Water or Mud/Bare Step Water Medium B.wav" id="158_cytl0"]
+[ext_resource type="AudioStream" uid="uid://bculg6d7m3ycn" path="res://AutoFootStepsPlugin/DefaultSounds/Water or Mud/Bare Step Water Medium C.wav" id="159_8hxjr"]
+[ext_resource type="AudioStream" uid="uid://bloc55s5mf230" path="res://AutoFootStepsPlugin/DefaultSounds/Water or Mud/Bare Step Water Medium D.wav" id="160_mb8dp"]
+[ext_resource type="AudioStream" uid="uid://dmb5w2mtpk1bg" path="res://AutoFootStepsPlugin/DefaultSounds/Water or Mud/Bare Step Water Medium E.wav" id="161_btlb2"]
+[ext_resource type="AudioStream" uid="uid://bob65viuax5gc" path="res://AutoFootStepsPlugin/DefaultSounds/Water or Mud/Scuff Step Water A.wav" id="162_5q0ro"]
+[ext_resource type="AudioStream" uid="uid://crg6xy0q1vhki" path="res://AutoFootStepsPlugin/DefaultSounds/Water or Mud/Scuff Step Water B.wav" id="163_o7gnf"]
+[ext_resource type="AudioStream" uid="uid://d0y0j1huf65up" path="res://AutoFootStepsPlugin/DefaultSounds/Water or Mud/Bare Step Water Soft A.wav" id="164_nhdqo"]
+[ext_resource type="AudioStream" uid="uid://07exkw11t5ji" path="res://AutoFootStepsPlugin/DefaultSounds/Water or Mud/Bare Step Water Soft B.wav" id="165_4miuu"]
+[ext_resource type="AudioStream" uid="uid://cctg4devpm3mc" path="res://AutoFootStepsPlugin/DefaultSounds/Water or Mud/Bare Step Water Soft C.wav" id="166_1hucb"]
+[ext_resource type="AudioStream" uid="uid://c0vmk6lmur0g" path="res://AutoFootStepsPlugin/DefaultSounds/Water or Mud/Bare Step Water Soft D.wav" id="167_jfmvn"]
+[ext_resource type="AudioStream" uid="uid://d11t6pdvq1dkp" path="res://AutoFootStepsPlugin/DefaultSounds/Water or Mud/Bare Step Water Soft E.wav" id="168_dcheo"]
+[ext_resource type="AudioStream" uid="uid://tsk85bumfcxh" path="res://AutoFootStepsPlugin/DefaultSounds/Rug/Bare Step Rug Hard A.wav" id="169_dvm6e"]
+[ext_resource type="AudioStream" uid="uid://b6t1mb51d1yvd" path="res://AutoFootStepsPlugin/DefaultSounds/Rug/Bare Step Rug Hard B.wav" id="170_qscl3"]
+[ext_resource type="AudioStream" uid="uid://ea30c2r6gse" path="res://AutoFootStepsPlugin/DefaultSounds/Rug/Bare Step Rug Hard C.wav" id="171_12rw4"]
+[ext_resource type="AudioStream" uid="uid://iyu1cskft7x6" path="res://AutoFootStepsPlugin/DefaultSounds/Rug/Bare Step Rug Hard D.wav" id="172_fdswm"]
+[ext_resource type="AudioStream" uid="uid://c47lkq5oyn4hq" path="res://AutoFootStepsPlugin/DefaultSounds/Rug/Bare Step Rug Hard E.wav" id="173_1nlj5"]
+[ext_resource type="AudioStream" uid="uid://c1y2qtkadchgh" path="res://AutoFootStepsPlugin/DefaultSounds/Rug/Jump Step Rug A.wav" id="174_j43o8"]
+[ext_resource type="AudioStream" uid="uid://c7y1403krhxkx" path="res://AutoFootStepsPlugin/DefaultSounds/Rug/Jump Step Rug B.wav" id="175_dbk33"]
+[ext_resource type="AudioStream" uid="uid://cvatiwfyo6flw" path="res://AutoFootStepsPlugin/DefaultSounds/Rug/Land Step Rug A.wav" id="176_bt0g3"]
+[ext_resource type="AudioStream" uid="uid://cnc7aqpl74eb3" path="res://AutoFootStepsPlugin/DefaultSounds/Rug/Land Step Rug B.wav" id="177_eb8xg"]
+[ext_resource type="AudioStream" uid="uid://b7hl1xvm7yjli" path="res://AutoFootStepsPlugin/DefaultSounds/Rug/Bare Step Rug Medium A.wav" id="178_x18dv"]
+[ext_resource type="AudioStream" uid="uid://knbgxavn0ryd" path="res://AutoFootStepsPlugin/DefaultSounds/Rug/Bare Step Rug Medium B.wav" id="179_1qay2"]
+[ext_resource type="AudioStream" uid="uid://s3didryoqba2" path="res://AutoFootStepsPlugin/DefaultSounds/Rug/Bare Step Rug Medium C.wav" id="180_hlnne"]
+[ext_resource type="AudioStream" uid="uid://we367swfh6b2" path="res://AutoFootStepsPlugin/DefaultSounds/Rug/Bare Step Rug Medium D.wav" id="181_fdfk6"]
+[ext_resource type="AudioStream" uid="uid://clt5w6ab4w6ap" path="res://AutoFootStepsPlugin/DefaultSounds/Rug/Bare Step Rug Medium E.wav" id="182_y157o"]
+[ext_resource type="AudioStream" uid="uid://cg3o16nrjmqh2" path="res://AutoFootStepsPlugin/DefaultSounds/Rug/Scuff Step Rug A.wav" id="183_ojr06"]
+[ext_resource type="AudioStream" uid="uid://d4de6fu3et0wp" path="res://AutoFootStepsPlugin/DefaultSounds/Rug/Scuff Step Rug B.wav" id="184_bfjwx"]
+[ext_resource type="AudioStream" uid="uid://dqj28t2w37nf0" path="res://AutoFootStepsPlugin/DefaultSounds/Rug/Bare Step Rug Soft A.wav" id="185_6powv"]
+[ext_resource type="AudioStream" uid="uid://c17tsycetntbw" path="res://AutoFootStepsPlugin/DefaultSounds/Rug/Bare Step Rug Soft B.wav" id="186_uvyi1"]
+[ext_resource type="AudioStream" uid="uid://cmaxim4s0tevo" path="res://AutoFootStepsPlugin/DefaultSounds/Rug/Bare Step Rug Soft C.wav" id="187_yxi0j"]
+[ext_resource type="AudioStream" uid="uid://drh0hwq54c8ed" path="res://AutoFootStepsPlugin/DefaultSounds/Rug/Bare Step Rug Soft D.wav" id="188_xvomk"]
+[ext_resource type="AudioStream" uid="uid://brocfgk6cp1pr" path="res://AutoFootStepsPlugin/DefaultSounds/Rug/Bare Step Rug Soft E.wav" id="189_vfl17"]
+
+[sub_resource type="Resource" id="Resource_25gwb"]
+resource_name = "Grass/Dirt"
+script = ExtResource("1_q44ip")
+name = &"Grass/Dirt"
+volume_multiplier = 1.0
+similar_names = Array[String](["dirt", "ground", "soil", "earth", "grass", "lawn", "meadow", "greenery", "turf", "field", "pasture", "vegetation", "foliage"])
+soft_steps = Array[AudioStream]([ExtResource("18_6lnf3"), ExtResource("19_32r5i"), ExtResource("20_cfvcg"), ExtResource("21_lsnkn"), ExtResource("22_qr353")])
+med_steps = Array[AudioStream]([ExtResource("10_2n7hq"), ExtResource("11_xcmo3"), ExtResource("12_3rc8g"), ExtResource("13_0m857"), ExtResource("14_h3762")])
+hard_steps = Array[AudioStream]([ExtResource("1_jhq2h"), ExtResource("2_vheeq"), ExtResource("3_ri0ig"), ExtResource("4_y1c1m"), ExtResource("5_g0n1k")])
+scuffs = Array[AudioStream]([ExtResource("16_yy3m1"), ExtResource("17_vd1vp")])
+jumps = Array[AudioStream]([ExtResource("6_1jaco"), ExtResource("7_x8acq")])
+landings = Array[AudioStream]([ExtResource("8_ib7ah"), ExtResource("9_ub3nq")])
+
+[sub_resource type="Resource" id="Resource_utjaw"]
+resource_name = "Stone/Concrete"
+script = ExtResource("1_q44ip")
+name = &"Stone/Concrete"
+volume_multiplier = 1.0
+similar_names = Array[String](["concrete", "stone", "pavement", "cement", "granite", "marble", "slate", "tile", "brick", "asphalt"])
+soft_steps = Array[AudioStream]([ExtResource("39_jekoj"), ExtResource("40_ipw1o"), ExtResource("41_p0t8n"), ExtResource("42_jc8bo"), ExtResource("43_6hd2l")])
+med_steps = Array[AudioStream]([ExtResource("32_ou3af"), ExtResource("33_gf2yf"), ExtResource("34_tcfgr"), ExtResource("35_n8dxu"), ExtResource("36_8hxaq")])
+hard_steps = Array[AudioStream]([ExtResource("23_3xcj7"), ExtResource("24_2dy1c"), ExtResource("25_r1363"), ExtResource("26_q1jh2"), ExtResource("27_d2655")])
+scuffs = Array[AudioStream]([ExtResource("37_6tsns"), ExtResource("38_u2lgp")])
+jumps = Array[AudioStream]([ExtResource("28_oiprj"), ExtResource("29_31kis")])
+landings = Array[AudioStream]([ExtResource("30_sqqvk"), ExtResource("31_3o3i8")])
+
+[sub_resource type="Resource" id="Resource_wrxko"]
+resource_name = "Wood"
+script = ExtResource("1_q44ip")
+name = &"Wood"
+volume_multiplier = 1.0
+similar_names = Array[String](["wood", "plank", "timber", "oak", "pine", "deck", "lumber", "maple", "bark", "floorboard", "birch", "mahogany", "walnut"])
+soft_steps = Array[AudioStream]([ExtResource("60_045sr"), ExtResource("61_0xsn7"), ExtResource("62_shrcm"), ExtResource("63_dbuqc"), ExtResource("64_nd02j")])
+med_steps = Array[AudioStream]([ExtResource("53_sswpv"), ExtResource("54_4n60t"), ExtResource("55_ugri6"), ExtResource("56_4c8jo"), ExtResource("57_030nb")])
+hard_steps = Array[AudioStream]([ExtResource("44_27f3r"), ExtResource("45_rps62"), ExtResource("46_aqq4j"), ExtResource("47_ak7sr"), ExtResource("48_2f55n")])
+scuffs = Array[AudioStream]([ExtResource("58_vfgt2"), ExtResource("59_pq3ew")])
+jumps = Array[AudioStream]([ExtResource("49_1843x"), ExtResource("50_gs1c7")])
+landings = Array[AudioStream]([ExtResource("51_gmf5f"), ExtResource("52_h0uif")])
+
+[sub_resource type="Resource" id="Resource_d6504"]
+resource_name = "Sand"
+script = ExtResource("1_q44ip")
+name = &"Sand"
+volume_multiplier = 1.0
+similar_names = Array[String](["sand", "beach", "dune", "desert", "shore", "coastal"])
+soft_steps = Array[AudioStream]([ExtResource("81_5lqcr"), ExtResource("82_rllds"), ExtResource("83_6ygqf"), ExtResource("84_ht5yl"), ExtResource("85_vrp2n")])
+med_steps = Array[AudioStream]([ExtResource("74_i0hbp"), ExtResource("75_ug0qs"), ExtResource("76_tclmp"), ExtResource("77_abf01"), ExtResource("78_0mc5n")])
+hard_steps = Array[AudioStream]([ExtResource("65_crp8y"), ExtResource("66_2ycwe"), ExtResource("67_esk5j"), ExtResource("68_rvnlb"), ExtResource("69_gobmw")])
+scuffs = Array[AudioStream]([ExtResource("79_objj0"), ExtResource("80_6b620")])
+jumps = Array[AudioStream]([ExtResource("70_cgg6r"), ExtResource("71_gsxj8")])
+landings = Array[AudioStream]([ExtResource("72_ymw53"), ExtResource("73_tclki")])
+
+[sub_resource type="Resource" id="Resource_qjyf8"]
+resource_name = "Gravel"
+script = ExtResource("1_q44ip")
+name = &"Gravel"
+volume_multiplier = 1.0
+similar_names = Array[String](["gravel", "pebble", "shingle", "aggregate", "crushedstone"])
+soft_steps = Array[AudioStream]([ExtResource("102_lb1by"), ExtResource("103_ojwwj"), ExtResource("104_ynuvk"), ExtResource("105_eandm")])
+med_steps = Array[AudioStream]([ExtResource("95_grw42"), ExtResource("96_eet68"), ExtResource("97_dsb3a"), ExtResource("98_058gk"), ExtResource("99_q7hcl")])
+hard_steps = Array[AudioStream]([ExtResource("86_5eowc"), ExtResource("87_rhq2p"), ExtResource("88_3rqmm"), ExtResource("89_5hs12"), ExtResource("90_fcyvb")])
+scuffs = Array[AudioStream]([ExtResource("100_l84ff"), ExtResource("101_3gr0r")])
+jumps = Array[AudioStream]([ExtResource("91_bk04r"), ExtResource("92_gdoha")])
+landings = Array[AudioStream]([ExtResource("93_q4ucv"), ExtResource("94_jriei")])
+
+[sub_resource type="Resource" id="Resource_pf5bi"]
+resource_name = "Snow"
+script = ExtResource("1_q44ip")
+name = &"Snow"
+volume_multiplier = 1.0
+similar_names = Array[String](["snow", "frost", "ice", "slush", "powder", "wintry", "frozen", "flurry"])
+soft_steps = Array[AudioStream]([ExtResource("122_l0qj2"), ExtResource("123_qnudo"), ExtResource("124_wkb5m"), ExtResource("125_egw3y"), ExtResource("126_krh7a")])
+med_steps = Array[AudioStream]([ExtResource("115_6yi75"), ExtResource("116_hsosy"), ExtResource("117_vrdg0"), ExtResource("118_xta42"), ExtResource("119_bijcj")])
+hard_steps = Array[AudioStream]([ExtResource("106_dew8o"), ExtResource("107_whmj1"), ExtResource("108_lau8k"), ExtResource("109_buko7"), ExtResource("110_nw5va")])
+scuffs = Array[AudioStream]([ExtResource("120_6r5ql"), ExtResource("121_1jrx5")])
+jumps = Array[AudioStream]([ExtResource("111_wnrel"), ExtResource("112_32yos")])
+landings = Array[AudioStream]([ExtResource("113_tmadn"), ExtResource("114_in7b5")])
+
+[sub_resource type="Resource" id="Resource_fk6nd"]
+resource_name = "Metal"
+script = ExtResource("1_q44ip")
+name = &"Metal"
+volume_multiplier = 1.0
+similar_names = Array[String](["metal", "steel", "iron", "aluminum", "tin", "copper", "brass", "bronze", "alloy", "rusty", "galvanized", "foil"])
+soft_steps = Array[AudioStream]([ExtResource("143_bt8sd"), ExtResource("144_ql0mi"), ExtResource("145_y86su"), ExtResource("146_bq2f6"), ExtResource("147_xtgwt")])
+med_steps = Array[AudioStream]([ExtResource("136_yteiv"), ExtResource("137_3reij"), ExtResource("138_sfx3a"), ExtResource("139_ne0t1"), ExtResource("140_ivato")])
+hard_steps = Array[AudioStream]([ExtResource("127_qbg0y"), ExtResource("128_o78d0"), ExtResource("129_weycf"), ExtResource("130_w7qyr"), ExtResource("131_jf5ye")])
+scuffs = Array[AudioStream]([ExtResource("141_kw6r6"), ExtResource("142_7qnru")])
+jumps = Array[AudioStream]([ExtResource("132_j0l7o"), ExtResource("133_qq0iv")])
+landings = Array[AudioStream]([ExtResource("134_1hbfd"), ExtResource("135_uefsf")])
+
+[sub_resource type="Resource" id="Resource_86abd"]
+resource_name = "Water/Mud"
+script = ExtResource("1_q44ip")
+name = &"Water/Mud"
+volume_multiplier = 0.5
+similar_names = Array[String](["water", "pond", "lake", "river", "stream", "ocean", "sea", "pool", "wet", "marsh", "mud", "swamp", "bog", "mire", "sludge"])
+soft_steps = Array[AudioStream]([ExtResource("164_nhdqo"), ExtResource("165_4miuu"), ExtResource("166_1hucb"), ExtResource("167_jfmvn"), ExtResource("168_dcheo")])
+med_steps = Array[AudioStream]([ExtResource("157_xrhnc"), ExtResource("158_cytl0"), ExtResource("159_8hxjr"), ExtResource("160_mb8dp"), ExtResource("161_btlb2")])
+hard_steps = Array[AudioStream]([ExtResource("148_0cuch"), ExtResource("149_ifb0q"), ExtResource("150_pdlh7"), ExtResource("151_5jpjy"), ExtResource("152_beyru")])
+scuffs = Array[AudioStream]([ExtResource("162_5q0ro"), ExtResource("163_o7gnf")])
+jumps = Array[AudioStream]([ExtResource("153_8c4vy"), ExtResource("154_xcq1n")])
+landings = Array[AudioStream]([ExtResource("155_3g5fu"), ExtResource("156_ntndw")])
+
+[sub_resource type="Resource" id="Resource_7qns8"]
+resource_name = "Fabric/Rug"
+script = ExtResource("1_q44ip")
+name = &"Fabric/Rug"
+volume_multiplier = 1.0
+similar_names = Array[String](["rug", "carpet", "fabric", "cloth", "textile", "velour", "velvet", "wool", "cotton", "pillow", "couch", "bed"])
+soft_steps = Array[AudioStream]([ExtResource("185_6powv"), ExtResource("186_uvyi1"), ExtResource("187_yxi0j"), ExtResource("188_xvomk"), ExtResource("189_vfl17")])
+med_steps = Array[AudioStream]([ExtResource("178_x18dv"), ExtResource("179_1qay2"), ExtResource("180_hlnne"), ExtResource("181_fdfk6"), ExtResource("182_y157o")])
+hard_steps = Array[AudioStream]([ExtResource("169_dvm6e"), ExtResource("170_qscl3"), ExtResource("171_12rw4"), ExtResource("172_fdswm"), ExtResource("173_1nlj5")])
+scuffs = Array[AudioStream]([ExtResource("183_ojr06"), ExtResource("184_bfjwx")])
+jumps = Array[AudioStream]([ExtResource("174_j43o8"), ExtResource("175_dbk33")])
+landings = Array[AudioStream]([ExtResource("176_bt0g3"), ExtResource("177_eb8xg")])
+
+[resource]
+resource_name = "Barefoot SFX"
+script = ExtResource("2_w8al2")
+name = &"Barefoot SFX"
+materials = Array[ExtResource("1_q44ip")]([SubResource("Resource_25gwb"), SubResource("Resource_utjaw"), SubResource("Resource_wrxko"), SubResource("Resource_d6504"), SubResource("Resource_qjyf8"), SubResource("Resource_pf5bi"), SubResource("Resource_fk6nd"), SubResource("Resource_86abd"), SubResource("Resource_7qns8")])

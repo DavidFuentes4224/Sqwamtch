@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d3vbfte230qqi"
+path="res://.godot/imported/Bare Step Snow Soft E.wav-a81a8d541840b537dfbeddc364b99a4f.sample"
+
+[deps]
+
+source_file="res://AutoFootStepsPlugin/DefaultSounds/Snow/Bare Step Snow Soft E.wav"
+dest_files=["res://.godot/imported/Bare Step Snow Soft E.wav-a81a8d541840b537dfbeddc364b99a4f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
