@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bjh2bq285256l"
+path="res://.godot/imported/Bare Step Water Hard D.wav-e9702329782f543d8c14789d870b1350.sample"
+
+[deps]
+
+source_file="res://AutoFootStepsPlugin/DefaultSounds/Water or Mud/Bare Step Water Hard D.wav"
+dest_files=["res://.godot/imported/Bare Step Water Hard D.wav-e9702329782f543d8c14789d870b1350.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

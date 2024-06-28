@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bjr80d8jpr4qe"
+path="res://.godot/imported/Bouncy Select.wav-19709fe6b60e93760b0e084d902c7cea.sample"
+
+[deps]
+
+source_file="res://Sound/Ovani/Ambient/Bouncy Select.wav"
+dest_files=["res://.godot/imported/Bouncy Select.wav-19709fe6b60e93760b0e084d902c7cea.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://c58sqf11l5hro"]
+[gd_scene load_steps=4 format=3 uid="uid://c58sqf11l5hro"]
 
 [ext_resource type="PackedScene" uid="uid://cbtatuxkkf15l" path="res://Nodes/Pickups/Pickup.tscn" id="1_122h8"]
 [ext_resource type="PackedScene" uid="uid://cqrbtg3qgiiwd" path="res://Assets/Chips/Chips.glb" id="2_fg0h6"]
+[ext_resource type="AudioStream" uid="uid://bjr80d8jpr4qe" path="res://Sound/Ovani/Ambient/Bouncy Select.wav" id="3_dts2l"]
 
 [node name="Pickup" instance=ExtResource("1_122h8")]
 
 [node name="Mesh" parent="." index="1" instance=ExtResource("2_fg0h6")]
 transform = Transform3D(0.38, 0, 0, 0, 0.38, 0, 0, 0, 0.38, 0, 0, 0)
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." index="2"]
+stream = ExtResource("3_dts2l")
 
 [editable path="Mesh"]

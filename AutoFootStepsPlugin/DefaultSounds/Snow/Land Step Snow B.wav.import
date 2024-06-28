@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b434x7hav73pl"
+path="res://.godot/imported/Land Step Snow B.wav-2ce73d7daeb705033c9f610f8f6038fb.sample"
+
+[deps]
+
+source_file="res://AutoFootStepsPlugin/DefaultSounds/Snow/Land Step Snow B.wav"
+dest_files=["res://.godot/imported/Land Step Snow B.wav-2ce73d7daeb705033c9f610f8f6038fb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

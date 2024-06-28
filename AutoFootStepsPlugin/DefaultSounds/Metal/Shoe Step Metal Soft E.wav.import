@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bx4qf2dlshwf5"
+path="res://.godot/imported/Shoe Step Metal Soft E.wav-33c4fa2f0f7f8d51e8c97a93e21dfd89.sample"
+
+[deps]
+
+source_file="res://AutoFootStepsPlugin/DefaultSounds/Metal/Shoe Step Metal Soft E.wav"
+dest_files=["res://.godot/imported/Shoe Step Metal Soft E.wav-33c4fa2f0f7f8d51e8c97a93e21dfd89.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

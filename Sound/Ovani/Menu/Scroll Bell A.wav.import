@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b1cumpeh0gu"
+path="res://.godot/imported/Scroll Bell A.wav-16b221da161d3b7aca86210e65c56d89.sample"
+
+[deps]
+
+source_file="res://Sound/Ovani/Menu/Scroll Bell A.wav"
+dest_files=["res://.godot/imported/Scroll Bell A.wav-16b221da161d3b7aca86210e65c56d89.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

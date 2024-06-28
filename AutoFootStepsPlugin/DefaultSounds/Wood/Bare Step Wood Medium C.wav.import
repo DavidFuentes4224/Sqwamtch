@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://6851xabr6qov"
+path="res://.godot/imported/Bare Step Wood Medium C.wav-f48a012e0125aad968224ecd644e4b47.sample"
+
+[deps]
+
+source_file="res://AutoFootStepsPlugin/DefaultSounds/Wood/Bare Step Wood Medium C.wav"
+dest_files=["res://.godot/imported/Bare Step Wood Medium C.wav-f48a012e0125aad968224ecd644e4b47.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

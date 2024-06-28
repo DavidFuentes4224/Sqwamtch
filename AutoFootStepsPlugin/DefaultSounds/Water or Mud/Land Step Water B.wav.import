@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b5pq7si5u4rve"
+path="res://.godot/imported/Land Step Water B.wav-50614abbc8e06412a0a836672e63956c.sample"
+
+[deps]
+
+source_file="res://AutoFootStepsPlugin/DefaultSounds/Water or Mud/Land Step Water B.wav"
+dest_files=["res://.godot/imported/Land Step Water B.wav-50614abbc8e06412a0a836672e63956c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

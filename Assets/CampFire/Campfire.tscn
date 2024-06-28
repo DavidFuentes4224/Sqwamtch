@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://cwku2bs42bo05"]
+[gd_scene load_steps=24 format=3 uid="uid://cwku2bs42bo05"]
 
 [ext_resource type="PackedScene" uid="uid://kejf2egod10g" path="res://Assets/CampFire/Campfire.glb" id="1_otvyn"]
 [ext_resource type="Shader" path="res://Misc/Fire.gdshader" id="2_2850b"]
 [ext_resource type="Texture2D" uid="uid://ctvlr7yfqvo30" path="res://Assets/Kenney/flame_05.png" id="3_ta37t"]
 [ext_resource type="Texture2D" uid="uid://dq1gg5nqxi5oo" path="res://Assets/Kenney/smoke_04.png" id="4_y5v5b"]
 [ext_resource type="Texture2D" uid="uid://b28l56m5pl0mr" path="res://Assets/Kenney/flame_04.png" id="5_3lalx"]
+[ext_resource type="AudioStream" uid="uid://dnf2gq5ckx0pm" path="res://Sound/Ovani/Ambient/Nice Calm Bonfire Loop.wav" id="6_587ct"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_snpmm"]
 noise_type = 2
@@ -143,3 +144,9 @@ light_color = Color(1, 0.783333, 0, 1)
 light_energy = 1.5
 spot_range = 4.81523
 spot_angle = 25.2841
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_587ct")
+volume_db = -24.983
+pitch_scale = 1.58
+autoplay = true

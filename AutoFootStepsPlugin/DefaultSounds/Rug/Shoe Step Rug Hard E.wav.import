@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://0v3roaow3tgx"
+path="res://.godot/imported/Shoe Step Rug Hard E.wav-7d65f57b362f4ea9dbed029d26cc65f0.sample"
+
+[deps]
+
+source_file="res://AutoFootStepsPlugin/DefaultSounds/Rug/Shoe Step Rug Hard E.wav"
+dest_files=["res://.godot/imported/Shoe Step Rug Hard E.wav-7d65f57b362f4ea9dbed029d26cc65f0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

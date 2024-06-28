@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b1yjvscag4ynf"
+path="res://.godot/imported/Shoe Step Water Hard C.wav-246bbb5db81c67579a75826a72aac580.sample"
+
+[deps]
+
+source_file="res://AutoFootStepsPlugin/DefaultSounds/Water or Mud/Shoe Step Water Hard C.wav"
+dest_files=["res://.godot/imported/Shoe Step Water Hard C.wav-246bbb5db81c67579a75826a72aac580.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

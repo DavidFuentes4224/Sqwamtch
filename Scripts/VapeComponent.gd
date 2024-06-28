@@ -7,6 +7,9 @@ extends Node3D
 @export var vapeEndRot : Vector3
 @onready var vapeLight : SpotLight3D = $VapeLight
 @export var vapeCloud : GPUParticles3D
+
+signal vapingStateChanged(isVaping:bool) 
+
 var vapeTime : float = 0.0
 
 var isVaping : bool = true:
@@ -39,6 +42,8 @@ func set_is_vaping(value:bool):
 	_set_flashlight(isVaping)
 	if !isVaping:
 		_puff()
+	
+	vapingStateChanged.emit(isVaping)
 	
 func _set_flashlight(isOn:bool) -> void:
 	vapeLight.light_energy = 1 if isOn else 0

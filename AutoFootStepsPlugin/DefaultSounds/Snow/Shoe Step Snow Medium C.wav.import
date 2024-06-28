@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bmato3f6bhnc5"
+path="res://.godot/imported/Shoe Step Snow Medium C.wav-e3aaa6906020b8b4457d8e019624f203.sample"
+
+[deps]
+
+source_file="res://AutoFootStepsPlugin/DefaultSounds/Snow/Shoe Step Snow Medium C.wav"
+dest_files=["res://.godot/imported/Shoe Step Snow Medium C.wav-e3aaa6906020b8b4457d8e019624f203.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

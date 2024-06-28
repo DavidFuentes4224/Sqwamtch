@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bvcqy28bemoyg"
+path="res://.godot/imported/Scuff Step Sand A.wav-cbc3d1ec1a86cd9b253236b4243cc7ec.sample"
+
+[deps]
+
+source_file="res://AutoFootStepsPlugin/DefaultSounds/Sand/Scuff Step Sand A.wav"
+dest_files=["res://.godot/imported/Scuff Step Sand A.wav-cbc3d1ec1a86cd9b253236b4243cc7ec.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
