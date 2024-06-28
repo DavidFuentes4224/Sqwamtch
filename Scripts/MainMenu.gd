@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var audioPlayer:AudioStreamPlayer2D = $AudioPlayer
 
-var mainScene = load("res://Nodes/Main.tscn")
+var mainScene = load("res://Nodes/Levels/Main.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -1,0 +1,64 @@
+[gd_scene load_steps=12 format=3 uid="uid://gfi0ywqljkr6"]
+
+[ext_resource type="PackedScene" uid="uid://bdabr4hwc78w3" path="res://Nodes/SpawnPoint.tscn" id="1_ejg7q"]
+[ext_resource type="PackedScene" uid="uid://djh6p5vpl0qh6" path="res://Nodes/FPS_Controller.tscn" id="2_p3pgt"]
+[ext_resource type="Environment" uid="uid://1eiyhr8tcklp" path="res://Misc/FoggyEnv.tres" id="3_muta6"]
+[ext_resource type="PackedScene" uid="uid://bnpna5xt3o0k8" path="res://Misc/MoodySun.tscn" id="4_31uvn"]
+[ext_resource type="PackedScene" uid="uid://dorwueuhbfxej" path="res://Terrain/LakeTerrain.tscn" id="5_v42iv"]
+[ext_resource type="PackedScene" uid="uid://c58sqf11l5hro" path="res://Nodes/Pickups/Chips.tscn" id="6_m4nuh"]
+[ext_resource type="PackedScene" uid="uid://1kt6juxlrc4h" path="res://Nodes/sqwamtch_enemy.tscn" id="7_x2gh2"]
+[ext_resource type="PackedScene" uid="uid://h3pykl87gex0" path="res://Misc/fps_counter.tscn" id="8_1ggae"]
+[ext_resource type="Script" path="res://Scripts/photo_taker.gd" id="9_g3xrn"]
+[ext_resource type="PackedScene" uid="uid://d1sr2jxw7eh73" path="res://Nodes/film_camera.tscn" id="9_tldo2"]
+[ext_resource type="PackedScene" uid="uid://cu438pyjavfwu" path="res://Nodes/camera_film.tscn" id="11_1hnm6"]
+
+[node name="Main" type="Node3D"]
+
+[node name="SpawnPoint" parent="." instance=ExtResource("1_ejg7q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6582, 38.7041, 47.9442)
+
+[node name="FPSController" parent="." instance=ExtResource("2_p3pgt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7255, 38.6927, 37.3006)
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = ExtResource("3_muta6")
+
+[node name="DirectionalLight3D" parent="Environment" instance=ExtResource("4_31uvn")]
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(0.416487, -0.645972, 0.639734, -1.45816e-08, 0.703668, 0.710529, -0.909142, -0.295926, 0.293068, 8.31324, 7.22204, 0)
+visible = false
+light_energy = 1.457
+light_volumetric_fog_energy = 4.556
+shadow_enabled = true
+
+[node name="Terrain" parent="." instance=ExtResource("5_v42iv")]
+
+[node name="Pickup" parent="." instance=ExtResource("6_m4nuh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18153, 43.5068, 8.47925)
+
+[node name="SqwamtchEnemy" parent="." node_paths=PackedStringArray("Player") instance=ExtResource("7_x2gh2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.48003, 43.2298, -4.52188)
+Player = NodePath("../FPSController")
+
+[node name="FPSCounter" parent="." instance=ExtResource("8_1ggae")]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="FilmCam" parent="SubViewport" instance=ExtResource("9_tldo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
+skeleton = NodePath("../..")
+
+[node name="PhotoTaker" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0250795, 0)
+script = ExtResource("9_g3xrn")
+film_asset = ExtResource("11_1hnm6")
+
+[connection signal="before_take_photo" from="PhotoTaker" to="SubViewport/FilmCam" method="_on_photo_taker_before_take_photo"]
+[connection signal="camera_ready" from="PhotoTaker" to="SubViewport/FilmCam" method="on_camera_reset"]
+[connection signal="take_photo" from="PhotoTaker" to="FPSController" method="_on_photo_taker_take_photo"]
+[connection signal="take_photo" from="PhotoTaker" to="SubViewport/FilmCam" method="on_photo_taken"]

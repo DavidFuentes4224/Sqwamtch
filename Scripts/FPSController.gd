@@ -14,10 +14,13 @@ var isSprinting : bool = false:
 	set = _set_is_sprinting
 var cooldownStarted : bool = false
 
+@onready var film_camera:Node3D = get_tree().get_first_node_in_group("FilmCamera")
+
 @onready var camera := $Camera3D
 @onready var ui : UI = $UI
 @onready var sack:MeshInstance3D=$Camera3D/SackMesh
 @onready var debugRayHelper:DebugRayHelper = get_node("/root/DebugRayHelper")
+@onready var filmCameraPos:Node3D = $Camera3D/FilmCameraSocket
 
 var items:int:
 	set = _set_items
@@ -56,6 +59,9 @@ func _process(delta):
 		sprintModification = 1
 	else:
 		sprintModification = 1
+		
+	film_camera.position = filmCameraPos.global_position
+	film_camera.rotation = filmCameraPos.global_rotation
 	
 func _physics_process(delta):
 	#no need to process physics when captured
@@ -144,3 +150,6 @@ func _end_capture():
 	isCaptured = false
 	var tween = get_tree().create_tween()
 	tween.tween_property(sack, "position:y", 1.0, 0.2).set_trans(Tween.TRANS_SINE)
+
+func _on_photo_taker_take_photo(texture:ImageTexture):
+	ui.update_photo_ui(texture)

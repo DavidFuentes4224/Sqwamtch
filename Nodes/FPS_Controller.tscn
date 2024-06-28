@@ -62,6 +62,7 @@ shape = SubResource("CapsuleShape3D_0mgwr")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63274, 0)
+current = true
 
 [node name="VapePen" parent="Camera3D" node_paths=PackedStringArray("vapeCloud") instance=ExtResource("2_xtpyj")]
 transform = Transform3D(0.0432072, 0, 0, 0, 0.0432072, 0, 0, 0, 0.0432072, 0.527411, -0.809914, -0.953199)
@@ -99,6 +100,12 @@ draw_pass_1 = SubResource("QuadMesh_m8acc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.3)
 material_override = SubResource("StandardMaterial3D_5af31")
 mesh = SubResource("QuadMesh_yyllo")
+
+[node name="FilmCameraSocket" type="Node3D" parent="Camera3D"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.132, -0.238, -0.247)
+
+[node name="Marker3D" type="Marker3D" parent="Camera3D/FilmCameraSocket"]
+gizmo_extents = 0.45
 
 [node name="UI" parent="." instance=ExtResource("4_lf404")]
 

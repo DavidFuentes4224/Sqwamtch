@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://cu438pyjavfwu"]
+
+[ext_resource type="Script" path="res://Scripts/polaroid.gd" id="1_kw0wb"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_3r3r8"]
+size = Vector2(1, 1.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g2mwn"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_c4tdr"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_w3lat"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n1pql"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ImageTexture_w3lat")
+clearcoat_enabled = true
+clearcoat_roughness = 0.34
+
+[node name="Polaroid" type="Node3D"]
+script = ExtResource("1_kw0wb")
+
+[node name="PictureBackMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_3r3r8")
+surface_material_override/0 = SubResource("StandardMaterial3D_g2mwn")
+
+[node name="PictureMesh" type="MeshInstance3D" parent="PictureBackMesh"]
+transform = Transform3D(0.862209, 0, 0, 0, 0.862209, 0, 0, 0, 0.862209, 0, 0.109775, 0.00513756)
+mesh = SubResource("QuadMesh_c4tdr")
+surface_material_override/0 = SubResource("StandardMaterial3D_n1pql")
