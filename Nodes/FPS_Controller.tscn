@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://djh6p5vpl0qh6"]
 
 [ext_resource type="Script" path="res://Scripts/FPSController.gd" id="1_autb6"]
-[ext_resource type="PackedScene" uid="uid://dowap4odm1r6i" path="res://Assets/Vape/vape Kangertech.fbx" id="2_xtpyj"]
+[ext_resource type="PackedScene" uid="uid://dlx3vpjnwir3l" path="res://Assets/Vape/Vape.glb" id="2_xtpyj"]
 [ext_resource type="Script" path="res://Scripts/VapeComponent.gd" id="3_5xwvt"]
 [ext_resource type="Texture2D" uid="uid://bp07jcxy40tte" path="res://Assets/Textures/TCom_FabricPlain0083_1_seamless_S.png" id="4_0otw1"]
 [ext_resource type="PackedScene" uid="uid://8x6uwy2ygtl1" path="res://Nodes/UI/PlayerUI.tscn" id="4_lf404"]

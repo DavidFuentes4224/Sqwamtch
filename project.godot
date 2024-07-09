@@ -29,6 +29,10 @@ window/size/initial_position_type=2
 
 enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg")
 
+[filesystem]
+
+import/fbx/enabled=false
+
 [input]
 
 Move_Left={

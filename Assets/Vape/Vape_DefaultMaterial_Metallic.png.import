@@ -2,18 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5k2y7ti0uqem"
-path.s3tc="res://.godot/imported/vape Kangertech-56b18d7c6d12e395aae2334c014c6bbd_ao_met_rough_DefaultMaterial_Metallic.png-b36a8bc4e19a5ef7a95c4a998d78822e.s3tc.ctex"
+uid="uid://geqvxitthv3e"
+path.s3tc="res://.godot/imported/Vape_DefaultMaterial_Metallic.png-1d95f9020db8c87e7eccb8272a35a51b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
+generator_parameters={
+"md5": "b58c4a95b2d8b7c50741a9b44bd56be4"
+}
 
 [deps]
 
-source_file="res://Assets/Vape/vape Kangertech-56b18d7c6d12e395aae2334c014c6bbd_ao_met_rough_DefaultMaterial_Metallic.png"
-dest_files=["res://.godot/imported/vape Kangertech-56b18d7c6d12e395aae2334c014c6bbd_ao_met_rough_DefaultMaterial_Metallic.png-b36a8bc4e19a5ef7a95c4a998d78822e.s3tc.ctex"]
+source_file="res://Assets/Vape/Vape_DefaultMaterial_Metallic.png"
+dest_files=["res://.godot/imported/Vape_DefaultMaterial_Metallic.png-1d95f9020db8c87e7eccb8272a35a51b.s3tc.ctex"]
 
 [params]
 

@@ -2,18 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccmdews6qlo1x"
-path.s3tc="res://.godot/imported/vape Kangertech-56b18d7c6d12e395aae2334c014c6bbd_DefaultMaterial_Base_Color.png-8a1a36f837d7405e63a51d92539f0a20.s3tc.ctex"
+uid="uid://bjseis86sdbpt"
+path.s3tc="res://.godot/imported/Vape_DefaultMaterial_Base_Color-DefaultMaterial_Opacity.png-69413995fd02746255f049dfb0cf0f63.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
+generator_parameters={
+"md5": "1a2f0bcb707a2d60fe87273b849c9aa5"
+}
 
 [deps]
 
-source_file="res://Assets/Vape/vape Kangertech-56b18d7c6d12e395aae2334c014c6bbd_DefaultMaterial_Base_Color.png"
-dest_files=["res://.godot/imported/vape Kangertech-56b18d7c6d12e395aae2334c014c6bbd_DefaultMaterial_Base_Color.png-8a1a36f837d7405e63a51d92539f0a20.s3tc.ctex"]
+source_file="res://Assets/Vape/Vape_DefaultMaterial_Base_Color-DefaultMaterial_Opacity.png"
+dest_files=["res://.godot/imported/Vape_DefaultMaterial_Base_Color-DefaultMaterial_Opacity.png-69413995fd02746255f049dfb0cf0f63.s3tc.ctex"]
 
 [params]
 
