@@ -10,7 +10,7 @@ extends CharacterBody3D
 @export var searchRadius:float = 20.0
 @export var sightDistance:float = 20.0
 @export var sightAngle:float = deg_to_rad(75.0)
-@onready var eyes:Node3D = $Sqwamtch/Eyes
+@onready var eyes:Node3D = get_tree().get_first_node_in_group("EnemyEyes")
 
 #options
 @export var DrawDebugRays:bool = false
@@ -18,7 +18,7 @@ extends CharacterBody3D
 #references
 @onready var navAgent := $NavigationAgent3D
 @onready var mesh := $Sqwamtch
-@onready var animTree = $Sqwamtch/AnimationTree
+@onready var animTree:AnimationTree = get_tree().get_first_node_in_group("EnemyAnimTree")
 @onready var behaviorStateMachine : BehaviorStateMachine = $StateMachine
 @onready var debugRayHelper = get_node("/root/DebugRayHelper")
 @onready var VisionPoller:Poller = $RayTimer
@@ -62,9 +62,10 @@ func _physics_process(delta):
 	if dist < 10 and !isAttacking and !isReturningPlayer:
 		_try_attack()
 
-
 func _try_attack() ->void:
 	isAttacking = true
+		# sometimes the seek gets set to -1.0, always set it 0.8 instead
+	animTree.set("parameters/AttackSeek/seek_request", 0.8)
 	animTree.set("parameters/AttackShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	await get_tree().create_timer(2.0).timeout
 	isAttacking = false
@@ -99,8 +100,7 @@ func _process_animations() -> void:
 			animSpeed = 1
 		behaviorStateMachine.BehaviorState.IDLE:
 			animSpeed = 0
-					
-	animTree.set("parameters/Movement/blend_position", animSpeed)
+	animTree.set("parameters/Locomotion/blend_position", animSpeed)
 
 func _get_random_position_near_player() -> Vector3:
 	var currentPlayerPos = Player.global_position
@@ -168,6 +168,6 @@ func _on_idle_timer_timeout():
 func _on_capture_area_body_entered(body):
 	if body.is_in_group("Player"):
 		var player = body as Player
-		player._start_capture($Sqwamtch/HoldPosition)
+		player._start_capture(get_tree().get_first_node_in_group("HoldPosition"))
 		isReturningPlayer = true
 		behaviorStateMachine.currentState = BehaviorStateMachine.BehaviorState.RETURN

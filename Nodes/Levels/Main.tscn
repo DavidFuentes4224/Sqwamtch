@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://gfi0ywqljkr6"]
+[gd_scene load_steps=13 format=3 uid="uid://gfi0ywqljkr6"]
 
 [ext_resource type="PackedScene" uid="uid://bdabr4hwc78w3" path="res://Nodes/SpawnPoint.tscn" id="1_ejg7q"]
 [ext_resource type="PackedScene" uid="uid://djh6p5vpl0qh6" path="res://Nodes/FPS_Controller.tscn" id="2_p3pgt"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Scripts/photo_taker.gd" id="9_g3xrn"]
 [ext_resource type="PackedScene" uid="uid://d1sr2jxw7eh73" path="res://Nodes/film_camera.tscn" id="9_tldo2"]
 [ext_resource type="PackedScene" uid="uid://cu438pyjavfwu" path="res://Nodes/camera_film.tscn" id="11_1hnm6"]
+[ext_resource type="PackedScene" uid="uid://d07pqfwflwq4g" path="res://Nodes/photo_grader.tscn" id="12_w3xto"]
 
 [node name="Main" type="Node3D"]
 
@@ -57,6 +58,8 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0250795, 0)
 script = ExtResource("9_g3xrn")
 film_asset = ExtResource("11_1hnm6")
+
+[node name="PhotoGrader" parent="." instance=ExtResource("12_w3xto")]
 
 [connection signal="before_take_photo" from="PhotoTaker" to="SubViewport/FilmCam" method="_on_photo_taker_before_take_photo"]
 [connection signal="camera_ready" from="PhotoTaker" to="SubViewport/FilmCam" method="on_camera_reset"]

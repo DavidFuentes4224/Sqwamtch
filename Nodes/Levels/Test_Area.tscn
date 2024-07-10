@@ -1,10 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://dnbetsyspg7f1"]
+[gd_scene load_steps=17 format=3 uid="uid://dnbetsyspg7f1"]
 
 [ext_resource type="PackedScene" uid="uid://djh6p5vpl0qh6" path="res://Nodes/FPS_Controller.tscn" id="1_6ibw4"]
 [ext_resource type="Environment" uid="uid://cff7nt30ah6bl" path="res://Misc/FoggyEnvDark.tres" id="2_1t0lb"]
 [ext_resource type="PackedScene" uid="uid://d1sr2jxw7eh73" path="res://Nodes/film_camera.tscn" id="3_xs7wa"]
 [ext_resource type="Script" path="res://Scripts/photo_taker.gd" id="4_mtp5q"]
 [ext_resource type="PackedScene" uid="uid://cu438pyjavfwu" path="res://Nodes/camera_film.tscn" id="5_a7snp"]
+[ext_resource type="PackedScene" uid="uid://d07pqfwflwq4g" path="res://Nodes/photo_grader.tscn" id="6_yk7rx"]
+[ext_resource type="PackedScene" uid="uid://bt2cs3l4w0elj" path="res://Assets/Sqwamtch/sqwamtch_character.tscn" id="7_fmn67"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0rvcj"]
 
@@ -30,10 +32,14 @@ albedo_texture = SubResource("ViewportTexture_2s2lx")
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_mtsdm")
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sxs8a"]
+radius = 5.173
+height = 15.0
+
 [node name="Node3D" type="Node3D"]
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.95711, 1.00222, -5.39954)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.80966, 1.00222, -5.39954)
 mesh = SubResource("CylinderMesh_rkbv3")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
@@ -73,9 +79,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
 skeleton = NodePath("../..")
 
 [node name="PhotoTaker" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0250795, 0)
 script = ExtResource("4_mtp5q")
 film_asset = ExtResource("5_a7snp")
+
+[node name="PhotoGrader" parent="." instance=ExtResource("6_yk7rx")]
+
+[node name="Sqwamtch" parent="." instance=ExtResource("7_fmn67")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.727634, 0.0482574, -1.35093)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="Sqwamtch"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sqwamtch/CharacterBody3D" groups=["EnemyCollision"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.07946, 1.33981)
+shape = SubResource("CapsuleShape3D_sxs8a")
 
 [connection signal="before_take_photo" from="PhotoTaker" to="SubViewport/FilmCam" method="_on_photo_taker_before_take_photo"]
 [connection signal="camera_ready" from="PhotoTaker" to="SubViewport/FilmCam" method="on_camera_reset"]

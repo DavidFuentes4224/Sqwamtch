@@ -57,7 +57,7 @@ cough = ExtResource("5_3kqvy")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="VapeAudioController"]
 
-[node name="PlayerCollision" type="CollisionShape3D" parent="."]
+[node name="PlayerCollision" type="CollisionShape3D" parent="." groups=["PlayerCollision"]]
 shape = SubResource("CapsuleShape3D_0mgwr")
 
 [node name="Camera3D" type="Camera3D" parent="."]

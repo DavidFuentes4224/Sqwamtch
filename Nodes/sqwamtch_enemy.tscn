@@ -1,63 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://1kt6juxlrc4h"]
+[gd_scene load_steps=9 format=3 uid="uid://1kt6juxlrc4h"]
 
 [ext_resource type="PackedScene" uid="uid://bt2cs3l4w0elj" path="res://Assets/Sqwamtch/sqwamtch_character.tscn" id="1_2huep"]
 [ext_resource type="Script" path="res://Scripts/sqwamtch_enemy_script.gd" id="1_ym2oi"]
 [ext_resource type="Script" path="res://Scripts/StateMachine.gd" id="3_tjbod"]
-[ext_resource type="Texture2D" uid="uid://defmppac3d7m5" path="res://Assets/Sqwamtch/Sqwamtch_bfootemit.png" id="4_584hw"]
-[ext_resource type="Texture2D" uid="uid://crf0h8oybfmno" path="res://Assets/Sqwamtch/Sqwamtch_bfooot.png" id="4_ydh7n"]
 [ext_resource type="Script" path="res://Scripts/Poller.gd" id="6_psjws"]
 [ext_resource type="Script" path="res://AutoFootStepsPlugin/AutoFootSteps.gd" id="7_auo1w"]
 [ext_resource type="Resource" uid="uid://badwdqtfuxraf" path="res://AutoFootStepsPlugin/DefaultSounds/ShoeFootProfile.tres" id="8_jmc66"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ih1xm"]
-albedo_texture = ExtResource("4_ydh7n")
-emission_enabled = true
-emission_texture = ExtResource("4_584hw")
-
-[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_s0dvm"]
-filter_enabled = true
-filters = ["Armature/Skeleton3D:Head", "Armature/Skeleton3D:L_Arm1", "Armature/Skeleton3D:L_Arm2", "Armature/Skeleton3D:L_Hand", "Armature/Skeleton3D:L_Shoulder", "Armature/Skeleton3D:Neck", "Armature/Skeleton3D:R_Shoulder", "Armature/Skeleton3D:Spine1", "Armature/Skeleton3D:Spine2"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_13fib"]
-animation = &"Idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bgc5k"]
-animation = &"Walk"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dlye0"]
-animation = &"Run"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_4voii"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_13fib")
-blend_point_0/pos = 0.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_bgc5k")
-blend_point_1/pos = 0.3
-blend_point_2/node = SubResource("AnimationNodeAnimation_dlye0")
-blend_point_2/pos = 1.0
-min_space = 0.0
-value_label = "0.5"
-sync = true
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t5nn8"]
-animation = &"Swipe"
-
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_b8u7t"]
-
-[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_r1dqu"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_rlaln"]
-nodes/AttackShot/node = SubResource("AnimationNodeOneShot_s0dvm")
-nodes/AttackShot/position = Vector2(605.882, 251.817)
-nodes/Movement/node = SubResource("AnimationNodeBlendSpace1D_4voii")
-nodes/Movement/position = Vector2(260, 180)
-nodes/Swipe/node = SubResource("AnimationNodeAnimation_t5nn8")
-nodes/Swipe/position = Vector2(180, 360)
-nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_b8u7t")
-nodes/TimeScale/position = Vector2(460, 180)
-nodes/TimeSeek/node = SubResource("AnimationNodeTimeSeek_r1dqu")
-nodes/TimeSeek/position = Vector2(360, 360)
-nodes/output/position = Vector2(820, 260)
-node_connections = [&"AttackShot", 0, &"TimeScale", &"AttackShot", 1, &"TimeSeek", &"TimeScale", 0, &"Movement", &"TimeSeek", 0, &"Swipe", &"output", 0, &"AttackShot"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_di7cr"]
 radius = 0.768693
@@ -71,68 +19,7 @@ script = ExtResource("1_ym2oi")
 
 [node name="Sqwamtch" parent="." instance=ExtResource("1_2huep")]
 
-[node name="Armature" parent="Sqwamtch" index="0"]
-transform = Transform3D(0.729529, 0.0522307, -0.68195, 0.0016547, 0.996944, 0.0781257, 0.683946, -0.0581237, 0.727211, -0.925948, -0.809266, 0.975973)
-
-[node name="Skeleton3D" parent="Sqwamtch/Armature" index="0"]
-bones/2/rotation = Quaternion(0.157106, 0.0656124, -0.0220641, 0.985153)
-bones/3/rotation = Quaternion(0.0596067, 0.131436, -0.0410837, 0.988678)
-bones/4/rotation = Quaternion(0.043979, -0.0036804, 0.000796555, 0.999025)
-bones/5/rotation = Quaternion(-0.106726, -0.00370841, 0.000653851, 0.994281)
-bones/7/rotation = Quaternion(-0.0974008, 0.117312, -0.641953, 0.75143)
-bones/8/rotation = Quaternion(0.151583, -0.018034, -0.64877, 0.745516)
-bones/9/rotation = Quaternion(0.405362, 0.058067, 0.012344, 0.912227)
-bones/10/rotation = Quaternion(-0.120314, 0.786589, 0.0650012, 0.602144)
-bones/11/rotation = Quaternion(0.224985, 0.205053, 0.251579, 0.918718)
-bones/12/rotation = Quaternion(-0.0071727, 0.000578092, -0.00180743, 0.999972)
-bones/14/rotation = Quaternion(0.228408, -0.00360209, -0.0824242, 0.970063)
-bones/15/rotation = Quaternion(0.275863, 0.00175783, 0.0240877, 0.960894)
-bones/18/rotation = Quaternion(0.254681, -0.00492019, -0.116184, 0.960008)
-bones/19/rotation = Quaternion(0.336564, 0.0112978, 0.0492001, 0.940307)
-bones/22/rotation = Quaternion(-0.00515173, 0.0023194, 0.11099, 0.993805)
-bones/23/rotation = Quaternion(0.143275, -0.000726122, -0.00615402, 0.989663)
-bones/26/rotation = Quaternion(0.0862085, 0.0114931, -0.0362458, 0.995551)
-bones/27/rotation = Quaternion(0.190058, -0.00131564, 0.0146294, 0.981663)
-bones/30/rotation = Quaternion(-0.045199, -0.0636238, 0.662636, 0.744864)
-bones/31/rotation = Quaternion(-0.0731279, -0.0291896, 0.609471, 0.788889)
-bones/32/rotation = Quaternion(0.359676, 0.0280465, 0.0452499, 0.931557)
-bones/33/rotation = Quaternion(0.13401, -0.747969, 0.065375, 0.646769)
-bones/34/rotation = Quaternion(0.146237, -0.0686439, -0.286535, 0.944352)
-bones/35/rotation = Quaternion(0.0334098, 0.00151019, 0.180322, 0.983039)
-bones/37/rotation = Quaternion(0.147876, -0.0168364, 0.0189006, 0.988682)
-bones/38/rotation = Quaternion(0.320074, -0.00236313, -0.033782, 0.946787)
-bones/42/rotation = Quaternion(0.349084, -0.0121995, -0.0683001, 0.934519)
-bones/45/rotation = Quaternion(0.000235713, 0.0041038, -0.0402929, 0.99918)
-bones/46/rotation = Quaternion(0.147041, 0.000232252, 0.00911112, 0.989088)
-bones/49/rotation = Quaternion(0.0726594, 0.00140411, -0.0254018, 0.997032)
-bones/50/rotation = Quaternion(0.263096, 0.00138734, -0.0172488, 0.964614)
-bones/53/rotation = Quaternion(0.0788218, 0.298736, 0.940025, -0.144557)
-bones/54/rotation = Quaternion(-0.374851, 0.119943, -0.0964481, 0.91422)
-bones/55/rotation = Quaternion(0.722221, -0.0599351, -0.0314431, 0.688343)
-bones/57/rotation = Quaternion(-0.120293, 0.0608328, 0.976675, 0.16714)
-bones/58/rotation = Quaternion(-0.369974, 0.0608945, 0.0209148, 0.926808)
-bones/59/rotation = Quaternion(0.823153, 0.125899, 0.107004, 0.543248)
-
-[node name="bigfoot1" parent="Sqwamtch/Armature/Skeleton3D" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_ih1xm")
-
-[node name="AnimationTree" parent="Sqwamtch" index="2"]
-tree_root = SubResource("AnimationNodeBlendTree_rlaln")
-parameters/AttackShot/active = false
-parameters/AttackShot/internal_active = false
-parameters/AttackShot/request = 0
-parameters/Movement/blend_position = 0.0
-parameters/TimeScale/scale = 2.0
-parameters/TimeSeek/seek_request = 0.5
-
-[node name="Eyes" type="Node3D" parent="Sqwamtch"]
-
-[node name="HoldPosition" type="Node3D" parent="Sqwamtch"]
-transform = Transform3D(6.66667, 0, 0, 0, 6.66667, 0, 0, 0, 6.66667, -0.258192, 15.0991, 8.59947)
-
-[node name="Marker3D" type="Marker3D" parent="Sqwamtch/HoldPosition"]
-
-[node name="CharacterCollider" type="CollisionShape3D" parent="."]
+[node name="CharacterCollider" type="CollisionShape3D" parent="." groups=["EnemyCollision"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32338, 0)
 shape = SubResource("CapsuleShape3D_di7cr")
 
@@ -171,5 +58,3 @@ walk_speed = 4.0
 [connection signal="timeout" from="RayTimer" to="." method="_on_ray_timer_timeout"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
 [connection signal="body_entered" from="CaptureArea" to="." method="_on_capture_area_body_entered"]
-
-[editable path="Sqwamtch"]
