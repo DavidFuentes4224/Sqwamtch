@@ -31,5 +31,5 @@ func update_photo_ui(texture:ImageTexture):
 	var overlay:ColorRect = text_rect.get_child(0)
 	overlay.visible = true
 	var tween = get_tree().create_tween()
-	tween.tween_property(overlay, "color", Color.TRANSPARENT, 1.0)
+	tween.tween_property(overlay, "color", Color.TRANSPARENT, 10.0)
 	current_photo += 1

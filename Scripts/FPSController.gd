@@ -13,6 +13,8 @@ var staminaRefill : float = 0.0:
 var isSprinting : bool = false:
 	set = _set_is_sprinting
 var cooldownStarted : bool = false
+var is_crouching:bool = false:
+	set = _set_is_crouching
 
 @onready var film_camera:Node3D = get_tree().get_first_node_in_group("FilmCamera")
 
@@ -51,15 +53,17 @@ func _process(delta):
 		inputVector = Vector2.ZERO
 		position = holdPos.global_position
 	
-	if isSprinting and sprintDuration > 0.0:
+	if is_crouching:
+		sprintModification = 0.5
+	elif isSprinting and sprintDuration > 0.0:
 		sprintDuration -= delta * sprintDrainModifier
 		sprintModification = 2
-	elif cooldownStarted:
-		staminaRefill += delta
-		sprintModification = 1
 	else:
 		sprintModification = 1
-		
+
+	if cooldownStarted:
+		staminaRefill += delta
+
 	film_camera.position = filmCameraPos.global_position
 	film_camera.rotation = filmCameraPos.global_rotation
 	
@@ -86,6 +90,11 @@ func _input(event):
 		isSprinting = false
 	elif event.is_action("Pause"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+	if event.is_action_pressed("Crouch"):
+		is_crouching = true
+	elif event.is_action_released("Crouch"):
+		is_crouching = false
 	
 func pick_up_item(pickup:Pickup) -> void:
 	items += 1
@@ -109,7 +118,7 @@ func _set_is_sprinting(spriting:bool) -> void:
 	if isSprinting:
 		ui.reset_refill_bar()
 	else:
-		if sprintDuration > 0:
+		if sprintDuration > 0 and !is_crouching:
 			staminaRefill = sprintDuration
 		cooldownStarted = true
 	
@@ -132,6 +141,13 @@ func _set_sprint_duration(amount:float) -> void:
 func _set_items(amount:int) -> void:
 	items = amount
 	ui.update_items_count(items, maxItems)
+	
+func _set_is_crouching(value:bool) ->void:
+	if (value != is_crouching):
+		var tween = get_tree().create_tween()
+		var collision:CollisionShape3D = $PlayerCollision
+		tween.tween_property(collision, "shape:height", 0.6 if value else 2.0, 0.2).set_trans(Tween.TRANS_SINE).from_current()
+	is_crouching = value
 	
 func _rotate_player(rot:Vector2) -> void:
 	rotation.y -= rot.x / rotationSpeed

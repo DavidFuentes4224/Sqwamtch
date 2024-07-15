@@ -65,7 +65,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63274, 0)
 current = true
 
 [node name="VapePen" parent="Camera3D" node_paths=PackedStringArray("vapeCloud") instance=ExtResource("2_xtpyj")]
-transform = Transform3D(0.0432072, 0, 0, 0, 0.0432072, 0, 0, 0, 0.0432072, 0.527411, -0.809914, -0.953199)
+transform = Transform3D(0.0432072, 0, 0, 0, 0.0432072, 0, 0, 0, 0.0432072, 0.520084, -0.809914, -0.7101)
 script = ExtResource("3_5xwvt")
 vapeEndPos = Vector3(0, -0.3, -0.38)
 vapeEndRot = Vector3(0.8, 0, 0)

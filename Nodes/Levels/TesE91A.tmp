@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dnbetsyspg7f1"]
+[gd_scene load_steps=20 format=3 uid="uid://dnbetsyspg7f1"]
 
 [ext_resource type="PackedScene" uid="uid://djh6p5vpl0qh6" path="res://Nodes/FPS_Controller.tscn" id="1_6ibw4"]
 [ext_resource type="Environment" uid="uid://cff7nt30ah6bl" path="res://Misc/FoggyEnvDark.tres" id="2_1t0lb"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://d07pqfwflwq4g" path="res://Nodes/photo_grader.tscn" id="6_yk7rx"]
 [ext_resource type="PackedScene" uid="uid://bt2cs3l4w0elj" path="res://Assets/Sqwamtch/sqwamtch_character.tscn" id="7_fmn67"]
 [ext_resource type="PackedScene" uid="uid://cu2phmfrhmddc" path="res://Nodes/hide_area.tscn" id="8_wkdkn"]
+[ext_resource type="Script" path="res://Scripts/enemy_vision_debug.gd" id="9_ixntp"]
+[ext_resource type="PackedScene" uid="uid://j3ga4gog74g3" path="res://Nodes/enemy_vision_debug.tscn" id="10_7takh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0rvcj"]
 
@@ -96,6 +98,10 @@ shape = SubResource("CapsuleShape3D_sxs8a")
 
 [node name="HideArea" parent="." instance=ExtResource("8_wkdkn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.232067, 0.560363, 4.52386)
+script = ExtResource("9_ixntp")
+
+[node name="EnemyVisionDebug" parent="." instance=ExtResource("10_7takh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.582873, 2.11242, -0.539481)
 
 [connection signal="before_take_photo" from="PhotoTaker" to="SubViewport/FilmCam" method="_on_photo_taker_before_take_photo"]
 [connection signal="camera_ready" from="PhotoTaker" to="SubViewport/FilmCam" method="on_camera_reset"]
