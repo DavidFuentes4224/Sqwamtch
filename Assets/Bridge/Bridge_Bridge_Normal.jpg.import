@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cvt2mrnu015y4"
+path.s3tc="res://.godot/imported/Bridge_Bridge_Normal.jpg-5abcbd88e0d9db4b53a21aac00e83f13.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "2d3ca967e174ceaa8b91b95c8779e27f"
+}
+
+[deps]
+
+source_file="res://Assets/Bridge/Bridge_Bridge_Normal.jpg"
+dest_files=["res://.godot/imported/Bridge_Bridge_Normal.jpg-5abcbd88e0d9db4b53a21aac00e83f13.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://Assets/Bridge/Bridge_Bridge_Normal.jpg"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

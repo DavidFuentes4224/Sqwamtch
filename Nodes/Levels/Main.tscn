@@ -43,7 +43,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18153, 43.5068, 8.47925)
 
 [node name="SqwamtchEnemy" parent="." node_paths=PackedStringArray("Player") instance=ExtResource("7_x2gh2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.48003, 43.2298, -4.52188)
-DrawDebugRays = true
 Player = NodePath("../FPSController")
 
 [node name="FPSCounter" parent="." instance=ExtResource("8_1ggae")]

@@ -64,8 +64,8 @@ func _process(delta):
 	if cooldownStarted:
 		staminaRefill += delta
 
-	film_camera.position = filmCameraPos.global_position
-	film_camera.rotation = filmCameraPos.global_rotation
+	#film_camera.position = filmCameraPos.global_position
+	#film_camera.rotation = filmCameraPos.global_rotation
 	
 func _physics_process(delta):
 	#no need to process physics when captured

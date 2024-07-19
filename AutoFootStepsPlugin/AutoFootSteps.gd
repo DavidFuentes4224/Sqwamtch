@@ -181,7 +181,7 @@ func _refresh_foot_material(ray_distance : float = .5):
 	if "collider" not in raycast_response:
 		current_material = AIR_NAME
 		return
-	var hit_collider : CollisionObject3D = raycast_response["collider"]
+	var hit_collider = raycast_response["collider"]
 	
 	#figure/process if this collider is tagged
 	for col_child in hit_collider.get_children():

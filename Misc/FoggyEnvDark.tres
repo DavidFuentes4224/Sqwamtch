@@ -2,7 +2,8 @@
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yso5v"]
 sky_top_color = Color(0.0784314, 0.0941176, 0.219608, 1)
-sky_horizon_color = Color(0.0313726, 0.0509804, 0.0901961, 1)
+sky_horizon_color = Color(0.037558, 0.0501906, 0.0842209, 1)
+sky_curve = 0.212132
 ground_horizon_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Sky" id="Sky_oo5c1"]
@@ -15,7 +16,7 @@ sky = SubResource("Sky_oo5c1")
 ambient_light_color = Color(0.0784314, 0.192157, 0.211765, 1)
 ambient_light_sky_contribution = 0.89
 ambient_light_energy = 0.68
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.1
+fog_light_energy = 0.3
+fog_density = 0.0027
+fog_sky_affect = 0.507
 volumetric_fog_albedo = Color(0.3762, 0.49571, 0.57, 1)
-volumetric_fog_ambient_inject = 0.5
