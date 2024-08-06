@@ -83,8 +83,7 @@ func _check_can_see_player() -> bool:
 	query.collide_with_areas = true
 	var result = spaceState.intersect_ray(query)
 	var forward = eyes.get_global_transform().basis.z
-	print_debug(result)
-	var canSeePlayer:bool = !result.is_empty() && result.collider.is_in_group("Player") && forward.angle_to(dir) < sightAngle
+	var canSeePlayer:bool = !result.is_empty() && result.collider != null && result.collider.is_in_group("Player") && forward.angle_to(dir) < sightAngle
 	if DrawDebugRays:
 		debugRayHelper.draw_ray(eyes.global_position, eyes.global_position + (forward.rotated(Vector3.UP, sightAngle) * sightDistance), Color(1,1,1))
 		debugRayHelper.draw_ray(eyes.global_position, eyes.global_position + (forward.rotated(Vector3.UP, -sightAngle) * sightDistance), Color(1,1,1))

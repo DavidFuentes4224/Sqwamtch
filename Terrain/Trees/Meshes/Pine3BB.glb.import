@@ -1,0 +1,41 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://idmfdcrpnddx"
+path="res://.godot/imported/Pine3BB.glb-7730803a82e8c3b76f2f10f60b8e00db.scn"
+
+[deps]
+
+source_file="res://Terrain/Trees/Meshes/Pine3BB.glb"
+dest_files=["res://.godot/imported/Pine3BB.glb-7730803a82e8c3b76f2f10f60b8e00db.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"Billboard": {
+"use_external/enabled": true,
+"use_external/path": "res://Terrain/Trees/Textures/Tree_BB.material"
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=0

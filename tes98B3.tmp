@@ -1,0 +1,80 @@
+[gd_scene load_steps=13 format=3 uid="uid://dwwptiak4467i"]
+
+[ext_resource type="Terrain3DStorage" uid="uid://dgefit583lco4" path="res://Terrain/test_terrain.res" id="1_h6pnm"]
+[ext_resource type="PackedScene" uid="uid://1kt6juxlrc4h" path="res://Nodes/sqwamtch_enemy.tscn" id="2_c4dvy"]
+[ext_resource type="PackedScene" uid="uid://bdabr4hwc78w3" path="res://Nodes/SpawnPoint.tscn" id="3_tjm00"]
+[ext_resource type="PackedScene" uid="uid://djh6p5vpl0qh6" path="res://Nodes/FPS_Controller.tscn" id="4_k6jq5"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_a1l2m"]
+
+[sub_resource type="Gradient" id="Gradient_f8c6s"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vp2rr"]
+noise_type = 2
+frequency = 0.03
+cellular_jitter = 3.0
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 50.0
+domain_warp_fractal_type = 2
+domain_warp_fractal_lacunarity = 1.5
+domain_warp_fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_a85bf"]
+seamless = true
+color_ramp = SubResource("Gradient_f8c6s")
+noise = SubResource("FastNoiseLite_vp2rr")
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_g2d55"]
+_shader_parameters = {
+"blend_sharpness": 0.87,
+"height_blending": true,
+"macro_variation1": Color(1, 1, 1, 1),
+"macro_variation2": Color(1, 1, 1, 1),
+"noise1_angle": 0.0,
+"noise1_offset": Vector2(0.5, 0.5),
+"noise1_scale": 0.04,
+"noise2_scale": 0.076,
+"noise3_scale": 0.225,
+"noise_texture": SubResource("NoiseTexture2D_a85bf"),
+"vertex_normals_distance": 128.0
+}
+show_checkered = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cyslb"]
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_tkmaa"]
+height_offset = 0.5
+density = 10.0
+material_override = SubResource("StandardMaterial3D_cyslb")
+generated_type = 1
+
+[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_ur7rp"]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_tkmaa")])
+
+[node name="Node3D" type="Node3D"]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_a1l2m")
+
+[node name="Terrain3D" type="Terrain3D" parent="NavigationRegion3D"]
+storage = ExtResource("1_h6pnm")
+material = SubResource("Terrain3DMaterial_g2d55")
+assets = SubResource("Terrain3DAssets_ur7rp")
+
+[node name="SqwamtchEnemy" parent="NavigationRegion3D" node_paths=PackedStringArray("Player") instance=ExtResource("2_c4dvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.6114, 0, -15.3534)
+Player = NodePath("../../FPSController")
+
+[node name="SpawnPoint" parent="." instance=ExtResource("3_tjm00")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -112.346, 0.35252, -59.1179)
+
+[node name="FPSController" parent="." instance=ExtResource("4_k6jq5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -127.895, 0.576542, -21.572)

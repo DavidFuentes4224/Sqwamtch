@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://durc22kf5ax3e"
+uid="uid://c8h0ksikha4o6"
 path="res://.godot/imported/PineMedium1.glb-8547e5df5a1bed5f73db50af761c76c0.scn"
 
 [deps]
@@ -29,6 +29,17 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"Bark": {
+"use_external/enabled": true,
+"use_external/path": "res://Terrain/Trees/Textures/Tree_Trunk.material"
+},
+"Leaves": {
+"use_external/enabled": true,
+"use_external/path": "res://Terrain/Trees/Textures/Tree_Leaves.material"
+}
+}
+}
 gltf/naming_version=1
-gltf/embedded_image_handling=1
+gltf/embedded_image_handling=0

@@ -3,20 +3,26 @@
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bg4g5"]
 sky_top_color = Color(0.0705882, 0.105882, 0.2, 1)
 sky_horizon_color = Color(0.0496267, 0.0264, 0.08, 1)
+sky_curve = 0.139955
 ground_horizon_color = Color(0.105457, 0.0561, 0.17, 1)
+ground_curve = 0.576799
 
 [sub_resource type="Sky" id="Sky_vfujt"]
 sky_material = SubResource("ProceduralSkyMaterial_bg4g5")
 
 [resource]
 background_mode = 2
+background_energy_multiplier = 2.67
 sky = SubResource("Sky_vfujt")
 ambient_light_source = 3
-ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.0
 reflected_light_source = 2
 fog_enabled = true
-fog_light_color = Color(0.2465, 0.263175, 0.29, 1)
-fog_light_energy = 0.1
-fog_sun_scatter = 1.0
-fog_density = 0.0401
-fog_sky_affect = 0.153
+fog_light_color = Color(0.238, 0.2541, 0.28, 1)
+fog_sky_affect = 0.731
+volumetric_fog_density = 0.0873
+volumetric_fog_emission_energy = 0.0
+adjustment_enabled = true
+adjustment_brightness = 0.68
+adjustment_contrast = 0.9
+adjustment_saturation = 1.21

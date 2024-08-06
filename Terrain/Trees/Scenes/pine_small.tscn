@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccmiwkk1lain2"]
+
+[ext_resource type="PackedScene" uid="uid://j5h3f5fjmc22" path="res://Terrain/Trees/Meshes/PineSmall.glb" id="1_202h2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0g1le"]
+radius = 0.703069
+height = 2.79677
+
+[node name="PineSmall" instance=ExtResource("1_202h2")]
+
+[node name="Area3D" type="Area3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39558, 0)
+shape = SubResource("CapsuleShape3D_0g1le")

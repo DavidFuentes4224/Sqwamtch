@@ -1,0 +1,22 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdsb8q8fmub85"]
+
+[ext_resource type="Script" path="res://Scripts/TreeWithCollision.gd" id="1_jxudo"]
+[ext_resource type="PackedScene" uid="uid://dmabb2f5v88mo" path="res://Terrain/Trees/Meshes/Pine01.glb" id="1_tbv77"]
+[ext_resource type="PackedScene" uid="uid://cww37iwputpyw" path="res://Terrain/Trees/Meshes/Pine02.glb" id="3_moq75"]
+[ext_resource type="PackedScene" uid="uid://ckx82t2d45awt" path="res://Terrain/Trees/Meshes/Pine03.glb" id="4_t6od5"]
+[ext_resource type="PackedScene" uid="uid://b4cplrecklia6" path="res://Terrain/Trees/Meshes/PineDead2.glb" id="5_tvtxl"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ox1sy"]
+height = 4.216
+
+[node name="TreeWithCollision" type="Node3D"]
+script = ExtResource("1_jxudo")
+trees = Array[PackedScene]([ExtResource("1_tbv77"), ExtResource("3_moq75"), ExtResource("4_t6od5"), ExtResource("5_tvtxl")])
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09271, 0)
+shape = SubResource("CapsuleShape3D_ox1sy")
+
+[node name="Pine01" parent="." instance=ExtResource("1_tbv77")]

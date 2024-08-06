@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bdabr4hwc78w3" path="res://Nodes/SpawnPoint.tscn" id="1_ejg7q"]
 [ext_resource type="PackedScene" uid="uid://djh6p5vpl0qh6" path="res://Nodes/FPS_Controller.tscn" id="2_p3pgt"]
-[ext_resource type="Environment" uid="uid://1eiyhr8tcklp" path="res://Misc/FoggyEnv.tres" id="3_muta6"]
+[ext_resource type="Environment" uid="uid://vjp08riy4myr" path="res://Misc/Sunny.tres" id="3_agwte"]
 [ext_resource type="PackedScene" uid="uid://bnpna5xt3o0k8" path="res://Misc/MoodySun.tscn" id="4_31uvn"]
 [ext_resource type="PackedScene" uid="uid://dorwueuhbfxej" path="res://Terrain/LakeTerrain.tscn" id="5_v42iv"]
 [ext_resource type="PackedScene" uid="uid://c58sqf11l5hro" path="res://Nodes/Pickups/Chips.tscn" id="6_m4nuh"]
@@ -25,7 +25,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7255, 38.6927, 37.3006)
 [node name="Environment" type="Node" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
-environment = ExtResource("3_muta6")
+environment = ExtResource("3_agwte")
 
 [node name="DirectionalLight3D" parent="Environment" instance=ExtResource("4_31uvn")]
 

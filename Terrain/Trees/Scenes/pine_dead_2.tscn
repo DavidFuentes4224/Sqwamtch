@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://qm64rbg76hx7"]
+
+[ext_resource type="PackedScene" uid="uid://b4cplrecklia6" path="res://Terrain/Trees/Meshes/PineDead2.glb" id="1_f7ugq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0g1le"]
+radius = 0.219934
+height = 5.00655
+
+[node name="PineDead2" instance=ExtResource("1_f7ugq")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.21663, 0)
+shape = SubResource("CapsuleShape3D_0g1le")

@@ -27,7 +27,7 @@ window/size/initial_position_type=2
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg", "res://addons/waterways/plugin.cfg")
+enabled=PackedStringArray("res://addons/proton_scatter/plugin.cfg", "res://addons/terrain_3d/plugin.cfg", "res://addons/waterways/plugin.cfg")
 
 [filesystem]
 

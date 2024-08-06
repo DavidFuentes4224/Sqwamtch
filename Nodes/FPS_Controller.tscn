@@ -38,7 +38,6 @@ material = SubResource("StandardMaterial3D_b67p8")
 size = Vector2(0.1, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5af31"]
-transparency = 1
 albedo_color = Color(0.47451, 0.407843, 0.231373, 1)
 albedo_texture = ExtResource("4_0otw1")
 albedo_texture_force_srgb = true
@@ -73,10 +72,13 @@ vapeCloud = NodePath("../CloudParticles")
 
 [node name="VapeLight" type="SpotLight3D" parent="Camera3D/VapePen" groups=["Player"]]
 transform = Transform3D(23.1443, 0, 0, 0, 4.39355, 22.7234, 0, -22.7234, 4.39355, 0, 0, 0)
-light_color = Color(0.631373, 1, 0.905882, 1)
+light_color = Color(0.713726, 1, 1, 1)
+light_energy = 5.0
 shadow_enabled = true
-spot_range = 8.61848
-spot_angle = 32.4768
+spot_range = 30.0
+spot_attenuation = 0.176777
+spot_angle = 39.1
+spot_angle_attenuation = 1.86607
 
 [node name="Label3D" type="Label3D" parent="Camera3D/VapePen/VapeLight"]
 transform = Transform3D(-0.013652, 0.0125969, -0.999828, 0.198983, 0.979956, 0.00962957, 0.979908, -0.198817, -0.0158851, -0.0327222, 0.0563962, 0.170984)
