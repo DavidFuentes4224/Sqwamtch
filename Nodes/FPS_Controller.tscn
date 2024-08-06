@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://djh6p5vpl0qh6"]
+[gd_scene load_steps=18 format=3 uid="uid://djh6p5vpl0qh6"]
 
 [ext_resource type="Script" path="res://Scripts/FPSController.gd" id="1_autb6"]
 [ext_resource type="PackedScene" uid="uid://dlx3vpjnwir3l" path="res://Assets/Vape/Vape.glb" id="2_xtpyj"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://g2gyudsrm5a7" path="res://Sound/Inhale.mp3" id="4_t3wtb"]
 [ext_resource type="AudioStream" uid="uid://c4jhbnpmj7yn" path="res://Sound/Cough.mp3" id="5_3kqvy"]
 [ext_resource type="AudioStream" uid="uid://sl6c6xey2lb3" path="res://Sound/Exhale.mp3" id="5_d6b85"]
+[ext_resource type="Script" path="res://Scripts/CameraHeadBob.gd" id="6_fu1w7"]
 [ext_resource type="Script" path="res://Scripts/VapeAudioController.gd" id="7_cjwev"]
 [ext_resource type="Script" path="res://AutoFootStepsPlugin/AutoFootSteps.gd" id="10_eoj3k"]
 
@@ -63,14 +64,19 @@ shape = SubResource("CapsuleShape3D_0mgwr")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63274, 0)
 current = true
 
-[node name="VapePen" parent="Camera3D" node_paths=PackedStringArray("vapeCloud") instance=ExtResource("2_xtpyj")]
+[node name="Holder" type="Node3D" parent="Camera3D"]
+script = ExtResource("6_fu1w7")
+MaxXOffset = 0.02
+bobScale = 1.25
+
+[node name="VapePen" parent="Camera3D/Holder" node_paths=PackedStringArray("vapeCloud") instance=ExtResource("2_xtpyj")]
 transform = Transform3D(0.0432072, 0, 0, 0, 0.0432072, 0, 0, 0, 0.0432072, 0.520084, -0.809914, -0.7101)
 script = ExtResource("3_5xwvt")
 vapeEndPos = Vector3(0, -0.3, -0.38)
 vapeEndRot = Vector3(0.8, 0, 0)
 vapeCloud = NodePath("../CloudParticles")
 
-[node name="VapeLight" type="SpotLight3D" parent="Camera3D/VapePen" groups=["Player"]]
+[node name="VapeLight" type="SpotLight3D" parent="Camera3D/Holder/VapePen" groups=["Player"]]
 transform = Transform3D(23.1443, 0, 0, 0, 4.39355, 22.7234, 0, -22.7234, 4.39355, 0, 0, 0)
 light_color = Color(0.713726, 1, 1, 1)
 light_energy = 5.0
@@ -80,13 +86,13 @@ spot_attenuation = 0.176777
 spot_angle = 39.1
 spot_angle_attenuation = 1.86607
 
-[node name="Label3D" type="Label3D" parent="Camera3D/VapePen/VapeLight"]
+[node name="Label3D" type="Label3D" parent="Camera3D/Holder/VapePen/VapeLight"]
 transform = Transform3D(-0.013652, 0.0125969, -0.999828, 0.198983, 0.979956, 0.00962957, 0.979908, -0.198817, -0.0158851, -0.0327222, 0.0563962, 0.170984)
 text = "100"
 font_size = 10
 outline_size = 2
 
-[node name="CloudParticles" type="GPUParticles3D" parent="Camera3D"]
+[node name="CloudParticles" type="GPUParticles3D" parent="Camera3D/Holder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.274622, -0.274581)
 emitting = false
 amount = 50
@@ -98,15 +104,16 @@ visibility_aabb = AABB(-4, -4, -4.15975, 8, 8, 8.3195)
 process_material = SubResource("ParticleProcessMaterial_405hn")
 draw_pass_1 = SubResource("QuadMesh_m8acc")
 
-[node name="SackMesh" type="MeshInstance3D" parent="Camera3D"]
+[node name="SackMesh" type="MeshInstance3D" parent="Camera3D/Holder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.3)
 material_override = SubResource("StandardMaterial3D_5af31")
 mesh = SubResource("QuadMesh_yyllo")
+skeleton = NodePath("../..")
 
-[node name="FilmCameraSocket" type="Node3D" parent="Camera3D"]
+[node name="FilmCameraSocket" type="Node3D" parent="Camera3D/Holder"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.132, -0.238, -0.247)
 
-[node name="Marker3D" type="Marker3D" parent="Camera3D/FilmCameraSocket"]
+[node name="Marker3D" type="Marker3D" parent="Camera3D/Holder/FilmCameraSocket"]
 gizmo_extents = 0.45
 
 [node name="UI" parent="." instance=ExtResource("4_lf404")]
@@ -117,4 +124,4 @@ script = ExtResource("10_eoj3k")
 volume_db = -9.0
 footstep_distance = 1.2
 
-[connection signal="vapingStateChanged" from="Camera3D/VapePen" to="VapeAudioController" method="_on_vape_pen_vaping_state_changed"]
+[connection signal="vapingStateChanged" from="Camera3D/Holder/VapePen" to="VapeAudioController" method="_on_vape_pen_vaping_state_changed"]

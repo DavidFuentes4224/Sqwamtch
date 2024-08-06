@@ -20,9 +20,10 @@ var is_crouching:bool = false:
 
 @onready var camera := $Camera3D
 @onready var ui : UI = $UI
-@onready var sack:MeshInstance3D=$Camera3D/SackMesh
+@onready var sack:MeshInstance3D=$Camera3D/Holder/SackMesh
 @onready var debugRayHelper:DebugRayHelper = get_node("/root/DebugRayHelper")
-@onready var filmCameraPos:Node3D = $Camera3D/FilmCameraSocket
+@onready var filmCameraPos:Node3D = $Camera3D/Holder/FilmCameraSocket
+@onready var cameraBobber = $Camera3D/Holder
 
 var items:int:
 	set = _set_items
@@ -79,6 +80,16 @@ func _physics_process(delta):
 	else:
 		velocity.y = 0
 		thrownVeloctiy = Vector3.ZERO
+	
+	var bob_amount = 0.1
+	if (velocity.length_squared() > 0.1):
+		if (is_crouching):
+			bob_amount = 0.7
+		elif (isSprinting):
+			bob_amount = 2.0
+		else:
+			bob_amount = 1.0
+	cameraBobber.set_speed(bob_amount)
 	move_and_slide()
 	
 func _input(event):
