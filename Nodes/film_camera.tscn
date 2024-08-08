@@ -1,33 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://d1sr2jxw7eh73"]
+[gd_scene load_steps=8 format=3 uid="uid://d1sr2jxw7eh73"]
 
 [ext_resource type="Script" path="res://Scripts/film_camera.gd" id="1_rldu8"]
 [ext_resource type="AudioStream" uid="uid://bdp731ilwnw20" path="res://Sound/CameraTakePicture.wav" id="2_cvjfh"]
 [ext_resource type="AudioStream" uid="uid://bxtg5vf73ekj3" path="res://Sound/CameraReset.wav" id="3_25g1a"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bfnd3"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_kymxp"]
-material = SubResource("StandardMaterial3D_bfnd3")
-size = Vector3(0.15, 0.05, 0.15)
-
-[sub_resource type="PrismMesh" id="PrismMesh_ojbbk"]
-size = Vector3(0.13, 0.145, 0.14)
-
-[sub_resource type="BoxMesh" id="BoxMesh_3xv3c"]
-size = Vector3(0.05, 0.05, 0.1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_advth"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lbkn5"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_yry21"]
-material = SubResource("StandardMaterial3D_lbkn5")
-top_radius = 0.03
-bottom_radius = 0.03
-height = 0.01
+[ext_resource type="PackedScene" uid="uid://dfolrxmu1jxvt" path="res://Assets/InstantCamera/InstantCamera.glb" id="4_xm0la"]
 
 [sub_resource type="Gradient" id="Gradient_ly5kp"]
 offsets = PackedFloat32Array(1)
@@ -39,42 +15,28 @@ width = 1
 
 [sub_resource type="AudioStream" id="AudioStream_ugi7u"]
 
-[node name="FilmCam" type="MeshInstance3D" groups=["FilmCamera"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0250795, 0)
-layers = 2
-mesh = SubResource("BoxMesh_kymxp")
+[node name="Cam" type="Node3D" groups=["FilmCamera"]]
 script = ExtResource("1_rldu8")
 take_picture = ExtResource("2_cvjfh")
 reset_camera = ExtResource("3_25g1a")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 2.16335e-15, 1, 0.372502, 0.928032, 1.62826e-08, -0.928032, 0.372502, -4.05655e-08, 0, 0.0687502, 0.034723)
-layers = 2
-mesh = SubResource("PrismMesh_ojbbk")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0309246, 0.0989058, -0.00322294)
-layers = 2
-mesh = SubResource("BoxMesh_3xv3c")
-surface_material_override/0 = SubResource("StandardMaterial3D_advth")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0772222, 0.0710098)
-mesh = SubResource("CylinderMesh_yry21")
+[node name="InstantCamera" parent="." instance=ExtResource("4_xm0la")]
+transform = Transform3D(0.411, 0, 0, 0, 0.411, 0, 0, 0, 0.4, 0.000927985, 2.43336e-05, 0)
 
 [node name="CameraReadyLight" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0425038, 0.112939, 0.0227466)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0796005, 0.138019, -0.00274669)
 modulate = Color(1, 0, 0, 1)
 texture = SubResource("GradientTexture1D_nxanf")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0250795, 0)
 stream = SubResource("AudioStream_ugi7u")
 
 [node name="Camera3D" type="Camera3D" parent="." groups=["CameraView"]]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.0878781, 0.141035)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.112958, 0.0758342)
 
 [node name="Flash" type="SpotLight3D" parent="."]
-transform = Transform3D(-0.998709, 0, 0.050802, 0, 1, 0, -0.050802, 0, -0.998709, -0.0385672, 0.114041, 0.0773596)
+transform = Transform3D(-0.998709, 0, 0.050802, 0, 1, 0, -0.050802, 0, -0.998709, -0.0767994, 0.139121, 0.0589796)
 light_energy = 0.0
 spot_range = 21.162
 spot_angle = 71.8154
