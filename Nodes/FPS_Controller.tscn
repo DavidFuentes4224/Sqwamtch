@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://djh6p5vpl0qh6"]
+[gd_scene load_steps=28 format=3 uid="uid://djh6p5vpl0qh6"]
 
 [ext_resource type="Script" path="res://Scripts/FPSController.gd" id="1_autb6"]
 [ext_resource type="PackedScene" uid="uid://dlx3vpjnwir3l" path="res://Assets/Vape/Vape.glb" id="2_xtpyj"]
@@ -11,7 +11,15 @@
 [ext_resource type="Script" path="res://Scripts/CameraHeadBob.gd" id="6_fu1w7"]
 [ext_resource type="Script" path="res://Scripts/VapeAudioController.gd" id="7_cjwev"]
 [ext_resource type="Texture2D" uid="uid://3x6gk1puthby" path="res://Assets/Kenney/smoke_01.png" id="9_q4fft"]
-[ext_resource type="Script" path="res://AutoFootStepsPlugin/AutoFootSteps.gd" id="10_eoj3k"]
+[ext_resource type="Script" path="res://Scripts/simple_footsteps_player.gd" id="12_kw6qn"]
+[ext_resource type="AudioStream" uid="uid://b0ysooqxcyd8o" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Shoe Step Grass Medium A.wav" id="13_5un6h"]
+[ext_resource type="AudioStream" uid="uid://il8kxnc3naxa" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Shoe Step Grass Medium B.wav" id="14_6nsnc"]
+[ext_resource type="AudioStream" uid="uid://csku8pt1tmpjm" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Shoe Step Grass Medium C.wav" id="15_k8vnd"]
+[ext_resource type="AudioStream" uid="uid://4n2c2jmcdtjg" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Shoe Step Grass Medium D.wav" id="16_wn0gh"]
+[ext_resource type="AudioStream" uid="uid://ogfxfc8o3fpy" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Shoe Step Grass Medium E.wav" id="17_cjcug"]
+[ext_resource type="Script" path="res://Scripts/bush_audio_player.gd" id="18_mhpcn"]
+[ext_resource type="AudioStream" uid="uid://cyvikwv6qnti4" path="res://Sound/Bush.mp3" id="19_kd40y"]
+[ext_resource type="AudioStream" uid="uid://dipqxe1lrjc2s" path="res://Sound/Bush_Reverse.wav" id="20_mc21p"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0mgwr"]
 
@@ -48,6 +56,8 @@ albedo_texture = ExtResource("4_0otw1")
 albedo_texture_force_srgb = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_yyllo"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vvusd"]
 
 [node name="FPSController" type="CharacterBody3D" groups=["Player"]]
 collision_layer = 2
@@ -122,14 +132,21 @@ gizmo_extents = 0.45
 
 [node name="UI" parent="." instance=ExtResource("4_lf404")]
 
-[node name="AutoFootSteps" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.701316, 0)
-script = ExtResource("10_eoj3k")
-volume_db = -9.0
-footstep_distance = 1.2
+[node name="SimpleFootstepPlayer" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+script = ExtResource("12_kw6qn")
+footsteps = Array[AudioStream]([ExtResource("13_5un6h"), ExtResource("14_6nsnc"), ExtResource("15_k8vnd"), ExtResource("16_wn0gh"), ExtResource("17_cjcug")])
 
-[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0133362, 0.0469913, 0.0756998)
-size = Vector3(0.88031, 1.62982, 0.684692)
+[node name="TreeArea" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("18_mhpcn")
+enter_sound = ExtResource("19_kd40y")
+exit_sound = ExtResource("20_mc21p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TreeArea"]
+shape = SubResource("SphereShape3D_vvusd")
 
 [connection signal="vapingStateChanged" from="Camera3D/Holder/VapePen" to="VapeAudioController" method="_on_vape_pen_vaping_state_changed"]
+[connection signal="body_entered" from="TreeArea" to="TreeArea" method="_on_area_3d_area_entered"]
+[connection signal="body_exited" from="TreeArea" to="TreeArea" method="_on_area_3d_area_exited"]

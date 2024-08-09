@@ -1,11 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://1kt6juxlrc4h"]
+[gd_scene load_steps=7 format=3 uid="uid://1kt6juxlrc4h"]
 
 [ext_resource type="PackedScene" uid="uid://bt2cs3l4w0elj" path="res://Assets/Sqwamtch/sqwamtch_character.tscn" id="1_2huep"]
 [ext_resource type="Script" path="res://Scripts/sqwamtch_enemy_script.gd" id="1_ym2oi"]
 [ext_resource type="Script" path="res://Scripts/StateMachine.gd" id="3_tjbod"]
 [ext_resource type="Script" path="res://Scripts/Poller.gd" id="6_psjws"]
-[ext_resource type="Script" path="res://AutoFootStepsPlugin/AutoFootSteps.gd" id="7_auo1w"]
-[ext_resource type="Resource" uid="uid://badwdqtfuxraf" path="res://AutoFootStepsPlugin/DefaultSounds/ShoeFootProfile.tres" id="8_jmc66"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_di7cr"]
 radius = 0.768693
@@ -44,14 +42,6 @@ collision_mask = 2
 [node name="CaptureRadius" type="CollisionShape3D" parent="CaptureArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56178, 0)
 shape = SubResource("SphereShape3D_cnv7t")
-
-[node name="AutoFootSteps" type="Node3D" parent="."]
-script = ExtResource("7_auo1w")
-foot_profile = ExtResource("8_jmc66")
-audio_bus = &"SqwamtchFX"
-volume_db = 1.993
-footstep_distance = 1.8
-walk_speed = 4.0
 
 [connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_navigation_finished"]
 [connection signal="StateUpdated" from="StateMachine" to="." method="_on_state_machine_state_updated"]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dy7wpf3b07mgw"
+path="res://.godot/imported/Field Night Loop.wav-aa7d28d76d7df2cba6daa03c70c91338.sample"
+
+[deps]
+
+source_file="res://Sound/Ovani/Ambient/Field Night Loop.wav"
+dest_files=["res://.godot/imported/Field Night Loop.wav-aa7d28d76d7df2cba6daa03c70c91338.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

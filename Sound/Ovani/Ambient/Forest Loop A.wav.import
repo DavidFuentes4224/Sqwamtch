@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://6o2g2cfd3bn5"
+path="res://.godot/imported/Forest Loop A.wav-e8f129fd66e937592fbd48391813a11b.sample"
+
+[deps]
+
+source_file="res://Sound/Ovani/Ambient/Forest Loop A.wav"
+dest_files=["res://.godot/imported/Forest Loop A.wav-e8f129fd66e937592fbd48391813a11b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

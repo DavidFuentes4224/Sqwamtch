@@ -4,6 +4,8 @@ extends CharacterBody3D
 @export var movementSpeed := 200.0
 @export var rotationSpeed := 100.0
 @export var sprintModification : float = 1.0
+@export var max_distance_between_steps:float = 100.0
+@onready var distance_between_steps:float = max_distance_between_steps
 var sprintDrainModifier : float = 2.0
 var maxSprintDuration = 5.0 * sprintDrainModifier
 var sprintDuration : float:
@@ -24,6 +26,7 @@ var is_crouching:bool = false:
 @onready var debugRayHelper:DebugRayHelper = get_node("/root/DebugRayHelper")
 @onready var filmCameraPos:Node3D = $Camera3D/Holder/FilmCameraSocket
 @onready var cameraBobber = $Camera3D/Holder
+@onready var footstep_player = $SimpleFootstepPlayer
 
 var items:int:
 	set = _set_items
@@ -39,6 +42,9 @@ var maxPitch : float = deg_to_rad(90)
 @onready var isCaptured:bool=false
 @onready var holdPos:Node3D
 var thrownVeloctiy:Vector3
+
+var distance_travelled:float=0.0:
+	set = _set_distance_travelled
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -83,13 +89,17 @@ func _physics_process(delta):
 		thrownVeloctiy = Vector3.ZERO
 	
 	var bob_amount = 0.1
-	if (velocity.length_squared() > 0.1):
+	var vel_length = velocity.length()
+	if (vel_length > 0.1):
 		if (is_crouching):
 			bob_amount = 0.7
 		elif (isSprinting):
 			bob_amount = 2.0
 		else:
 			bob_amount = 1.0
+		distance_travelled += vel_length
+	else:
+		distance_travelled = 0.0
 	cameraBobber.set_speed(bob_amount)
 	move_and_slide()
 	
@@ -160,6 +170,7 @@ func _set_is_crouching(value:bool) ->void:
 		var collision:CollisionShape3D = $PlayerCollision
 		tween.tween_property(collision, "shape:height", 0.6 if value else 2.0, 0.2).set_trans(Tween.TRANS_SINE).from_current()
 	is_crouching = value
+	distance_between_steps = max_distance_between_steps * 0.7 if is_crouching else max_distance_between_steps
 	
 func _rotate_player(rot:Vector2) -> void:
 	rotation.y -= rot.x / rotationSpeed
@@ -181,3 +192,11 @@ func _end_capture():
 
 func _on_photo_taker_take_photo(texture:ImageTexture):
 	ui.update_photo_ui(texture)
+
+func _set_distance_travelled(distance:float):
+	if (distance_travelled != 0.0 and distance == 0.0):
+		footstep_player.play_footstep()
+	distance_travelled = distance
+	if (distance_travelled > distance_between_steps):
+		footstep_player.play_footstep()
+		distance_travelled = 0.0
