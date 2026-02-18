@@ -77,7 +77,6 @@ render_target_update_mode = 4
 
 [node name="FilmCam" parent="SubViewport" instance=ExtResource("3_xs7wa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
-skeleton = NodePath("../..")
 
 [node name="PhotoTaker" type="Node3D" parent="."]
 script = ExtResource("4_mtp5q")

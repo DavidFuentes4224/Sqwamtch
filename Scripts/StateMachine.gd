@@ -2,7 +2,7 @@ extends Node
 
 class_name BehaviorStateMachine
 
-enum BehaviorState {IDLE, SEARCH, CHASE, INVESTIGATE, RETURN}
+enum BehaviorState {IDLE, SEARCH, CHASE, INVESTIGATE, RETURN, FLEE}
 
 signal StateUpdated(newState:BehaviorState)
 

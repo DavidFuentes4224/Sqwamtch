@@ -25,12 +25,15 @@ extends CharacterBody3D
 @onready var Idletimer:Timer = $IdleTimer
 @export var Player : Player
 
+# 30 degrees
+var flee_angle_rad:float = 0.52
 var readyToNav := false
 var lookingForPlayer:bool = false
 var lastSeenPos:Vector3
 var isAttacking := false
 var isReturningPlayer := false
 var playerSpawn:Vector3
+var is_fleeing:=false
 
 func _ready():
 	navAgent.path_desired_distance = 0.5
@@ -83,7 +86,7 @@ func _check_can_see_player() -> bool:
 	query.collide_with_areas = true
 	var result = spaceState.intersect_ray(query)
 	var forward = eyes.get_global_transform().basis.z
-	var canSeePlayer:bool = !result.is_empty() && result.collider != null && result.collider.is_in_group("Player") && forward.angle_to(dir) < sightAngle
+	var canSeePlayer:bool = !result.is_empty() && result.collider != null && result.collider.is_in_group("PlayerCollision") && forward.angle_to(dir) < sightAngle
 	if DrawDebugRays:
 		debugRayHelper.draw_ray(eyes.global_position, eyes.global_position + (forward.rotated(Vector3.UP, sightAngle) * sightDistance), Color(1,1,1))
 		debugRayHelper.draw_ray(eyes.global_position, eyes.global_position + (forward.rotated(Vector3.UP, -sightAngle) * sightDistance), Color(1,1,1))
@@ -96,7 +99,7 @@ func _process_animations() -> void:
 	match(behaviorStateMachine.currentState):
 		behaviorStateMachine.BehaviorState.SEARCH:
 			animSpeed = 0.2
-		behaviorStateMachine.BehaviorState.CHASE, behaviorStateMachine.BehaviorState.INVESTIGATE, behaviorStateMachine.BehaviorState.RETURN:
+		behaviorStateMachine.BehaviorState.CHASE, behaviorStateMachine.BehaviorState.INVESTIGATE, behaviorStateMachine.BehaviorState.RETURN, behaviorStateMachine.BehaviorState.FLEE:
 			animSpeed = 1
 		behaviorStateMachine.BehaviorState.IDLE:
 			animSpeed = 0
@@ -106,6 +109,17 @@ func _get_random_position_near_player() -> Vector3:
 	var currentPlayerPos = Player.global_position
 	var targetPos = currentPlayerPos + (Vector3.FORWARD * randf_range(-searchRadius, searchRadius)) + (Vector3.LEFT * randf_range(-searchRadius, searchRadius))
 	return targetPos
+	
+func _get_random_position_away_from_player() -> Vector3:
+	var currentPlayerPos = Player.global_position
+	var dir = (global_position - currentPlayerPos).normalized()
+	var degrees = atan2(dir.z, dir.x)
+	var rads = deg_to_rad(degrees)
+	var target_angle_rads = randf_range(rads + flee_angle_rad, rads - flee_angle_rad)
+	var target_x = cos(target_angle_rads) * 75
+	var target_z = sin(target_angle_rads) * 75
+	var target = Vector3(target_x,0,target_z)
+	return global_position + target
 
 func _set_nav_target_from_state(state : BehaviorStateMachine.BehaviorState) -> void:
 	navAgent.path_desired_distance = 0.5
@@ -119,6 +133,10 @@ func _set_nav_target_from_state(state : BehaviorStateMachine.BehaviorState) -> v
 		BehaviorStateMachine.BehaviorState.RETURN:
 			navAgent.target_position = playerSpawn
 			navAgent.path_desired_distance = 20.0
+		BehaviorStateMachine.BehaviorState.FLEE:
+			if (!is_fleeing):
+				is_fleeing = true
+				navAgent.target_position = _get_random_position_away_from_player()
 
 # called when finished getting to last known position or random position
 func _on_navigation_agent_3d_navigation_finished():
@@ -132,15 +150,22 @@ func _on_navigation_agent_3d_navigation_finished():
 		Idletimer.start()
 		Player.get_thrown(position, playerSpawn)
 		isReturningPlayer = false
+	elif behaviorStateMachine.currentState == BehaviorStateMachine.BehaviorState.FLEE:
+		behaviorStateMachine.currentState = BehaviorStateMachine.BehaviorState.SEARCH
+		is_fleeing = false
 	else:
 		# nav target is set as a result of state being set. Not ideal
 		behaviorStateMachine.currentState = BehaviorStateMachine.BehaviorState.SEARCH
 
 func _on_ray_timer_timeout():
 	if _check_can_see_player():
-		behaviorStateMachine.currentState = BehaviorStateMachine.BehaviorState.CHASE
-		lastSeenPos = Player.global_position
-		lookingForPlayer = true
+		var player_has_photo = false
+		if (player_has_photo):
+			behaviorStateMachine.currentState = BehaviorStateMachine.BehaviorState.CHASE		
+			lastSeenPos = Player.global_position
+			lookingForPlayer = true
+		else:
+			behaviorStateMachine.currentState = BehaviorStateMachine.BehaviorState.FLEE
 	elif isReturningPlayer:
 		pass
 	elif lookingForPlayer:
@@ -155,7 +180,7 @@ func _set_walk_speed_from_state(state:BehaviorStateMachine.BehaviorState) -> voi
 	match(state):
 		BehaviorStateMachine.BehaviorState.SEARCH:
 			movementSpeed = walkSpeed
-		BehaviorStateMachine.BehaviorState.INVESTIGATE, BehaviorStateMachine.BehaviorState.CHASE, BehaviorStateMachine.BehaviorState.RETURN:
+		BehaviorStateMachine.BehaviorState.INVESTIGATE, BehaviorStateMachine.BehaviorState.CHASE, BehaviorStateMachine.BehaviorState.RETURN, behaviorStateMachine.BehaviorState.FLEE:
 			movementSpeed = runSpeed
 		BehaviorStateMachine.BehaviorState.IDLE:
 			movementSpeed = 0.0

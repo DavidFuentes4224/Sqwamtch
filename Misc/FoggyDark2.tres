@@ -17,6 +17,7 @@ sky = SubResource("Sky_vfujt")
 ambient_light_source = 3
 ambient_light_sky_contribution = 0.0
 reflected_light_source = 2
+tonemap_exposure = 0.75
 fog_enabled = true
 fog_light_color = Color(0.238, 0.2541, 0.28, 1)
 fog_sky_affect = 0.731
