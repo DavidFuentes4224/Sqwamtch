@@ -1,23 +1,23 @@
-[gd_scene load_steps=28 format=3 uid="uid://djh6p5vpl0qh6"]
+[gd_scene format=3 uid="uid://djh6p5vpl0qh6"]
 
-[ext_resource type="Script" path="res://Scripts/FPSController.gd" id="1_autb6"]
+[ext_resource type="Script" uid="uid://cye0et0itcl2q" path="res://Scripts/Player/player.gd" id="1_autb6"]
 [ext_resource type="PackedScene" uid="uid://dlx3vpjnwir3l" path="res://Assets/Vape/Vape.glb" id="2_xtpyj"]
-[ext_resource type="Script" path="res://Scripts/VapeComponent.gd" id="3_5xwvt"]
+[ext_resource type="Script" uid="uid://b47kwtmmd5ie2" path="res://Scripts/Audio/vape_component.gd" id="3_5xwvt"]
 [ext_resource type="Texture2D" uid="uid://bp07jcxy40tte" path="res://Assets/Textures/TCom_FabricPlain0083_1_seamless_S.png" id="4_0otw1"]
 [ext_resource type="PackedScene" uid="uid://8x6uwy2ygtl1" path="res://Nodes/UI/PlayerUI.tscn" id="4_lf404"]
 [ext_resource type="AudioStream" uid="uid://g2gyudsrm5a7" path="res://Sound/Inhale.mp3" id="4_t3wtb"]
 [ext_resource type="AudioStream" uid="uid://c4jhbnpmj7yn" path="res://Sound/Cough.mp3" id="5_3kqvy"]
 [ext_resource type="AudioStream" uid="uid://sl6c6xey2lb3" path="res://Sound/Exhale.mp3" id="5_d6b85"]
-[ext_resource type="Script" path="res://Scripts/CameraHeadBob.gd" id="6_fu1w7"]
-[ext_resource type="Script" path="res://Scripts/VapeAudioController.gd" id="7_cjwev"]
+[ext_resource type="Script" uid="uid://ba4vx2klvpvyt" path="res://Scripts/Player/camera_head_bob.gd" id="6_fu1w7"]
+[ext_resource type="Script" uid="uid://cyqbq1v00cot5" path="res://Scripts/Audio/vape_audio_controller.gd" id="7_cjwev"]
 [ext_resource type="Texture2D" uid="uid://3x6gk1puthby" path="res://Assets/Kenney/smoke_01.png" id="9_q4fft"]
-[ext_resource type="Script" path="res://Scripts/simple_footsteps_player.gd" id="12_kw6qn"]
+[ext_resource type="Script" uid="uid://cbykqb46b51" path="res://Scripts/Audio/simple_footsteps_player.gd" id="12_kw6qn"]
 [ext_resource type="AudioStream" uid="uid://b0ysooqxcyd8o" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Shoe Step Grass Medium A.wav" id="13_5un6h"]
 [ext_resource type="AudioStream" uid="uid://il8kxnc3naxa" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Shoe Step Grass Medium B.wav" id="14_6nsnc"]
 [ext_resource type="AudioStream" uid="uid://csku8pt1tmpjm" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Shoe Step Grass Medium C.wav" id="15_k8vnd"]
 [ext_resource type="AudioStream" uid="uid://4n2c2jmcdtjg" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Shoe Step Grass Medium D.wav" id="16_wn0gh"]
 [ext_resource type="AudioStream" uid="uid://ogfxfc8o3fpy" path="res://AutoFootStepsPlugin/DefaultSounds/Grass/Shoe Step Grass Medium E.wav" id="17_cjcug"]
-[ext_resource type="Script" path="res://Scripts/bush_audio_player.gd" id="18_mhpcn"]
+[ext_resource type="Script" uid="uid://drk1vm7pm8c8q" path="res://Scripts/Audio/bush_audio_player.gd" id="18_mhpcn"]
 [ext_resource type="AudioStream" uid="uid://cyvikwv6qnti4" path="res://Sound/Bush.mp3" id="19_kd40y"]
 [ext_resource type="AudioStream" uid="uid://dipqxe1lrjc2s" path="res://Sound/Bush_Reverse.wav" id="20_mc21p"]
 
@@ -43,7 +43,7 @@ albedo_texture = ExtResource("9_q4fft")
 billboard_mode = 1
 billboard_keep_scale = true
 grow_amount = -2.259
-proximity_fade_distance = 0.0
+proximity_fade_distance = 0.01
 distance_fade_max_distance = 5.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_m8acc"]
@@ -59,38 +59,38 @@ albedo_texture_force_srgb = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vvusd"]
 
-[node name="FPSController" type="CharacterBody3D" groups=["Player"]]
+[node name="FPSController" type="CharacterBody3D" unique_id=487781043 groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_autb6")
 
-[node name="VapeAudioController" type="Node" parent="."]
+[node name="VapeAudioController" type="Node" parent="." unique_id=107563078]
 script = ExtResource("7_cjwev")
 vapeInhale = ExtResource("4_t3wtb")
 vapeExhale = ExtResource("5_d6b85")
 cough = ExtResource("5_3kqvy")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="VapeAudioController"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="VapeAudioController" unique_id=5439864]
 
-[node name="PlayerCollision" type="CollisionShape3D" parent="." groups=["PlayerCollision"]]
+[node name="PlayerCollision" type="CollisionShape3D" parent="." unique_id=211463408 groups=["PlayerCollision"]]
 shape = SubResource("CapsuleShape3D_0mgwr")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=711399658]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63274, 0)
 current = true
 
-[node name="Holder" type="Node3D" parent="Camera3D"]
+[node name="Holder" type="Node3D" parent="Camera3D" unique_id=800941193]
 script = ExtResource("6_fu1w7")
 MaxXOffset = 0.02
 bobScale = 1.25
 
-[node name="VapePen" parent="Camera3D/Holder" node_paths=PackedStringArray("vapeCloud") instance=ExtResource("2_xtpyj")]
+[node name="VapePen" parent="Camera3D/Holder" unique_id=51835589 node_paths=PackedStringArray("vape_cloud") instance=ExtResource("2_xtpyj")]
 transform = Transform3D(0.0432072, 0, 0, 0, 0.0432072, 0, 0, 0, 0.0432072, -0.699271, -0.674883, -0.693709)
 script = ExtResource("3_5xwvt")
-vapeEndPos = Vector3(0, -0.3, -0.38)
-vapeEndRot = Vector3(0.8, 0, 0)
-vapeCloud = NodePath("../CloudParticles")
+vape_cloud = NodePath("../CloudParticles")
+vape_end_pos = Vector3(0, -0.3, -0.38)
+vape_end_rot = Vector3(0.8, 0, 0)
 
-[node name="VapeLight" type="SpotLight3D" parent="Camera3D/Holder/VapePen" groups=["Player"]]
+[node name="VapeLight" type="SpotLight3D" parent="Camera3D/Holder/VapePen" unique_id=769813797 groups=["Player"]]
 transform = Transform3D(23.1443, 0, 0, 0, 4.39355, 22.7234, 0, -22.7234, 4.39355, 0, 0, 0)
 light_color = Color(0.713726, 1, 1, 1)
 light_energy = 5.0
@@ -100,13 +100,13 @@ spot_attenuation = 0.176777
 spot_angle = 39.1
 spot_angle_attenuation = 1.86607
 
-[node name="Label3D" type="Label3D" parent="Camera3D/Holder/VapePen/VapeLight"]
+[node name="Label3D" type="Label3D" parent="Camera3D/Holder/VapePen/VapeLight" unique_id=2044407265]
 transform = Transform3D(-0.013652, 0.0125969, -0.999828, 0.198983, 0.979956, 0.00962957, 0.979908, -0.198817, -0.0158851, -0.0327222, 0.0563962, 0.170984)
 text = "100"
 font_size = 10
 outline_size = 2
 
-[node name="CloudParticles" type="GPUParticles3D" parent="Camera3D/Holder"]
+[node name="CloudParticles" type="GPUParticles3D" parent="Camera3D/Holder" unique_id=1021798091]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.274622, -0.411527)
 emitting = false
 amount = 200
@@ -118,35 +118,35 @@ collision_base_size = 0.75
 process_material = SubResource("ParticleProcessMaterial_405hn")
 draw_pass_1 = SubResource("QuadMesh_m8acc")
 
-[node name="SackMesh" type="MeshInstance3D" parent="Camera3D/Holder"]
+[node name="SackMesh" type="MeshInstance3D" parent="Camera3D/Holder" unique_id=245470674]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.3)
 material_override = SubResource("StandardMaterial3D_5af31")
 mesh = SubResource("QuadMesh_yyllo")
 skeleton = NodePath("../..")
 
-[node name="FilmCameraSocket" type="Node3D" parent="Camera3D/Holder"]
+[node name="FilmCameraSocket" type="Node3D" parent="Camera3D/Holder" unique_id=672227364]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.259752, -0.232759, -0.299832)
 
-[node name="Marker3D" type="Marker3D" parent="Camera3D/Holder/FilmCameraSocket"]
+[node name="Marker3D" type="Marker3D" parent="Camera3D/Holder/FilmCameraSocket" unique_id=519065176]
 gizmo_extents = 0.45
 
-[node name="UI" parent="." instance=ExtResource("4_lf404")]
+[node name="UI" parent="." unique_id=1658652873 instance=ExtResource("4_lf404")]
 
-[node name="SimpleFootstepPlayer" type="Node3D" parent="."]
+[node name="SimpleFootstepPlayer" type="Node3D" parent="." unique_id=357102006]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 script = ExtResource("12_kw6qn")
 footsteps = Array[AudioStream]([ExtResource("13_5un6h"), ExtResource("14_6nsnc"), ExtResource("15_k8vnd"), ExtResource("16_wn0gh"), ExtResource("17_cjcug")])
 
-[node name="TreeArea" type="Area3D" parent="."]
+[node name="TreeArea" type="Area3D" parent="." unique_id=1038036473]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("18_mhpcn")
 enter_sound = ExtResource("19_kd40y")
 exit_sound = ExtResource("20_mc21p")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TreeArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TreeArea" unique_id=1861362818]
 shape = SubResource("SphereShape3D_vvusd")
 
-[connection signal="vapingStateChanged" from="Camera3D/Holder/VapePen" to="VapeAudioController" method="_on_vape_pen_vaping_state_changed"]
+[connection signal="vaping_state_changed" from="Camera3D/Holder/VapePen" to="VapeAudioController" method="_on_vape_pen_vaping_state_changed"]
 [connection signal="body_entered" from="TreeArea" to="TreeArea" method="_on_area_3d_area_entered"]
 [connection signal="body_exited" from="TreeArea" to="TreeArea" method="_on_area_3d_area_exited"]

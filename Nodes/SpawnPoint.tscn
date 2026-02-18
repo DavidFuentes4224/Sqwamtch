@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdabr4hwc78w3"]
+[gd_scene format=3 uid="uid://bdabr4hwc78w3"]
 
-[ext_resource type="Script" path="res://Scripts/SpawnPoint.gd" id="1_ltp5i"]
+[ext_resource type="Script" uid="uid://rbygm5bh5mj8" path="res://Scripts/Utililty/spawn_point.gd" id="1_ltp5i"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_hd6f4"]
 

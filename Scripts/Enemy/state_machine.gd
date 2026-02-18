@@ -1,23 +1,23 @@
-extends Node
-
 class_name BehaviorStateMachine
+extends Node
+## State machine logic controlling sasquatch.
 
+signal state_updated(newState:BehaviorState)
 enum BehaviorState {IDLE, SEARCH, CHASE, INVESTIGATE, RETURN, FLEE}
-
-signal StateUpdated(newState:BehaviorState)
-
-@export var currentState : BehaviorState = BehaviorState.SEARCH :
+@export var current_state : BehaviorState = BehaviorState.SEARCH :
 	set = _set_state
 
 func _set_state(value):
-	currentState = value
-	StateUpdated.emit(currentState)
+	current_state = value
+	state_updated.emit(current_state)
+
 
 func get_state() -> BehaviorState:
-	return currentState
+	return current_state
+
 
 func print_state() -> void:
-	match currentState:
+	match current_state:
 		BehaviorState.IDLE:
 			print("IDLE")
 		BehaviorState.SEARCH:

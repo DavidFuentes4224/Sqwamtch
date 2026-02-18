@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1sr2jxw7eh73"]
+[gd_scene format=3 uid="uid://d1sr2jxw7eh73"]
 
-[ext_resource type="Script" path="res://Scripts/film_camera.gd" id="1_rldu8"]
+[ext_resource type="Script" uid="uid://03icp7t0rwjl" path="res://Scripts/Items/film_camera.gd" id="1_rldu8"]
 [ext_resource type="AudioStream" uid="uid://bdp731ilwnw20" path="res://Sound/CameraTakePicture.wav" id="2_cvjfh"]
 [ext_resource type="AudioStream" uid="uid://bxtg5vf73ekj3" path="res://Sound/CameraReset.wav" id="3_25g1a"]
 [ext_resource type="PackedScene" uid="uid://dfolrxmu1jxvt" path="res://Assets/InstantCamera/InstantCamera.glb" id="4_xm0la"]

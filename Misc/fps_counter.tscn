@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://h3pykl87gex0"]
+[gd_scene format=3 uid="uid://h3pykl87gex0"]
 
-[ext_resource type="Script" path="res://Scripts/FPSTracker.gd" id="1_380dc"]
+[ext_resource type="Script" uid="uid://bmyjer5ycc0ee" path="res://Scripts/Debug/fps_tracker.gd" id="1_380dc"]
 
 [node name="FPSCounter" type="CanvasLayer"]
 script = ExtResource("1_380dc")

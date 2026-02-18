@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccmiwkk1lain2"]
+[gd_scene format=3 uid="uid://ccmiwkk1lain2"]
 
 [ext_resource type="PackedScene" uid="uid://j5h3f5fjmc22" path="res://Terrain/Trees/Meshes/PineSmall.glb" id="1_202h2"]
-[ext_resource type="Script" path="res://Scripts/bush_audio_player.gd" id="2_cj5h2"]
+[ext_resource type="Script" uid="uid://drk1vm7pm8c8q" path="res://Scripts/Audio/bush_audio_player.gd" id="2_cj5h2"]
 [ext_resource type="AudioStream" uid="uid://cyvikwv6qnti4" path="res://Sound/Bush.mp3" id="3_le7uj"]
 [ext_resource type="AudioStream" uid="uid://dipqxe1lrjc2s" path="res://Sound/Bush_Reverse.wav" id="4_ns8ym"]
 

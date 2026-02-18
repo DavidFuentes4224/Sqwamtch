@@ -1,9 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dwwptiak4467i"]
+[gd_scene format=3 uid="uid://dwwptiak4467i"]
 
 [ext_resource type="Terrain3DStorage" uid="uid://dgefit583lco4" path="res://Terrain/test_terrain.res" id="1_h6pnm"]
 [ext_resource type="PackedScene" uid="uid://1kt6juxlrc4h" path="res://Nodes/sqwamtch_enemy.tscn" id="2_c4dvy"]
 [ext_resource type="PackedScene" uid="uid://bdabr4hwc78w3" path="res://Nodes/SpawnPoint.tscn" id="3_tjm00"]
-[ext_resource type="PackedScene" uid="uid://djh6p5vpl0qh6" path="res://Nodes/FPS_Controller.tscn" id="4_k6jq5"]
+[ext_resource type="PackedScene" uid="uid://djh6p5vpl0qh6" path="res://Nodes/player.tscn" id="4_k6jq5"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_a1l2m"]
 

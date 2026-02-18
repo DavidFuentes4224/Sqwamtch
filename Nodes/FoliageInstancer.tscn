@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://hxo8hxpvwq7v"]
+[gd_scene format=3 uid="uid://hxo8hxpvwq7v"]
 
-[ext_resource type="Script" path="res://Scripts/FoliageInstancer.gd" id="1_bnqpl"]
+[ext_resource type="Script" uid="uid://v3bxa0lajk4h" path="res://Scripts/Tools/foliage_instancer.gd" id="1_bnqpl"]
 [ext_resource type="Texture2D" uid="uid://jgda0lls2qii" path="res://Terrain/Height.exr" id="2_hl4p4"]
 [ext_resource type="ArrayMesh" uid="uid://c70q7sc2ouvlx" path="res://Assets/Grass/GrassMesh.res" id="3_gvctq"]
 [ext_resource type="Texture2D" uid="uid://cote5wb7lutqr" path="res://Terrain/PackedHeight.png" id="4_ykefu"]

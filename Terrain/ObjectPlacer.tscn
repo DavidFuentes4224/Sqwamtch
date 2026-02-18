@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjpo5u2hokwjh"]
+[gd_scene format=3 uid="uid://cjpo5u2hokwjh"]
 
-[ext_resource type="Script" path="res://Scripts/ObjectPlacer.gd" id="1_lqfog"]
+[ext_resource type="Script" uid="uid://y75p17eiegjc" path="res://Scripts/Tools/object_placer.gd" id="1_lqfog"]
 [ext_resource type="PackedScene" uid="uid://bfn7y4wk8errb" path="res://Assets/Tree/Tree.tscn" id="2_vxmio"]
 
 [node name="ObjectPlacer" type="Node3D"]

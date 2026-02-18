@@ -1,17 +1,18 @@
-extends Node3D
-
 class_name DebugRay
+extends Node3D
+## Configures a "ray" to visualize a raycast then queue free after timer elapses.
 
-@export var Lifespan:float = 10
-@onready var timer:Timer = $Timer
+@export var life_span: float = 10.0
+@onready var timer: Timer = $Timer
 @onready var mesh := $Line
 
 func _ready():
-	if Lifespan != 0:
-		timer.wait_time = Lifespan
+	if life_span != 0:
+		timer.wait_time = life_span
 		timer.start()
-		
-func initialize(start:Vector3, finish:Vector3, color:Color) -> void:
+
+
+func initialize(start: Vector3, finish: Vector3, color: Color):
 	var dir = finish - start
 	var dist = dir.length()
 	mesh.scale.z = dist
@@ -21,6 +22,6 @@ func initialize(start:Vector3, finish:Vector3, color:Color) -> void:
 	material.albedo_color = color
 	mesh.set_surface_override_material(0, material)
 
+
 func _on_timer_timeout():
 	queue_free()
-	pass # Replace with function body.

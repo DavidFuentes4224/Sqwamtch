@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cu438pyjavfwu"]
+[gd_scene format=3 uid="uid://cu438pyjavfwu"]
 
-[ext_resource type="Script" path="res://Scripts/polaroid.gd" id="1_kw0wb"]
+[ext_resource type="Script" uid="uid://d31fqdn0ckurb" path="res://Scripts/Items/polaroid_film.gd" id="1_kw0wb"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_3r3r8"]
 size = Vector2(1, 1.25)

@@ -1,14 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://j3ga4gog74g3"]
+[gd_scene format=3 uid="uid://j3ga4gog74g3"]
 
-[ext_resource type="Script" path="res://Scripts/DebugRayHelper.gd" id="2_xkk1o"]
+[ext_resource type="Script" uid="uid://bcc4yc4r2062o" path="res://Scripts/Debug/debug_ray_helper.gd" id="2_xkk1o"]
 
-[node name="DebugHelper" type="Node3D" groups=["DebugHelper"]]
+[node name="DebugHelper" type="Node3D" unique_id=2034947657 groups=["DebugHelper"]]
 script = ExtResource("2_xkk1o")
 
-[node name="Marker3D" type="Marker3D" parent="."]
+[node name="Marker3D" type="Marker3D" parent="." unique_id=1562126682]
 gizmo_extents = 1.0
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1143486278]
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

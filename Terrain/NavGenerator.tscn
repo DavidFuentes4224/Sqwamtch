@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dp6gwtrl86rw7"]
+[gd_scene format=3 uid="uid://dp6gwtrl86rw7"]
 
-[ext_resource type="Script" path="res://Scripts/NavGenerator.gd" id="1_1dkqe"]
+[ext_resource type="Script" uid="uid://cthscakwtbac7" path="res://Scripts/Tools/nav_generator.gd" id="1_1dkqe"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_orhtr"]
 _surfaces = [{

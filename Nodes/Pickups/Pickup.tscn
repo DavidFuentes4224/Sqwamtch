@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbtatuxkkf15l"]
+[gd_scene format=3 uid="uid://cbtatuxkkf15l"]
 
-[ext_resource type="Script" path="res://Scripts/Pickup.gd" id="1_s34c3"]
+[ext_resource type="Script" uid="uid://dwijmen787sny" path="res://Scripts/Items/pickup.gd" id="1_s34c3"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0sbb5"]
 

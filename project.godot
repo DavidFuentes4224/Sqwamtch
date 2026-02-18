@@ -19,9 +19,13 @@ run/main_scene="res://Nodes/Levels/Test_Area.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://c2lsyccbw6oi6"
+
 [autoload]
 
-DebugRayHelper="*res://Scripts/DebugRayHelper.gd"
+DebugRayHelper="*res://Scripts/Debug/debug_ray_helper.gd"
 
 [display]
 

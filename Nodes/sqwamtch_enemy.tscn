@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://1kt6juxlrc4h"]
+[gd_scene format=3 uid="uid://1kt6juxlrc4h"]
 
 [ext_resource type="PackedScene" uid="uid://bt2cs3l4w0elj" path="res://Assets/Sqwamtch/sqwamtch_character.tscn" id="1_2huep"]
-[ext_resource type="Script" path="res://Scripts/sqwamtch_enemy_script.gd" id="1_ym2oi"]
-[ext_resource type="Script" path="res://Scripts/StateMachine.gd" id="3_tjbod"]
-[ext_resource type="Script" path="res://Scripts/Poller.gd" id="6_psjws"]
+[ext_resource type="Script" uid="uid://dclt174am3ibi" path="res://Scripts/Enemy/Sas/sqwamtch_enemy_script.gd" id="1_ym2oi"]
+[ext_resource type="Script" uid="uid://cdruukivawga8" path="res://Scripts/Enemy/state_machine.gd" id="3_tjbod"]
+[ext_resource type="Script" uid="uid://blyo7xtpch8qs" path="res://Scripts/Utililty/poller.gd" id="6_psjws"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_di7cr"]
 radius = 0.33569
@@ -12,39 +12,39 @@ height = 2.58568
 [sub_resource type="SphereShape3D" id="SphereShape3D_cnv7t"]
 radius = 1.55649
 
-[node name="SqwamtchEnemy" type="CharacterBody3D"]
+[node name="SqwamtchEnemy" type="CharacterBody3D" unique_id=1194836870]
 script = ExtResource("1_ym2oi")
 
-[node name="Sqwamtch" parent="." instance=ExtResource("1_2huep")]
+[node name="Sqwamtch" parent="." unique_id=1603853638 instance=ExtResource("1_2huep")]
 
-[node name="CharacterCollider" type="CollisionShape3D" parent="." groups=["EnemyCollision"]]
+[node name="CharacterCollider" type="CollisionShape3D" parent="." unique_id=1610556665 groups=["EnemyCollision"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32338, 0)
 shape = SubResource("CapsuleShape3D_di7cr")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=593199082]
 path_height_offset = 0.25
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="." unique_id=1373001571]
 script = ExtResource("3_tjbod")
 
-[node name="RayTimer" type="Timer" parent="."]
+[node name="RayTimer" type="Timer" parent="." unique_id=828304304]
 autostart = true
 script = ExtResource("6_psjws")
 
-[node name="IdleTimer" type="Timer" parent="."]
+[node name="IdleTimer" type="Timer" parent="." unique_id=1025524377]
 wait_time = 2.0
 one_shot = true
 
-[node name="CaptureArea" type="Area3D" parent="."]
+[node name="CaptureArea" type="Area3D" parent="." unique_id=1840607148]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.617719)
 collision_mask = 2
 
-[node name="CaptureRadius" type="CollisionShape3D" parent="CaptureArea"]
+[node name="CaptureRadius" type="CollisionShape3D" parent="CaptureArea" unique_id=632442559]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56178, 0)
 shape = SubResource("SphereShape3D_cnv7t")
 
 [connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_navigation_finished"]
-[connection signal="StateUpdated" from="StateMachine" to="." method="_on_state_machine_state_updated"]
+[connection signal="state_updated" from="StateMachine" to="." method="_on_state_machine_state_updated"]
 [connection signal="timeout" from="RayTimer" to="." method="_on_ray_timer_timeout"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
 [connection signal="body_entered" from="CaptureArea" to="." method="_on_capture_area_body_entered"]
